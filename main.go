@@ -24,7 +24,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
-	"github.com/nscl5/4/internal/tester"
+	"v2ray-config-aggregator/internal/tester"
 )
 
 const (
