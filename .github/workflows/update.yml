@@ -60,7 +60,7 @@ jobs:
         ls -la Sub*.txt 2>/dev/null || echo "No Sub files found"
         
         echo "\nBase64 directory:"
-        ls -la B64/ 2>/dev/null || echo "No B64 directory found"
+        ls -la Base64/ 2>/dev/null || echo "No Base64 directory found"
 
         if [ -f "AllConfigsSub.txt" ]; then
           TOTAL_CONFIGS=$(wc -l < AllConfigsSub.txt)
@@ -149,7 +149,7 @@ jobs:
           THRESHOLD=$(($(date +%s) - 86400))
           DELETED=0
 
-          for file in Sub*.txt B64/Sub*_b64.txt By-country/*.txt By-protocol/*.txt; do
+          for file in Sub*.txt Base64/Sub*_base64.txt By-country/*.txt By-protocol/*.txt; do
             [ -f "$file" ] || continue
             last_commit=$(git log -1 --format=%ct -- "$file" 2>/dev/null)
             if [ -n "$last_commit" ] && [ "$last_commit" -lt "$THRESHOLD" ]; then
