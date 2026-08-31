@@ -1,4 +1,4 @@
-module github.com/nscl5/4
+module v2ray-config-aggregator
 
 go 1.26.5
 
