@@ -19,7 +19,7 @@ import (
 
 	_ "github.com/xtls/xray-core/main/distro/all"
 
-	"github.com/nscl5/4/internal/tester/converter"
+	"v2ray-config-aggregator/internal/converter"
 )
 
 type Result struct {
