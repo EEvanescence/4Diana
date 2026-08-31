@@ -24,7 +24,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
-	"v2ray-config-aggregator/internal/tester"
+	"github.com/nscl5/4/internal/tester"
 )
 
 const (
@@ -355,7 +355,7 @@ func readConfigsFromFile(path string) ([]string, error) {
 }
 
 func ensureDirectoriesExist() (string, error) {
-	base64Folder := "B64"
+	base64Folder := "Base64"
 	if err := os.MkdirAll(base64Folder, 0755); err != nil {
 		return "", err
 	}
@@ -1001,7 +1001,7 @@ func writeUpdateSummary(total int, stats map[string]int, duration float64, origi
 		}
 	} else {
 		writer.WriteString("\n##✔️ All Sources Successful\n")
-		writer.WriteString("✔️All configured sources were reached successfully.\n")
+		writer.WriteString("All configured sources were reached successfully.\n")
 	}
 }
 
