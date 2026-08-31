@@ -2,8 +2,13 @@
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 # Binaries for programs and plugins
+aggregator
+aggregator.exe
 *.exe
 *.exe~
+*.tar.gz
+*.log
+*.db
 *.dll
 *.so
 *.dylib
@@ -11,14 +16,24 @@
 # Test binary, built with `go test -c`
 *.test
 
+# IP Geo location databases
+*.mmdb
+GeoLite2-Country.mmdb
+
 # Code coverage profiles and other test artifacts
 *.out
 coverage.*
 *.coverprofile
 profile.cov
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# Dependency directories
+**/node_modules/
+package-lock.json
+yarn.lock
+vendor/
+dist/
+build/
+target/
 
 # Go workspace file
 go.work
@@ -26,7 +41,17 @@ go.work.sum
 
 # env file
 .env
+.env.local
 
 # Editor/IDE
-# .idea/
-# .vscode/
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary cache files
+cloudflare-ips.txt
+*.tmp
