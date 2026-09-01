@@ -1,4 +1,4 @@
-module v2ray-config-aggregator
+module github.com/EEvanescence/4Diana
 
 go 1.26.5
 
