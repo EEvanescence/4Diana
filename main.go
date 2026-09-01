@@ -24,7 +24,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
-	"v2ray-config-aggregator/internal/tester"
+	"github.com/nscl5/4/internal/tester"
 )
 
 const (
@@ -494,17 +494,21 @@ func fetchText(client *http.Client, url string) Result {
 }
 
 func decodeBase64(encoded []byte) (string, error) {
-	encodedStr := string(encoded)
-	if len(encodedStr)%4 != 0 {
-		encodedStr += strings.Repeat("=", 4-len(encodedStr)%4)
+	s := strings.TrimSpace(string(encoded))
+	padLen := (4 - len(s)%4) % 4
+	padded := s + strings.Repeat("=", padLen)
+	
+	for _, enc := range []*base64.Encoding{
+		base64.StdEncoding, 
+		base64.URLEncoding,
+		base64.RawStdEncoding, 
+		base64.RawURLEncoding,
+	} {
+		if b, err := enc.DecodeString(padded); err == nil {
+			return string(b), nil
+		}
 	}
-
-	decoded, err := base64.StdEncoding.DecodeString(encodedStr)
-	if err != nil {
-		return "", err
-	}
-
-	return string(decoded), nil
+	return "", fmt.Errorf("invalid base64")
 }
 
 func sanitizeConfig(config string) string {
@@ -980,7 +984,6 @@ func writeUpdateSummary(total int, stats map[string]int, duration float64, origi
 	writer.WriteString(fmt.Sprintf("- Total unique configurations: %d\n", total))
 	writer.WriteString("- Protocol breakdown:\n")
 
-	// Sort protocols for consistent output
 	for _, p := range protocols {
 		count := stats[p]
 		writer.WriteString(fmt.Sprintf("  - %s: %d configs\n", p, count))
