@@ -1,1 +1,0 @@
-vless://423b1d79-08c4-403f-9d5e-c541f791b55f@81.85.75.87:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM&security=reality&sid=a7f3c91b2e6d84c0&sni=auto.cendora.ru&type=tcp#Rose%20%7C%20%F0%9F%87%B0%F0%9F%87%AC%20KG%20%7C%20VLESS%20%7C%20319
