@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V2Ray Configuration Dashboard</title>
+    <meta name="description" content="Rose: fresh, live-tested V2Ray configs updated hourly.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface-2: #1a1a24;
+            --border: #27272f;
+            --text: #e4e4e7;
+            --text-dim: #71717a;
+            --rose: #f43f5e;
+            --violet: #8b5cf6;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html, body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(244, 63, 94, 0.18), transparent),
+                radial-gradient(ellipse 60% 50% at 100% 0%, rgba(139, 92, 246, 0.12), transparent),
+                radial-gradient(ellipse 50% 40% at 0% 100%, rgba(59, 130, 246, 0.08), transparent);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .glass {
+            background: rgba(18, 18, 26, 0.6);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .glow {
+            box-shadow:
+                0 0 0 1px rgba(244, 63, 94, 0.1),
+                0 8px 24px -4px rgba(244, 63, 94, 0.2),
+                0 24px 48px -12px rgba(139, 92, 246, 0.15);
+        }
+        .tab-button { position: relative; transition: color 0.25s ease; }
+        .tab-button.active { color: var(--rose); }
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rose), var(--violet));
+            border-radius: 2px;
+        }
+        .tab-content { display: none; animation: fadeSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .tab-content.active { display: block; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .link-row { transition: all 0.2s ease; }
+        .link-row:hover {
+            background: rgba(244, 63, 94, 0.04);
+            border-color: rgba(244, 63, 94, 0.2);
+            transform: translateY(-1px);
+        }
+        .copy-btn { transition: all 0.2s ease; }
+        .copy-btn.copied { color: #10b981 !important; background: rgba(16, 185, 129, 0.1) !important; }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .proto-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; border: 2px solid var(--bg); }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f4a; }
+        code { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+<nav class="sticky top-0 z-50 glass border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 via-pink-500 to-violet-600 flex items-center justify-center glow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L9.5 8.5L2 9.5L7.5 14.5L6 22L12 18L18 22L16.5 14.5L22 9.5L14.5 8.5L12 2Z"/>
+                </svg>
+            </div>
+            <div>
+                <div class="text-xl font-bold tracking-tight">Rose</div>
+                <div class="text-[11px] text-zinc-500 font-medium -mt-0.5 tracking-wide">CONFIG DASHBOARD</div>
+            </div>
+        </div>
+        <a href="https://github.com/EEvanescence/4Diana" target="_blank" rel="noopener" class="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 text-sm font-medium transition-all">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="hidden sm:inline">GitHub</span>
+        </a>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex gap-1 overflow-x-auto scrollbar-none">
+        <button class="tab-button active px-4 py-3 text-sm font-medium text-zinc-400 whitespace-nowrap" data-tab="overview">Overview</button>
+        <button class="tab-button px-4 py-3 text-sm font-medium text-zinc-400 whitespace-nowrap" data-tab="subscriptions">Subscriptions</button>
+        <button class="tab-button px-4 py-3 text-sm font-medium text-zinc-400 whitespace-nowrap" data-tab="protocols">By Protocol</button>
+        <button class="tab-button px-4 py-3 text-sm font-medium text-zinc-400 whitespace-nowrap" data-tab="countries">By Country</button>
+    </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+
+    <section class="mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-semibold mb-5">
+            <span class="w-1.5 h-1.5 bg-rose-400 rounded-full animate-pulse"></span>
+            LIVE &middot; Auto-updated hourly
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 leading-[1.05]">
+            Fresh V2Ray configs,<br>
+            <span class="bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent">verified in real-time.</span>
+        </h1>
+        <p class="text-zinc-400 text-lg max-w-2xl leading-relaxed">
+            Every configuration is tested through an embedded Xray-core instance. Only working configs that actually pass traffic make it into these subscription lists.
+        </p>
+    </section>
+  
+    <section id="overview" class="tab-content active space-y-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            <div class="glass rounded-2xl p-5">
+                <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Total Configs</div>
+                <div class="text-3xl font-bold">Live</div>
+            </div>
+            <div class="glass rounded-2xl p-5">
+                <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Protocols</div>
+                <div class="text-3xl font-bold">7</div>
+            </div>
+            <div class="glass rounded-2xl p-5">
+                <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Refresh</div>
+                <div class="text-3xl font-bold">1<span class="text-lg text-zinc-500">h</span></div>
+            </div>
+            <div class="glass rounded-2xl p-5">
+                <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Test Method</div>
+                <div class="text-3xl font-bold text-base pt-1.5">Xray Live</div>
+            </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
+            <div class="flex items-start gap-3 mb-4">
+                <div class="w-1 h-6 bg-gradient-to-b from-rose-500 to-violet-500 rounded-full shrink-0 mt-0.5"></div>
+                <div>
+                    <h3 class="text-lg font-semibold">Quick Start</h3>
+                    <p class="text-sm text-zinc-500 mt-0.5">Copy the main subscription link below and paste it into your V2Ray client.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 p-3 bg-black/40 border border-white/5 rounded-xl font-mono text-xs sm:text-sm">
+                <span class="flex-1 truncate text-zinc-300 select-all">https://raw.githubusercontent.com/EEvanescence/4Diana/main/AllConfigsSub.txt</span>
+                <button onclick="copyLink(this, 'https://raw.githubusercontent.com/nscl5/4/main/AllConfigsSub.txt')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold shrink-0">Copy</button>
+            </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
+            <div class="flex items-start gap-3">
+                <div class="w-1 h-6 bg-gradient-to-b from-violet-500 to-blue-500 rounded-full shrink-0 mt-0.5"></div>
+                <div>
+                    <h3 class="text-lg font-semibold">Why Rose?</h3>
+                    <ul class="text-sm text-zinc-400 mt-2 space-y-2 leading-relaxed">
+                        <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Live testing through embedded Xray — not just port scanning</span></li>
+                        <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Exit-IP based GeoIP for accurate country tagging</span></li>
+                        <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Smart deduplication by real server identity</span></li>
+                        <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Support for VLESS, VMess, Trojan, Shadowsocks, Hysteria2, TUIC &amp; more</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="subscriptions" class="tab-content space-y-6">
+        <div class="glass rounded-2xl p-6">
+            <h3 class="text-lg font-semibold mb-1">Main Subscription</h3>
+            <p class="text-sm text-zinc-500 mb-5">All working configs in one file — recommended for most users.</p>
+            <div class="link-row flex items-center gap-3 p-4 bg-black/30 border border-white/5 rounded-xl">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="badge bg-rose-500/10 text-rose-300 border border-rose-500/20">
+                            <span class="proto-dot bg-rose-400"></span>
+                            Primary
+                        </span>
+                        <span class="text-sm font-semibold">AllConfigsSub.txt</span>
+                    </div>
+                    <div class="text-xs text-zinc-500 font-mono truncate">https://raw.githubusercontent.com/EEvanescence/4Diana/main/AllConfigsSub.txt</div>
+                </div>
+                <button onclick="copyLink(this, 'https://raw.githubusercontent.com/nscl5/4/main/AllConfigsSub.txt')" class="copy-btn px-4 py-2 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold">Copy</button>
+            </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
+            <h3 class="text-lg font-semibold mb-1">Split Subscriptions</h3>
+            <p class="text-sm text-zinc-500 mb-5">Smaller files (~500 configs each) for clients with size limits.</p>
+            <div class="grid md:grid-cols-2 gap-3" id="split-subs"></div>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
+            <h3 class="text-lg font-semibold mb-1">Base64 Encoded</h3>
+            <p class="text-sm text-zinc-500 mb-5">For clients that require base64-encoded subscription links.</p>
+            <div class="grid md:grid-cols-2 gap-3" id="base64-subs"></div>
+        </div>
+    </section>
+
+    <section id="protocols" class="tab-content">
+        <div class="glass rounded-2xl p-6">
+            <h3 class="text-lg font-semibold mb-1">By Protocol</h3>
+            <p class="text-sm text-zinc-500 mb-5">Subscription files separated by proxy protocol.</p>
+            <div class="grid md:grid-cols-2 gap-3" id="protocol-list"></div>
+        </div>
+    </section>
+
+    <section id="countries" class="tab-content space-y-4">
+        <div class="glass rounded-2xl p-6">
+            <h3 class="text-lg font-semibold mb-1">By Country</h3>
+            <p class="text-sm text-zinc-500 mb-5">Configs grouped by the GeoIP location of the exit node. Popular countries below — replace <code class="px-1.5 py-0.5 bg-black/40 border border-white/5 rounded text-[11px] font-mono text-rose-300">XX</code> with any country code.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" id="country-list"></div>
+
+            <div class="mt-6 p-4 bg-black/30 border border-white/5 rounded-xl">
+                <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Custom country link template</div>
+                <div class="flex items-center gap-2 font-mono text-[11px] sm:text-xs">
+                    <span class="flex-1 truncate text-zinc-300 select-all">https://raw.githubusercontent.com/EEvanescence/4Diana/main/By-country/<span class="text-rose-300">XX</span>.txt</span>
+                    <button onclick="copyLink(this, 'https://raw.githubusercontent.com/nscl5/4/main/By-country/XX.txt')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 font-semibold shrink-0">Copy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="max-w-6xl mx-auto px-4 sm:px-6 py-8 mt-8 border-t border-white/5">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="text-sm text-zinc-500">
+            <span class="font-semibold text-zinc-300">Rose</span> — V2Ray config aggregator. Open source, GPLv3.
+        </div>
+        <div class="flex items-center gap-6 text-xs text-zinc-500">
+            <a href="https://github.com/EEvanescence/4Diana" target="_blank" rel="noopener" class="hover:text-rose-300 transition-colors">Repository</a>
+            <a href="https://github.com/EEvanescence/4Diana/issues" target="_blank" rel="noopener" class="hover:text-rose-300 transition-colors">Issues</a>
+            <span class="hidden sm:inline">Auto-updated hourly via GitHub Actions</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const REPO = 'https://raw.githubusercontent.com/EEvanescence/4Diana/main';
+
+    const protocols = [
+        { id: 'vless',      name: 'VLESS',        desc: 'Modern, lightweight protocol',        color: '#f43f5e' },
+        { id: 'vmess',      name: 'VMess',        desc: 'Classic V2Ray protocol',              color: '#3b82f6' },
+        { id: 'trojan',     name: 'Trojan',       desc: 'TLS-based, mimics HTTPS',             color: '#8b5cf6' },
+        { id: 'ss',         name: 'Shadowsocks',  desc: 'Fast symmetric encryption',           color: '#10b981' },
+        { id: 'ssr',        name: 'ShadowsocksR', desc: 'SS with additional obfuscation',      color: '#f59e0b' },
+        { id: 'hy2',        name: 'Hysteria2',    desc: 'QUIC-based, optimized for speed',     color: '#06b6d4' },
+        { id: 'tuic',       name: 'TUIC',         desc: 'QUIC-based, low latency',             color: '#ec4899' },
+        { id: 'cloudflare', name: 'Cloudflare',   desc: 'Configs routed through Cloudflare',   color: '#f97316' },
+    ];
+
+    const countries = [
+        { code: 'US', name: 'United States', flag: '🇺🇸' },
+        { code: 'DE', name: 'Germany',       flag: '🇩🇪' },
+        { code: 'NL', name: 'Netherlands',   flag: '🇳🇱' },
+        { code: 'GB', name: 'United Kingdom',flag: '🇬🇧' },
+        { code: 'FR', name: 'France',        flag: '🇫🇷' },
+        { code: 'CA', name: 'Canada',        flag: '🇨🇦' },
+        { code: 'SG', name: 'Singapore',     flag: '🇸🇬' },
+        { code: 'JP', name: 'Japan',         flag: '🇯🇵' },
+        { code: 'SE', name: 'Sweden',        flag: '🇸🇪' },
+        { code: 'CH', name: 'Switzerland',   flag: '🇨🇭' },
+        { code: 'RU', name: 'Russia',        flag: '🇷🇺' },
+        { code: 'IN', name: 'India',         flag: '🇮🇳' },
+    ];
+
+    function subCard(title, url, subtitle, dotColor = '#f43f5e') {
+        return `
+            <div class="link-row flex items-center gap-3 p-4 bg-black/30 border border-white/5 rounded-xl">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="proto-dot" style="background:${dotColor}"></span>
+                        <span class="text-sm font-semibold">${title}</span>
+                    </div>
+                    <div class="text-xs text-zinc-500 mb-0.5">${subtitle}</div>
+                    <div class="text-[11px] text-zinc-600 font-mono truncate">${url}</div>
+                </div>
+                <button onclick="copyLink(this, '${url}')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold whitespace-nowrap shrink-0">Copy</button>
+            </div>
+        `;
+    }
+
+    function renderSplitSubs() {
+        const el = document.getElementById('split-subs');
+        el.innerHTML = [1, 2, 3].map(i =>
+            subCard(`Sub${i}.txt`, `${REPO}/Sub${i}.txt`, `Split bundle #${i}`, '#8b5cf6')
+        ).join('');
+    }
+
+    function renderBase64Subs() {
+        const el = document.getElementById('base64-subs');
+        el.innerHTML = [1, 2, 3].map(i =>
+            subCard(`Sub${i}_base64.txt`, `${REPO}/Base64/Sub${i}_base64.txt`, `Base64 bundle #${i}`, '#f59e0b')
+        ).join('');
+    }
+
+    function renderProtocols() {
+        const el = document.getElementById('protocol-list');
+        el.innerHTML = protocols.map(p =>
+            subCard(p.name, `${REPO}/By-protocol/${p.id}.txt`, p.desc, p.color)
+        ).join('');
+    }
+
+    function renderCountries() {
+        const el = document.getElementById('country-list');
+        el.innerHTML = countries.map(c => {
+            const url = `${REPO}/By-country/${c.code}.txt`;
+            return `
+                <div class="link-row flex items-center gap-3 p-3 bg-black/30 border border-white/5 rounded-xl">
+                    <div class="text-2xl leading-none">${c.flag}</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-sm font-semibold">${c.name}</div>
+                        <div class="text-[11px] text-zinc-500 font-mono truncate">${c.code}.txt</div>
+                    </div>
+                    <button onclick="copyLink(this, '${url}')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold shrink-0">Copy</button>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function copyLink(btn, url) {
+        navigator.clipboard.writeText(url).then(() => {
+            const original = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.classList.remove('copied');
+            }, 1500);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderSplitSubs();
+        renderBase64Subs();
+        renderProtocols();
+        renderCountries();
+
+        document.querySelectorAll('.tab-button').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+    });
+</script>
+</body>
+</html>
