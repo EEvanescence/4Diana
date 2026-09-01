@@ -95,6 +95,12 @@
             letter-spacing: 0.06em;
             text-transform: uppercase;
         }
+        .font-mono, code {
+            white-space: normal !important;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+            line-height: 1.7;
+        }
         .proto-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
         ::-webkit-scrollbar { width: 10px; height: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
@@ -178,7 +184,7 @@
             </div>
             <div class="flex items-center gap-2 p-3 bg-black/40 border border-white/5 rounded-xl font-mono text-xs sm:text-sm">
                 <span class="flex-1 truncate text-zinc-300 select-all">https://raw.githubusercontent.com/EEvanescence/4Diana/main/AllConfigsSub.txt</span>
-                <button onclick="copyLink(this, 'https://raw.githubusercontent.com/nscl5/4/main/AllConfigsSub.txt')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold shrink-0">Copy</button>
+                <button onclick="copyLink(this, 'https://raw.githubusercontent.com/EEvanescence/4Diana/main/AllConfigsSub.txt')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold shrink-0">Copy</button>
             </div>
         </div>
 
@@ -213,7 +219,7 @@
                     </div>
                     <div class="text-xs text-zinc-500 font-mono truncate">https://raw.githubusercontent.com/EEvanescence/4Diana/main/AllConfigsSub.txt</div>
                 </div>
-                <button onclick="copyLink(this, 'https://raw.githubusercontent.com/nscl5/4/main/AllConfigsSub.txt')" class="copy-btn px-4 py-2 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold">Copy</button>
+                <button onclick="copyLink(this, 'https://raw.githubusercontent.com/EEvanescence/4Diana/main/AllConfigsSub.txt')" class="copy-btn px-4 py-2 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold">Copy</button>
             </div>
         </div>
 
@@ -248,7 +254,7 @@
                 <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Custom country link template</div>
                 <div class="flex items-center gap-2 font-mono text-[11px] sm:text-xs">
                     <span class="flex-1 truncate text-zinc-300 select-all">https://raw.githubusercontent.com/EEvanescence/4Diana/main/By-country/<span class="text-rose-300">XX</span>.txt</span>
-                    <button onclick="copyLink(this, 'https://raw.githubusercontent.com/nscl5/4/main/By-country/XX.txt')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 font-semibold shrink-0">Copy</button>
+                    <button onclick="copyLink(this, 'https://raw.githubusercontent.com/EEvanescence/4Diana/main/By-country/XX.txt')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 font-semibold shrink-0">Copy</button>
                 </div>
             </div>
         </div>
@@ -259,7 +265,7 @@
 <footer class="max-w-6xl mx-auto px-4 sm:px-6 py-8 mt-8 border-t border-white/5">
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div class="text-sm text-zinc-500">
-            <span class="font-semibold text-zinc-300">Rose</span> — V2Ray config aggregator. Open source, GPLv3.
+            <span class="font-semibold text-zinc-300">Rose</span> — v2Ray config aggregator. Open source, GPLv3.
         </div>
         <div class="flex items-center gap-6 text-xs text-zinc-500">
             <a href="https://github.com/EEvanescence/4Diana" target="_blank" rel="noopener" class="hover:text-rose-300 transition-colors">Repository</a>
@@ -300,7 +306,7 @@
 
     function subCard(title, url, subtitle, dotColor = '#f43f5e') {
         return `
-            <div class="link-row flex items-center gap-3 p-4 bg-black/30 border border-white/5 rounded-xl">
+            <div class="link-row flex items-start gap-3 p-4 bg-black/30 border border-white/5 rounded-xl">
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2 mb-1">
                         <span class="proto-dot" style="background:${dotColor}"></span>
