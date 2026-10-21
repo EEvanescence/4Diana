@@ -24,7 +24,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
-	"github.com/nscl5/4/internal/tester"
+	"github.com/EEvanescence/4Diana/internal/tester"
 )
 
 const (
@@ -131,6 +131,7 @@ var links = []string{ // Base64
 	"https://raw.githubusercontent.com/10ium/V2Hub3/main/merged_base64",
 	"https://raw.githubusercontent.com/10ium/base64-encoder/main/encoded/10ium_mixed_iran.txt",
 	"https://github.com/Delta-Kronecker/V2ray-Config/raw/refs/heads/main/config/all_configs.txt",
+	"https://raw.githubusercontent.com/Axiomdeveloper/Axiom-TG-Sub/main/sub/axiom_sub.txt",
 }
 
 var dirLinks = []string{ // Plain Text
@@ -217,6 +218,15 @@ var dirLinks = []string{ // Plain Text
 	"https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray",
 	"https://raw.githubusercontent.com/ts-sf/fly/main/v2",
 	"https://raw.githubusercontent.com/yebekhe/vpn-fail/refs/heads/main/sub-link",
+	"https://raw.githubusercontent.com/bskertt-cmd/vpn-has/refs/heads/main/keys.txt",
+	"https://sub.namazvpn.workers.dev",
+	"https://raw.githubusercontent.com/miuilore/parsing-vless/refs/heads/main/wln",
+	"https://raw.githubusercontent.com/IranUnlocked/Sub/refs/heads/main/Sub-IranUnlocked.txt",
+	"https://raw.githubusercontent.com/prominbro/sub/refs/heads/main/212.txt",
+	"https://raw.githubusercontent.com/free1zona/Keyfreetee/refs/heads/main/razlo4ka7",
+	"https://raw.githubusercontent.com/hiztin/VLESS-PO-GRIBI/main/deploy/subscriptions/10.txt",
+	"https://raw.githubusercontent.com/bobrinaw/vlessforu/refs/heads/main/working_configs.txt",
+	"https://raw.githubusercontent.com/teknovpnhub/v2ray-subscription/refs/heads/main/servers.txt",
 }
 
 type Result struct {
