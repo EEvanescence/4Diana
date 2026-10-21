@@ -24,7 +24,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
-	"github.com/nscl5/4/internal/tester"
+	"github.com/EEvanescence/4Diana/internal/tester"
 )
 
 const (
@@ -896,7 +896,7 @@ func splitIntoFiles(base64Folder string, configs []string) error {
 	for i := 0; i < numFiles; i++ {
 		profileTitle := fmt.Sprintf("GitHub:NiREvil| Sub%d 🩶", i+1)
 		encodedTitle := base64.StdEncoding.EncodeToString([]byte(profileTitle))
-		customFixedText := fmt.Sprintf(`#profile-title: base64:Um9zZSBDb25maWdz
+		customFixedText := fmt.Sprintf(`#profile-title: base64:%s
 #profile-update-interval: 6
 #support-url: https://github.com/NiREvil/vless
 #profile-web-page-url: https://t.me/s/NiREvil_GP
