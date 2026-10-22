@@ -337,6 +337,8 @@ func parseHysteria2(link string) (M, error) {
 	tlsSettings := M{}
 	if sni := first(params, "sni"); sni != "" && validURLHost(sni) {
 		tlsSettings["serverName"] = sni
+	} else if sni := u.Hostname(); validURLHost(sni) {
+		tlsSettings["serverName"] = sni
 	}
 	if fp := first(params, "fp", "fingerprint"); fp != "" {
 		tlsSettings["fingerprint"] = fp
@@ -351,10 +353,13 @@ func parseHysteria2(link string) (M, error) {
 		tlsSettings["verifyPeerCertByName"] = vcn
 	}
 
-	hySettings := M{"auth": auth}
+	hySettings := M{
+		"version": 2,
+		"auth":    auth,
+	}
 
-	obfs := first(params, "obfs")
-	obfsPass := first(params, "obfs-password")
+	obfs := first(params, "obfs", "obfs-type")
+	obfsPass := first(params, "obfs-password", "obfs-pass", "obfsPassword")
 	if obfs != "" && obfsPass != "" {
 		hySettings["obfs"] = obfs
 		hySettings["obfsPassword"] = obfsPass
@@ -370,14 +375,12 @@ func parseHysteria2(link string) (M, error) {
 	}
 
 	return M{
-		"protocol": "hysteria2",
+		"protocol": "hysteria",
 		"tag":      "proxy",
 		"settings": M{
-			"servers": []M{{
-				"address":  u.Hostname(),
-				"port":     port,
-				"password": auth,
-			}},
+			"version": 2,
+			"address": u.Hostname(),
+			"port":    port,
 		},
 		"streamSettings": stream,
 	}, nil
