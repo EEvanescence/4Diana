@@ -1,1 +1,1 @@
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@38.54.59.70:443?type=ws&security=tls&path=/&sni=snip.edgeoneai.cc.cd&fp=chrome#Rose%20%7C%20%F0%9F%87%AA%F0%9F%87%AC%20EG%20%7C%20VLESS%20%7C%201403
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@38.54.59.70:443?type=ws&security=tls&path=/&sni=snip.edgeoneai.cc.cd&fp=chrome#Rose%20%7C%20%F0%9F%87%AA%F0%9F%87%AC%20EG%20%7C%20VLESS%20%7C%20444
