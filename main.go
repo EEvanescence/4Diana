@@ -30,7 +30,7 @@ import (
 const (
 	timeout         = 20 * time.Second
 	maxWorkers      = 10
-	maxLinesPerFile = 500
+	maxLinesPerFile = 800
 	testConcurrency = 400
 	testTimeoutSec  = 5
 	testURL         = "https://www.gstatic.com/generate_204"
@@ -963,18 +963,20 @@ func writeSubFile(filename, header string, configs []string) error {
 
 func calculateStats(configs []string) map[string]int {
 	stats := make(map[string]int)
+
 	for _, config := range configs {
-		for _, protocol := range protocols {
-			if strings.HasPrefix(config, protocol) {
-				key := protocol
-				if protocol == "hysteria2" || protocol == "hysteria" {
-					key = "hy2"
-				}
-				stats[key]++
-				break
-			}
+		protocol := protocolOf(strings.TrimSpace(config))
+
+		switch protocol {
+		case "hysteria", "hysteria2", "hy2":
+			stats["hy2"]++
+		case "vmess", "vless", "trojan", "ss", "ssr", "tuic":
+			stats[protocol]++
+		case "warp://":
+			stats["warp"]++
 		}
 	}
+
 	return stats
 }
 
@@ -998,9 +1000,8 @@ func writeUpdateSummary(total int, stats map[string]int, duration float64, origi
 	writer.WriteString(fmt.Sprintf("- Total unique configurations: %d\n", total))
 	writer.WriteString("- Protocol breakdown:\n")
 
-	for _, p := range protocols {
-		count := stats[p]
-		writer.WriteString(fmt.Sprintf("  - %s: %d configs\n", p, count))
+	for _, p := range []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "tuic", "warp"} {
+		writer.WriteString(fmt.Sprintf("  - %s: %d configs\n", p, stats[p]))
 	}
 
 	writer.WriteString("\n## Performance\n")
