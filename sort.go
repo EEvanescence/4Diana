@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/base64"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -41,8 +40,8 @@ func sortConfigs(configs []string) {
 	for _, protocol := range sortProtocols {
 		lines := byProtocol[protocol]
 		content := strings.Join(lines, "\n")
-		if protocol != "vmess" {
-			content = base64.StdEncoding.EncodeToString([]byte(content))
+		if len(lines) > 0 {
+			content += "\n"
 		}
 		path := filepath.Join(protocolDir, protocol+".txt")
 		if err := os.WriteFile(path, []byte(content), 0644); err != nil {
