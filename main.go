@@ -104,7 +104,7 @@ var fixedText = `#profile-title: base64:Um9zZSBDb25maWdz
 #support-url: https://github.com/NiREvil/vless
 #profile-web-page-url: https://t.me/s/NiREvil_GP
 `
-var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "tuic", "warp://"}
+var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "hysteria2", "hysteria", "tuic", "warp://"}
 
 var links = []string{ // Base64
 	"https://raw.githubusercontent.com/iampedii/whitedns-sub/refs/heads/main/base64.txt",
@@ -594,7 +594,7 @@ func filterForProtocols(data []string, protocols []string) []string {
 				seen[identity] = true
 				mu.Unlock()
 
-	  		isUDP := currentProtocol == "hy2" || currentProtocol == "tuic" || strings.HasPrefix(currentProtocol, "warp")
+			isUDP := currentProtocol == "hy2" || currentProtocol == "hysteria2" || currentProtocol == "hysteria" || currentProtocol == "tuic" || strings.HasPrefix(currentProtocol, "warp")
   			if !isUDP {
 	  			host, port := getHostPort(line, currentProtocol)
 	  			if !checkPort(host, port) {
@@ -956,7 +956,11 @@ func calculateStats(configs []string) map[string]int {
 	for _, config := range configs {
 		for _, protocol := range protocols {
 			if strings.HasPrefix(config, protocol) {
-				stats[protocol]++
+				key := protocol
+				if protocol == "hysteria2" || protocol == "hysteria" {
+					key = "hy2"
+				}
+				stats[key]++
 				break
 			}
 		}

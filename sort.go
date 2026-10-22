@@ -24,7 +24,8 @@ func sortConfigs(configs []string) {
 	for _, line := range configs {
 		matched := false
 		for _, protocol := range sortProtocols {
-			if strings.HasPrefix(line, protocol+"://") {
+			if strings.HasPrefix(line, protocol+"://") ||
+				(protocol == "hy2" && (strings.HasPrefix(line, "hysteria2://") || strings.HasPrefix(line, "hysteria://"))) {
 				byProtocol[protocol] = append(byProtocol[protocol], line)
 				matched = true
 				break
