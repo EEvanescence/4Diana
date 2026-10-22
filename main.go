@@ -104,7 +104,7 @@ var fixedText = `#profile-title: base64:Um9zZSBDb25maWdz
 #support-url: https://github.com/NiREvil/vless
 #profile-web-page-url: https://t.me/s/NiREvil_GP
 `
-var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "tuic", "warp://"}
+var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "hysteria2", "hysteria", "tuic", "warp://"}
 
 var links = []string{ // Base64
 	"https://raw.githubusercontent.com/iampedii/whitedns-sub/refs/heads/main/base64.txt",
@@ -216,8 +216,6 @@ var dirLinks = []string{ // Plain Text
 	"https://raw.githubusercontent.com/frank-vpl/servers/refs/heads/main/irbox",
 	"https://raw.githubusercontent.com/ALIILAPRO/v2rayNG-Config/main/sub.txt",
 	"https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray",
-	"https://raw.githubusercontent.com/ts-sf/fly/main/v2",
-	"https://raw.githubusercontent.com/yebekhe/vpn-fail/refs/heads/main/sub-link",
 	"https://raw.githubusercontent.com/bskertt-cmd/vpn-has/refs/heads/main/keys.txt",
 	"https://sub.namazvpn.workers.dev",
 	"https://raw.githubusercontent.com/miuilore/parsing-vless/refs/heads/main/wln",
@@ -227,6 +225,8 @@ var dirLinks = []string{ // Plain Text
 	"https://raw.githubusercontent.com/hiztin/VLESS-PO-GRIBI/main/deploy/subscriptions/10.txt",
 	"https://raw.githubusercontent.com/bobrinaw/vlessforu/refs/heads/main/working_configs.txt",
 	"https://raw.githubusercontent.com/teknovpnhub/v2ray-subscription/refs/heads/main/servers.txt",
+	"https://raw.githubusercontent.com/ts-sf/fly/main/v2",
+	"https://raw.githubusercontent.com/yebekhe/vpn-fail/refs/heads/main/sub-link",
 }
 
 type Result struct {
@@ -604,7 +604,7 @@ func filterForProtocols(data []string, protocols []string) []string {
 				seen[identity] = true
 				mu.Unlock()
 
-	  		isUDP := currentProtocol == "hy2" || currentProtocol == "tuic" || strings.HasPrefix(currentProtocol, "warp")
+			isUDP := currentProtocol == "hy2" || currentProtocol == "hysteria2" || currentProtocol == "hysteria" || currentProtocol == "tuic" || strings.HasPrefix(currentProtocol, "warp")
   			if !isUDP {
 	  			host, port := getHostPort(line, currentProtocol)
 	  			if !checkPort(host, port) {
@@ -966,7 +966,11 @@ func calculateStats(configs []string) map[string]int {
 	for _, config := range configs {
 		for _, protocol := range protocols {
 			if strings.HasPrefix(config, protocol) {
-				stats[protocol]++
+				key := protocol
+				if protocol == "hysteria2" || protocol == "hysteria" {
+					key = "hy2"
+				}
+				stats[key]++
 				break
 			}
 		}
