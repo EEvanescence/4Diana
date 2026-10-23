@@ -1,0 +1,1 @@
+vless://7eeafe7f-302d-4ad5-9317-586b4214366d@80.243.228.51:2085?encryption=none&security=none&type=grpc&serviceName=vless&mode=multi#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%B0%20SK%20%7C%20VLESS%20%7C%201191

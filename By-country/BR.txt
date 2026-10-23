@@ -1,0 +1,2 @@
+ss://YWVzLTI1Ni1nY206b3dWZE5uUWNkUGd0aFN5WA==@216.128.168.190:8388#Rose%20%7C%20%F0%9F%87%A7%F0%9F%87%B7%20BR%20%7C%20SS%20%7C%20463
+vless://817b61c8-9bf0-4365-8a52-e43dfad274a6@146.235.59.153:2053?type=ws&security=tls&fp=firefox&sni=shin-ra.ccwu.cc&host=shin-ra.ccwu.cc#Rose%20%7C%20%F0%9F%87%A7%F0%9F%87%B7%20BR%20%7C%20VLESS%20%7C%20915
