@@ -1,2 +1,1 @@
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@62.72.163.108:443?encryption=none&security=tls&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffp%3Dchrome&sni=snip.edgeoneai.cc.cd#Rose%20%7C%20%F0%9F%87%AF%F0%9F%87%B4%20JO%20%7C%20VLESS%20%7C%20691
-vless://6202b230-417c-4d8e-b624-0f71afa9c75d@62.72.166.30:8880?security=none&type=ws&path=/&host=vms.lifetime40.workers.dev&packetEncoding=xudp&encryption=none#Rose%20%7C%20%F0%9F%87%AF%F0%9F%87%B4%20JO%20%7C%20VLESS%20%7C%201387
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@62.72.163.108:443?encryption=none&security=tls&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffp%3Dchrome&sni=snip.edgeoneai.cc.cd#Rose%20%7C%20%F0%9F%87%AF%F0%9F%87%B4%20JO%20%7C%20VLESS%20%7C%201364
