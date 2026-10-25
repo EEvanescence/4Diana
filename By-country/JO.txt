@@ -1,1 +1,0 @@
-vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@62.72.163.108:443?encryption=none&security=tls&type=ws&host=snip.edgeoneai.cc.cd&path=%2Ffp%3Dchrome&sni=snip.edgeoneai.cc.cd#Rose%20%7C%20%F0%9F%87%AF%F0%9F%87%B4%20JO%20%7C%20VLESS%20%7C%201364

@@ -1,0 +1,1 @@
+vless://7f6adf9d-42f1-4fec-ab22-fb7f66bf3adc@130.94.49.145:443?type=xhttp&security=tls&fp=firefox&sni=hrk6kqo9vih5.hat.onl&path=/media/v2/stream/7zywxg1ntrly&host=hrk6kqo9vih5.hat.onl&mode=auto#Rose%20%7C%20%F0%9F%87%AA%F0%9F%87%AC%20EG%20%7C%20VLESS%20%7C%201168
