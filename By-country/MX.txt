@@ -1,0 +1,2 @@
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@149.104.90.21:19167?type=tcp&security=tls&fp=firefox&sni=mx001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20VLESS%20%7C%20854
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@mx001.zestapp778.com:19167?security=tls&fp=firefox&sni=mx001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20VLESS%20%7C%201059
