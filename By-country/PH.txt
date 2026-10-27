@@ -1,2 +1,2 @@
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@130.94.53.51:15656?type=raw&security=tls&fp=firefox&sni=ph001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%201035
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@ph001.zestapp778.com:15656?type=raw&security=tls&fp=chrome&sni=ph001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%201125
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@130.94.53.51:15656?security=tls&encryption=none&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=ph001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%20534
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@ph001.zestapp778.com:15656?security=tls#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%201235
