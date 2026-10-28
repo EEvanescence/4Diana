@@ -1,3 +1,1 @@
-vless://8f704ed6-9a1a-4d04-94dd-1bff501716de@85.90.197.220:443?encryption=none&type=tcp&flow=xtls-rprx-vision&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=biNcdU5mywtNw-KyPpLHindBxdEyAolT1WJ26N0b7y4&sid=94acb54627612d43&allowInsecure=1#Rose%20%7C%20%F0%9F%87%AC%F0%9F%87%B7%20GR%20%7C%20VLESS%20%7C%20360
-hysteria2://46c16b68-2553-4e5e-8176-f63d6bf6ec0c@fl.solomon-planet.ru:443?sni=fl.solomon-planet.ru#Rose%20%7C%20%F0%9F%87%AC%F0%9F%87%B7%20GR%20%7C%20HYSTERIA2%20%7C%201386
-hysteria2://46c16b68-2553-4e5e-8176-f63d6bf6ec0c@91.103.140.6:443?sni=fl.solomon-planet.ru#Rose%20%7C%20%F0%9F%87%AC%F0%9F%87%B7%20GR%20%7C%20HYSTERIA2%20%7C%201399
+vless://8f704ed6-9a1a-4d04-94dd-1bff501716de@85.90.197.220:443?security=reality&type=tcp&packetEncoding=xudp&sni=www.cloudflare.com&fp=chrome&flow=xtls-rprx-vision&sid=94acb54627612d43&pbk=biNcdU5mywtNw-KyPpLHindBxdEyAolT1WJ26N0b7y4&encryption=none#Rose%20%7C%20%F0%9F%87%AC%F0%9F%87%B7%20GR%20%7C%20VLESS%20%7C%20420

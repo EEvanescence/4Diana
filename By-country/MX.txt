@@ -1,1 +1,5 @@
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.80.100:443?security=tls&sni=connectwithtopemployersandfindidealjobs.com&type=tcp#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20TROJAN%20%7C%201553
+vmess://eyJhZGQiOiIzOC42MC4yMjQuMTczIiwiaWQiOiI1Y2YxZjQ3MC0zZjcwLTQ1ODktYTJhNC00NjU3ZWEzYTFlZGYiLCJuZXQiOiJyYXciLCJwb3J0IjoiMzIxNTMiLCJwcyI6IlJvc2UgfCDwn4ey8J+HvSBNWCB8IFZNRVNTIHwgNDUxIiwic2N5IjoiYXV0byIsInRscyI6Im5vbmUiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=
+trojan://humanity@131.196.254.151:443?path=%2Fassignment&security=tls&alpn=http%2F1.1&insecure=0&fp=unsafe&type=ws&allowInsecure=0&sni=www.pleadcourt.org#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20TROJAN%20%7C%20681
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@mx001.zestapp778.com:19167?type=raw&security=tls&fp=chrome&sni=mx001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20VLESS%20%7C%20873
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.80.100:443?type=tcp&security=tls&fp=chrome&sni=connectwithtopemployersandfindidealjobs.com#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20TROJAN%20%7C%20985
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@130.94.101.27:19167?type=tcp&security=tls&fp=firefox&sni=mx001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20VLESS%20%7C%201059
