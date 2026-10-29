@@ -1,0 +1,1 @@
+vless://600b39c9-d122-483f-9bb0-61e698617011@194.135.32.153:443?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=login8-860087c542522e.rambler.ru&pbk=CMkW1axrhEXoiJ6anMz9XEjlfqlAtEZya7L0b5ZPMyw&sid=07ddc43269d197c0&fp=firefox&spx=/#Rose%20%7C%20%F0%9F%87%AD%F0%9F%87%BA%20HU%20%7C%20VLESS%20%7C%201344

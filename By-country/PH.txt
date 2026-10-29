@@ -1,2 +1,3 @@
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@ph001.zestapp778.com:15656?security=tls&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=ph001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%20651
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@130.94.52.94:15656?type=tcp&security=tls&fp=firefox&sni=ph001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%20940
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@ph001.zestapp778.com:15656?security=tls&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=ph001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%20217
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@130.94.53.13:15656?security=tls&sni=ph001.zestapp778.com&type=tcp#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20VLESS%20%7C%201090
+trojan://5t6i121em5lkmsmk@ph001.zestapp778.com:46293?allowInsecure=1&type=tcp&sni=ph001.zestapp778.com#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%AD%20PH%20%7C%20TROJAN%20%7C%201283

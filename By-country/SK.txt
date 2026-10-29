@@ -1,2 +1,0 @@
-vless://e8b3c8ae-fdf6-4621-afa5-ae62813c6ae0@80.243.228.130:2085?encryption=none&security=none&type=grpc&serviceName=vless&mode=multi#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%B0%20SK%20%7C%20VLESS%20%7C%201378
-vless://e8b3c8ae-fdf6-4621-afa5-ae62813c6ae0@80.243.228.143:2085?encryption=none&security=none&type=grpc&serviceName=vless&mode=multi#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%B0%20SK%20%7C%20VLESS%20%7C%201380
