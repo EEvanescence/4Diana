@@ -1,6 +1,10 @@
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp4MkE2QXN5Wi1yQWxsejB3YktIeldB@ams1.rvpn.app:8388#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20SS%20%7C%20248
-vless://965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0@95.174.68.188:14430?sni=95.174.68.188&type=ws&host=95.174.68.188&path=/vless#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20251
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp4MkE2QXN5Wi1yQWxsejB3YktIeldB@178.253.16.185:8388#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20SS%20%7C%20389
-vless://39947382-3212-41c9-bc3a-589574ac8b23@84.235.244.108:22573?security=none&type=ws&path=%2F&host=uae.unixzone.us#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20463
-vless://aee7ae19-672f-49d8-8a92-aa7cdfc89f89@185.253.116.33:14430?encryption=none&path=%2Fvless&security=none&type=ws#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20720
-vless://3f044365-9592-4301-8291-f2d93fcc2570@etpl6.servertest.cc:443?path=%2Fgateway%2Fv1%2Fws%2Fe17e55a42ca2cb6bc3c98ab20ff16f9c&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&fp=firefox&type=ws&allowInsecure=0&sni=etpl6.servertest.cc#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%201420
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp4MkE2QXN5Wi1yQWxsejB3YktIeldB@178.253.16.185:8388#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20SS%20%7C%20253
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp4MkE2QXN5Wi1yQWxsejB3YktIeldB@ams1.rvpn.app:8388#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20SS%20%7C%20341
+vless://965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0@95.174.68.188:14430?&sni=95.174.68.188&type=ws&headerType=none&host=95.174.68.188&path=/vless#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20708
+vless://39947382-3212-41c9-bc3a-589574ac8b23@uae.unixzone.us:22573?encryption=none&security=none&type=ws&host=uae.unixzone.us&path=/#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20731
+vless://e3c3b722-1264-4cdc-a97c-b0a1bb73cd67@140.225.208.50:2083?path=%2Fvless-ws&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&fp=random&type=ws&allowInsecure=0&sni=speedtestmark.com#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20745
+vless://7c730089-1791-4828-89b2-86e7e1663063@94.237.28.66:450?security=none&type=ws&path=%2F&host=ae.privatevip.ir#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20812
+vless://aee7ae19-672f-49d8-8a92-aa7cdfc89f89@185.253.116.33:14430?encryption=none&path=%2Fvless&security=none&type=ws#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%20875
+vless://e3c3b722-1264-4cdc-a97c-b0a1bb73cd67@140.225.208.140:2083?encryption=none&security=tls&sni=speedtestmark.com&fp=chrome&type=ws&path=%2Fvless-ws#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%201156
+vless://e3c3b722-1264-4cdc-a97c-b0a1bb73cd67@140.225.208.60:2083?encryption=none&security=tls&sni=speedtestmark.com&fp=safari&alpn=http%2F1.1&type=ws&path=%2Fvless-ws#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%201157
+vless://7d43670b-6b08-45b9-8a24-8f3971abc132@netherlands.biznes.lol:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=p2QUi5Oyqwc3unA19NqgnF4h3I_SjLOkn0cUkzWCOE0&sni=netherlands.biznes.lol#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%AA%20AE%20%7C%20VLESS%20%7C%201285

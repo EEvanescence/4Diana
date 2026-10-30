@@ -1,1 +1,0 @@
-vless://0192c3d3-18d5-4b95-8eb3-598e18de6918@2.56.207.68:443?type=tcp&security=tls&flow=xtls-rprx-vision&fp=firefox&sni=www.slovarik.xyz#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%B2%20AM%20%7C%20VLESS%20%7C%201293
