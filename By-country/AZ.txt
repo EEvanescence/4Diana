@@ -1,1 +1,0 @@
-vless://1b03671f-61bc-4aa9-86b6-92ec7ac8abe8@45.84.1.42:25565?flow=xtls-rprx-vision&security=reality&sni=kookas.fi&fp=firefox&pbk=qB_eMu3ZO_wGITnyIqJ7Kt39-h9oHFnHlQQEqA-r3VA&sid=43dcff52289b81e6#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%BF%20AZ%20%7C%20VLESS%20%7C%201356
