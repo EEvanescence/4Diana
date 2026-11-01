@@ -1,0 +1,1 @@
+trojan://humanity@195.133.92.71:443?security=tls&sni=www.cordweave.com&insecure=1&allowInsecure=1&type=ws&path=/assignment#Rose%20%7C%20%F0%9F%87%B5%F0%9F%87%B9%20PT%20%7C%20TROJAN%20%7C%201533

@@ -1,0 +1,1 @@
+vless://3cd95e58-9f0a-47e1-9937-64a58e949aa5@185.76.14.21:443?security=reality&encryption=none&pbk=6eN2NciEaZis5J4muRRqpfLQ1OglI3A8lNSTmAGo6Do&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=stats.vk-portal.net&sid=3c6fc84d#Rose%20%7C%20%F0%9F%87%BA%F0%9F%87%BF%20UZ%20%7C%20VLESS%20%7C%201955
