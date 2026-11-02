@@ -1,3 +1,1 @@
-ss://YWVzLTI1Ni1nY206Z2oxK1hLdWxLVjBubXc2SVRoY2tPa2tKaDVEU003K0M@45.207.207.25:443#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%A8%20SC%20%7C%20SS%20%7C%2038
-vless://fb69a6b9-980c-48c2-a94f-5f95868a2d2a@154.201.73.209:21899?type=raw&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=kvLUYW6fwHXutu8Z4On6mi61kjslCyCc8ErFffUM1D0&sid=dedce016e3671418&sni=yahoo.com#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%A8%20SC%20%7C%20VLESS%20%7C%201608
-vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@5.129.202.74:443?security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=LEziyH-E4k9hehGRJkVi1FadVObB_NZJy8U7oUCVWXU&sid=b9120cd53ffd7bba&sni=patch-25.topp-con.xyz#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%A8%20SC%20%7C%20VLESS%20%7C%201636
+ss://YWVzLTI1Ni1nY206Z2oxK1hLdWxLVjBubXc2SVRoY2tPa2tKaDVEU003K0M@45.207.207.25:443#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%A8%20SC%20%7C%20SS%20%7C%20242

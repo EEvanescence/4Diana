@@ -1,1 +1,1 @@
-vless://6da2c981-8c77-4340-bda3-93399b7aea26@132.243.230.251:443?type=xhttp&security=reality&fp=firefox&pbk=Uz1UbBDf84n7oNfFIhFvXbuFcj1nbNEroiKC_Ud4ajg&sid=b2f9bb426426e0e7&sni=www.kinopoisk.ru&path=/entry-xh&mode=auto#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%B6%20IQ%20%7C%20VLESS%20%7C%201592
+vless://6da2c981-8c77-4340-bda3-93399b7aea26@213.165.54.59:8443?type=xhttp&security=reality&fp=edge&pbk=CI4hMTvVsem9mloOgRCW9A6WC-srPPwu3jlylwOnd3A&sid=2e6d668958829998&sni=www.kinopoisk.ru&path=/entry-xh&mode=auto#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%B6%20IQ%20%7C%20VLESS%20%7C%20925
