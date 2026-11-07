@@ -1,1 +1,1 @@
-vmess://eyJhZGQiOiIxNzAuMjM5Ljg2LjE3NiIsImhvc3QiOiIiLCJpZCI6IjUzMDA1YWM4LWVlZDEtNGUzMi04MTgzLTcxNTJlMDk5ODc3YSIsIm5ldCI6IndzIiwicGF0aCI6Ii9hcmtpP2VkPTIwNDgiLCJwb3J0IjoiNDA3MDgiLCJwcyI6IlJvc2UgfCDwn4eo8J+HsSBDTCB8IFZNRVNTIHwgMTAyNSIsInNjeSI6ImF1dG8iLCJ0bHMiOiJub25lIiwidiI6IjIifQ==
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=advanceyouremploymentskillsandcareerdevelopmenthub.com#Rose%20%7C%20%F0%9F%87%A8%F0%9F%87%B1%20CL%20%7C%20TROJAN%20%7C%20485

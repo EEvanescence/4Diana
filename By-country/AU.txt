@@ -1,2 +1,4 @@
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:443?security=tls&sni=connectwithemployerstohireyouridealteam.com#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%BA%20AU%20%7C%20TROJAN%20%7C%201044
-vless://9f9c913b-0b78-4d14-a4db-560794cbc90f@159.195.197.145:443?security=reality&encryption=none&pbk=TryfG6rsq6BItUtRlplM9Nc-1vA2LoV0RZc2xkVxjgY&headerType=&fp=random&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=kenguru.plus-hit.ru&sid=707ae3e54ec713a1#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%BA%20AU%20%7C%20VLESS%20%7C%201353
+trojan://5t6i121em5lkmsmk@au001.zestapp778.com:54374?sni=au001.zestapp778.com&allowInsecure=1&type=tcp#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%BA%20AU%20%7C%20TROJAN%20%7C%20255
+trojan://Trojan@82164024@au.tronsg.com:443?sni=au.tronsg.com&type=tcp&fp=chrome#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%BA%20AU%20%7C%20TROJAN%20%7C%20279
+vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-3-z.473221.xyz:33162?encryption=none&type=tcp&security=reality&pbk=Qp9_bpGExQK_h5LMXLLwVA2o1vifMQwGJ6Qh2-X26Ro&sid=3fe1e73fc9ecc8d7&flow=xtls-rprx-vision&sni=download-porter.hoyoverse.com&fp=edge#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%BA%20AU%20%7C%20VLESS%20%7C%20806
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:443?security=tls&type=tcp&sni=connectwithemployerstohireyouridealteam.com#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%BA%20AU%20%7C%20TROJAN%20%7C%201080
