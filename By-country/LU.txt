@@ -1,1 +1,1 @@
-vless://67cd3349-f789-4cbb-8b91-4b6b1654ce7c@188.42.89.142:443?encryption=none&type=ws&security=tls&sni=19.baklajann.ru&fp=chrome&alpn=http/1.1&path=/&host=19.baklajann.ru#Rose%20%7C%20%F0%9F%87%B1%F0%9F%87%BA%20LU%20%7C%20VLESS%20%7C%201195
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0QUdHemdSQ2k2Vzk1VXdHMHFlcmY2@87.228.61.175:1443#Rose%20%7C%20%F0%9F%87%B1%F0%9F%87%BA%20LU%20%7C%20SS%20%7C%20349
