@@ -1,0 +1,1 @@
+vless://dbf3f074-3b18-43f3-b82a-debd8c879c69@167.17.64.67:10303?flow=xtls-rprx-vision&fp=chrome&pbk=RCm8x1FrSdaJ2NY9k5deQQZilwbubeK-4bcH_6E31wk&security=reality&sid=14f18ef16e7c32cc&sni=www.apple.com&type=tcp#Rose%20%7C%20%F0%9F%87%A7%F0%9F%87%AA%20BE%20%7C%20VLESS%20%7C%201045
