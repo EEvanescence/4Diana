@@ -1,2 +1,1 @@
-vless://b4e69d67-9d41-417c-b465-ebf1591fb792@93.95.226.159:28150?security=reality&type=tcp&sni=google.com&fp=chrome&sid=06&pbk=KQW_o2BlCjMC8aH5lkNkO_rmMCAUykQIQCCIIehhsAo#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%B8%20IS%20%7C%20VLESS%20%7C%2086
-vless://46d221fa-e9b4-748c-4eae-019a88e42991@191.44.112.170:443?security=tls&sni=orbylume.my.to&fp=chrome&type=ws&path=/tvpn-tor/is&host=orbylume.my.to#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%B8%20IS%20%7C%20VLESS%20%7C%20731
+vless://46d221fa-e9b4-748c-4eae-019a88e42991@191.44.112.170:443?security=tls&type=ws&path=/tvpn-tor/is&host=orbylume.my.to&sni=orbylume.my.to&fp=chrome&encryption=none#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%B8%20IS%20%7C%20VLESS%20%7C%20255

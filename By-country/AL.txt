@@ -1,0 +1,2 @@
+vless://9a5e7b1c-bf39-4b1f-891f-ac87824ee38f@23.95.72.244:52157?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=sTga77Qd2-N5ZLvPPu9nTBg2eKdQ6TJQNmypPnzUHm0&sid=6c62fa&sni=api.adidas.com#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%B1%20AL%20%7C%20VLESS%20%7C%201110
+vless://9a5e7b1c-bf39-4b1f-891f-ac87824ee38f@23.95.72.244:50120?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=n4sk3x-GS3uCHsert4qOJQt_RzjcTPGFQvRImsnsyTA&sid=289f5ebf78f79b&sni=api.adidas.com#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%B1%20AL%20%7C%20VLESS%20%7C%201143

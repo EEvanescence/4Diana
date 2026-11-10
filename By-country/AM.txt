@@ -1,1 +1,0 @@
-vless://ff15fcbe-4213-4c7d-ad0d-a0ad9b62f9b9@91.192.157.159:443?encryption=none&host=fintl.qiksme.com&mode=stream-one&path=%2Fassets%2Fjs%2Fapp.02a17a60.js&pbk=GxworJcCmPev82bpbJLAsbVtCo29Kq2z7vzV-bi1RmY&security=reality&sid=b9828cf6d9e95772&sni=fintl.qiksme.com&spx=%2Fcdn%2Fb4cb27%2F1b06&type=xhttp&fp=firefox#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%B2%20AM%20%7C%20VLESS%20%7C%201339
