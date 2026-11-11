@@ -1,3 +1,2 @@
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@130.94.95.198:57353/?type=tcp&encryption=none&flow=&security=tls&sni=in001.zestapp778.com&fp=firefox#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%A9%20ID%20%7C%20VLESS%20%7C%20649
-vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@in001.zestapp778.com:57353?fp=chrome&security=tls&sni=in001.zestapp778.com&type=tcp#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%A9%20ID%20%7C%20VLESS%20%7C%20651
-vless://9a5e7b1c-bf39-4b1f-891f-ac87824ee38f@23.95.72.244:52147?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=_QiN_9E9zPt1RehuXIuwVYr0AyT7SWrHzIeXQuK00nQ&sid=4af6e97b161680e3&sni=api.adidas.com#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%A9%20ID%20%7C%20VLESS%20%7C%201126
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@130.94.95.198:57353/?type=tcp&encryption=none&flow=&security=tls&sni=in001.zestapp778.com&fp=firefox#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%A9%20ID%20%7C%20VLESS%20%7C%20280
+vless://e9a8144e-5237-488a-afb1-9ca3d8d54c80@in001.zestapp778.com:57353?type=tcp&security=tls&fp=chrome&sni=in001.zestapp778.com#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%A9%20ID%20%7C%20VLESS%20%7C%201172

@@ -1,2 +1,0 @@
-vless://99c5b713-dedf-4a10-8070-916ff3f49b0e@38.180.225.247:2053?host=fs.qicai99.com&path=%2Ffp%3Dchrome&security=tls&sni=fs.qicai99.com&type=ws#Rose%20%7C%20%F0%9F%87%AD%F0%9F%87%BA%20HU%20%7C%20VLESS%20%7C%20505
-vless://a628c583-24a8-4ce5-98ad-c6458abf1cc4@84.38.184.87:11443?type=grpc&security=reality&encryption=none&sni=s3.storage.selcloud.ru&fp=chrome&pbk=4HG_QcSHTdYtSbcTQczOW4JAHQfjc37UCLKHSps_t3w&sid=39cdc017&serviceName=cas-hu#Rose%20%7C%20%F0%9F%87%AD%F0%9F%87%BA%20HU%20%7C%20VLESS%20%7C%20537
