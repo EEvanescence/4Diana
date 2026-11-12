@@ -1,2 +1,0 @@
-vless://9a5e7b1c-bf39-4b1f-891f-ac87824ee38f@23.95.72.244:50120?security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=n4sk3x-GS3uCHsert4qOJQt_RzjcTPGFQvRImsnsyTA&sid=289f5ebf78f79b&sni=api.adidas.com#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%B1%20AL%20%7C%20VLESS%20%7C%201062
-vless://db57c865-2318-4fd2-8aea-e8ba58ec696d@212.41.9.190:2087?encryption=none&pbk=YhkmKAgHTooOB7pfAPXt63-4WY6X1f4kVe1USOjYd2M&security=reality&serviceName=cas-al&sid=045cb3a9&sni=s3.storage.selcloud.ru&type=grpc&fp=ios#Rose%20%7C%20%F0%9F%87%A6%F0%9F%87%B1%20AL%20%7C%20VLESS%20%7C%201153
