@@ -1,0 +1,1 @@
+vless://1e697474-7836-47ed-aaca-b559efcbb298@eu90.cdn77.icu:20013?type=tcp&security=reality&fp=firefox&pbk=EltWI8AOqkN8lMjRycweRRoFRah5hu6xiKtgBmQOdE8&sni=eu64.cdn77.icu#Rose%20%7C%20%F0%9F%87%A7%F0%9F%87%AD%20BH%20%7C%20VLESS%20%7C%201078

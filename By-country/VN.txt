@@ -1,0 +1,2 @@
+vless://57beeeb0-03fc-4fc9-94da-7604488a7134@zfapi.zalolink.com:42120?type=tcp&security=reality&flow=xtls-rprx-vision&fp=ios&pbk=f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A&sid=bb82c8&sni=www.tesla.com#Rose%20%7C%20%F0%9F%87%BB%F0%9F%87%B3%20VN%20%7C%20VLESS%20%7C%20851
+vless://5407a1c6-fbbf-417a-864d-48563da8e454@163.61.182.194:34646?encryption=none&fp=chrome&pbk=UuXUXzPnZM8IY-D5bQPy4iBIzEpK4PJFEOJzeObISRA&security=reality&sid=4710d669&sni=api.receptivity.io&spx=/53ddb3cfd64cb7b&type=tcp#Rose%20%7C%20%F0%9F%87%BB%F0%9F%87%B3%20VN%20%7C%20VLESS%20%7C%20871
