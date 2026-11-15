@@ -1,0 +1,2 @@
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:443?sni=advanceyouremploymentskillsandcareerdevelopmenthub.com&peer=advanceyouremploymentskillsandcareerdevelopmenthub.com&security=tls#Rose%20%7C%20%F0%9F%87%A8%F0%9F%87%B1%20CL%20%7C%20TROJAN%20%7C%20631
+vless://47637b04-945c-481e-b221-03c32d10c52d@147.224.233.249:63690?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=U7t4RFE9MSMtC-o1DoJ8pYzKMfgVpTg6ZhTTknBrVkU&security=reality&sid=1f2519bb96e5589c&sni=www.cloudflare.com&type=tcp#Rose%20%7C%20%F0%9F%87%A8%F0%9F%87%B1%20CL%20%7C%20VLESS%20%7C%201022
