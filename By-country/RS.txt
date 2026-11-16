@@ -1,3 +1,2 @@
-hysteria2://307ee0e53ea04dfd86a7f2f9fcd53844@s5.libertyrunet.store:443?insecure=0&sni=s5.libertyrunet.store#Rose%20%7C%20%F0%9F%87%B7%F0%9F%87%B8%20RS%20%7C%20HYSTERIA2%20%7C%20110
-trojan://X00HagvwL8gQXNDAnsxsN8dv1_VdneEo@38.180.101.235:5443?sni=rs.nebulaguard.org&peer=rs.nebulaguard.org&security=tls#Rose%20%7C%20%F0%9F%87%B7%F0%9F%87%B8%20RS%20%7C%20TROJAN%20%7C%20640
-hysteria2://307ee0e53ea04dfd86a7f2f9fcd53844@130.49.163.188:443?sni=s5.libertyrunet.store#Rose%20%7C%20%F0%9F%87%B7%F0%9F%87%B8%20RS%20%7C%20HYSTERIA2%20%7C%20651
+vless://49fe1f7b-e6f6-43dc-a67d-caade85128ba@netherlanddocjac.whooisthebest.ir:10000?encryption=none&type=tcp&security=reality&sni=amp-api-edge.apps.apple.com&fp=chrome&pbk=Du5pk4KuMNA1sRcSpmuoLuC0HmxDBmFljFNfUzqxKiM&sid=cd0a1986719e44c8&allowInsecure=1#Rose%20%7C%20%F0%9F%87%B7%F0%9F%87%B8%20RS%20%7C%20VLESS%20%7C%20683
+trojan://X00HagvwL8gQXNDAnsxsN8dv1_VdneEo@38.180.101.235:5443?allowInsecure=1&type=tcp&security=tls&fp=chrome&sni=rs.nebulaguard.org#Rose%20%7C%20%F0%9F%87%B7%F0%9F%87%B8%20RS%20%7C%20TROJAN%20%7C%201084
