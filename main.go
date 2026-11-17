@@ -757,17 +757,25 @@ func parseCoreIdentity(config string, protocol string) string {
 
 	switch protocol {
 	case "vless":
-    u, err := url.Parse(config)
-    if err != nil || u.User == nil {
-        return config
-    }
-    uuid := u.User.Username()
-    return fmt.Sprintf("vless://%s@%s", uuid, u.Host)
+		u, err := url.Parse(config)
+		if err != nil || u.User == nil {
+			return config
+		}
+		uuid := u.User.Username()
+		return fmt.Sprintf("vless://%s@%s", uuid, u.Host)
+
+	case "hy2", "hysteria2", "hysteria":
+		u, err := url.Parse(config)
+		if err != nil || u.User == nil {
+			return config
+		}
+		auth := u.User.Username()
+		return fmt.Sprintf("%s://%s@%s", protocol, auth, u.Host)
 
 	default:
 		host, port := getHostPort(config, protocol)
 		if host == "" {
-			return config 
+			return config
 		}
 		return fmt.Sprintf("%s://%s:%s", protocol, host, port)
 	}
