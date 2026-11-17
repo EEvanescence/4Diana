@@ -346,23 +346,20 @@ func parseHysteria2(link string) (M, error) {
 	if alpn := first(params, "alpn"); alpn != "" {
 		tlsSettings["alpn"] = strings.Split(alpn, ",")
 	}
-	if pcs := first(params, "pcs"); pcs != "" {
+	if pcs := first(params, "pcs", "pinSHA256"); pcs != "" {
 		tlsSettings["pinnedPeerCertSha256"] = pcs
 	}
 	if vcn := first(params, "vcn"); vcn != "" {
 		tlsSettings["verifyPeerCertByName"] = vcn
 	}
 
+	if insecure := first(params, "insecure", "allowInsecure", "skip-cert-verify"); insecure == "1" || strings.EqualFold(insecure, "true") {
+		tlsSettings["allowInsecure"] = true
+	}
+
 	hySettings := M{
 		"version": 2,
 		"auth":    auth,
-	}
-
-	obfs := first(params, "obfs", "obfs-type")
-	obfsPass := first(params, "obfs-password", "obfs-pass", "obfsPassword")
-	if obfs != "" && obfsPass != "" {
-		hySettings["obfs"] = obfs
-		hySettings["obfsPassword"] = obfsPass
 	}
 
 	stream := M{
@@ -372,6 +369,21 @@ func parseHysteria2(link string) (M, error) {
 	}
 	if len(tlsSettings) > 0 {
 		stream["tlsSettings"] = tlsSettings
+	}
+
+	obfs := first(params, "obfs", "obfs-type")
+	obfsPass := first(params, "obfs-password", "obfs-pass", "obfsPassword")
+	if obfs != "" && obfsPass != "" {
+		stream["finalmask"] = M{
+			"udp": []M{
+				{
+					"type": "salamander",
+					"settings": M{
+						"password": obfsPass,
+					},
+				},
+			},
+		}
 	}
 
 	return M{
