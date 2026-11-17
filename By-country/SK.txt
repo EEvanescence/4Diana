@@ -1,1 +1,0 @@
-vless://95c2ba1e-a330-4e6b-bd81-bf9c0f647b2f@196.245.153.105:443?type=tcp&security=reality&fp=firefox&pbk=hFee7zTreqlv_wccK_8zxN5v23hj9u-DshByvGf-KAA&sid=23732d14a527990d&sni=345739t.de15.h1clayd.click#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%B0%20SK%20%7C%20VLESS%20%7C%201166
