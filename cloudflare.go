@@ -2,10 +2,12 @@ package main
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -15,6 +17,17 @@ import (
 const (
 	cloudflareIPsURL  = "https://raw.githubusercontent.com/radioactiveAHM/cf-scanner/refs/heads/main/ipv4.txt"
 	cloudflareIPsFile = "cloudflare-ips.txt"
+)
+
+const (
+	cfCipherSuites = "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
+
+	cfFinalMask = `{
+  "tcp": [
+    {"type": "fragment", "settings": {"packets": "tlshello", "lengths": ["0", "104", "1"], "delays": ["0"], "maxSplit": "0"}},
+    {"type": "fragment", "settings": {"packets": "1-1", "lengths": ["114", "1"], "delays": ["1"], "maxSplit": "11"}}
+  ]
+}`
 )
 
 func loadCloudflareRanges() []*net.IPNet {
@@ -52,6 +65,49 @@ func loadCloudflareRanges() []*net.IPNet {
 	return ranges
 }
 
+func injectCFParams(link string) string {
+	link = strings.TrimSpace(link)
+	if link == "" {
+		return link
+	}
+
+	if strings.HasPrefix(link, "vmess://") {
+		raw := strings.TrimPrefix(link, "vmess://")
+		decoded, err := decodeBase64([]byte(raw))
+		if err != nil {
+			return link
+		}
+		var data map[string]interface{}
+		if err := json.Unmarshal([]byte(decoded), &data); err != nil {
+			return link
+		}
+
+		data["fp"] = "unsafe"
+		data["cs"] = cfCipherSuites
+		data["fm"] = cfFinalMask
+
+		updated, err := json.Marshal(data)
+		if err != nil {
+			return link
+		}
+		return "vmess://" + base64.StdEncoding.EncodeToString(updated)
+	}
+
+	u, err := url.Parse(link)
+	if err != nil {
+		return link
+	}
+
+	q := u.Query()
+
+	q.Set("fp", "unsafe")
+	q.Set("cs", cfCipherSuites)
+	q.Set("fm", cfFinalMask)
+
+	u.RawQuery = q.Encode()
+	return u.String()
+}
+
 func writeCloudflareFile(configs []string) {
 	ranges := loadCloudflareRanges()
 	if len(ranges) == 0 {
@@ -68,7 +124,8 @@ func writeCloudflareFile(configs []string) {
 		}
 		for _, cidr := range ranges {
 			if cidr.Contains(ip) {
-				cf = append(cf, c)
+				modified := injectCFParams(c)
+				cf = append(cf, modified)
 				break
 			}
 		}
@@ -80,5 +137,5 @@ func writeCloudflareFile(configs []string) {
 		fmt.Printf("Error writing cloudflare file: %v\n", err)
 		return
 	}
-	fmt.Printf("  cloudflare: %d configs behind Cloudflare IPs\n", len(cf))
+	fmt.Printf("  cloudflare: %d configs behind Cloudflare IPs (with Iran optimizations)\n", len(cf))
 }
