@@ -1,1 +1,0 @@
-vless://80a06811-f74b-4b82-ac99-7e66c2a98e1c@193.181.209.210:443?encryption=none&security=tls&sni=clover.filnex.baby&fp=firefox&alpn=http%2F1.1&type=ws&path=%2Fapi%2Fde6%2Fstream&host=clover.filnex.baby#Rose%20%7C%20%F0%9F%87%A9%F0%9F%87%B0%20DK%20%7C%20VLESS%20%7C%201151

@@ -1,0 +1,1 @@
+vless://44ddb84a-f152-47ef-a970-fd63f2df9b30@93.88.206.70:443?sni=pulse.sevka.xyz&flow=xtls-rprx-vision&fp=firefox&security=tls#Rose%20%7C%20%F0%9F%87%A7%F0%9F%87%AA%20BE%20%7C%20VLESS%20%7C%20341
