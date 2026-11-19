@@ -1,1 +1,0 @@
-vless://12d67d2b-ae5c-4d56-9f14-d71d96f7826f@104.17.3.81:443?path=%2Fvlessws&security=tls&encryption=none&host=natan.srpcom.cloud&type=ws&sni=natan.srpcom.cloud#Rose%20%7C%20%F0%9F%87%AE%F0%9F%87%A9%20ID%20%7C%20VLESS%20%7C%201267
