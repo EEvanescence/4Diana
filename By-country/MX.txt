@@ -1,1 +1,0 @@
-vless://b4d03a4c-3e34-4cbc-b0c9-05957748552a@38.95.76.93:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=rsEOeimpWDYomTH1LDjPTMktj39p7yjPPZ1eG16yFRM&security=reality&sid=d78582da98f963c8&sni=www.amazon.com&type=tcp#Rose%20%7C%20%F0%9F%87%B2%F0%9F%87%BD%20MX%20%7C%20VLESS%20%7C%20384
