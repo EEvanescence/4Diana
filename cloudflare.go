@@ -74,7 +74,7 @@ func injectCFParams(link string) string {
 	// The fp/cs/fm parameters are TCP/TLS (Xray stream) settings. Adding
 	// them to UDP-based or non-TLS links (Hy2/TUIC/SS/SSR/WARP) only
 	// corrupts those links, so leave them unchanged.
-	for _, p := range []string{"hy2://", "hysteria2://", "hysteria://", "tuic://", "ss://", "ssr://", "warp://"} {
+	for _, p := range []string{"hy2://", "hysteria2://", "hysteria://", "tuic://", "ss://", "ssr://", "warp://", "wireguard://"} {
 		if strings.HasPrefix(link, p) {
 			return link
 		}

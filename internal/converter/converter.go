@@ -22,6 +22,8 @@ var protocolPrefixes = []struct {
 	{"trojan://", "trojan"},
 	{"hysteria2://", "hysteria2"},
 	{"hy2://", "hysteria2"},
+	{"wireguard://", "wireguard"},
+	{"warp://", "wireguard"},
 }
 
 func validURLHost(h string) bool {
@@ -52,6 +54,8 @@ func ConvertLink(link string) (M, error) {
 		return parseTrojan(link)
 	case "hysteria2":
 		return parseHysteria2(link)
+	case "wireguard":
+		return parseWireGuard(link)
 	default:
 		return nil, fmt.Errorf("unsupported protocol")
 	}
@@ -689,6 +693,316 @@ func parseBoolValue(v string) bool {
 func parseInsecureParam(p url.Values) bool {
 	v := firstAlias(p, "insecure", "allowInsecure", "allow_insecure", "allow-insecure", "allowinsecure", "skip-cert-verify", "skipCertVerify", "skip_cert_verify", "skipcertverify", "noverify")
 	return parseBoolValue(v)
+}
+
+// WGConfig is the normalized form of a wireguard:// (or warp://) share
+// link, e.g. the Cloudflare WARP configs published as wireguard:// links.
+// The tester (Xray JSON) and the published link are both built from this
+// model so they cannot drift apart.
+type WGConfig struct {
+	SecretKey    string
+	Host         string
+	Port         int
+	Address      []string
+	PublicKey    string
+	PreSharedKey string
+	Reserved     []int // nil, or exactly 3 bytes
+	MTU          int
+	DNS          []string
+	AllowedIPs   []string
+	KeepAlive    int
+	FinalMask    string
+}
+
+// ParseWG parses a wireguard:// or warp:// link. The private key is the
+// userinfo (percent-encoded base64); the peer public key, local addresses
+// and WARP reserved bytes come from the query parameters.
+func ParseWG(link string) (*WGConfig, error) {
+	link = strings.TrimSpace(link)
+	u, err := url.Parse(link)
+	if err != nil {
+		return nil, err
+	}
+	params, _ := url.ParseQuery(u.RawQuery)
+
+	secret := ""
+	if u.User != nil {
+		secret = u.User.Username()
+		if pw, ok := u.User.Password(); ok && pw != "" {
+			secret = secret + ":" + pw
+		}
+	}
+	if secret == "" {
+		secret = firstAlias(params, "privatekey", "privateKey", "secretkey", "secretKey")
+	}
+	if secret == "" {
+		return nil, fmt.Errorf("missing secret key")
+	}
+	if !validWGKey(secret) {
+		return nil, fmt.Errorf("invalid secret key")
+	}
+	host := u.Hostname()
+	if host == "" {
+		return nil, fmt.Errorf("missing host")
+	}
+	port := 51820
+	if ps := u.Port(); ps != "" {
+		p, err := parsePort(ps)
+		if err != nil {
+			return nil, err
+		}
+		port = p
+	}
+	pub := firstAlias(params, "publickey", "publicKey", "peerPublicKey", "peerpublickey")
+	if pub == "" {
+		return nil, fmt.Errorf("missing public key")
+	}
+	if !validWGKey(pub) {
+		return nil, fmt.Errorf("invalid public key")
+	}
+	psk := firstAlias(params, "presharedkey", "preSharedKey", "presharedKey", "psk")
+	if psk != "" && !validWGKey(psk) {
+		return nil, fmt.Errorf("invalid pre-shared key")
+	}
+
+	var address []string
+	if raw := firstAlias(params, "address", "localAddress", "localaddress", "ip", "ips"); raw != "" {
+		for _, a := range strings.Split(raw, ",") {
+			a = strings.TrimSpace(a)
+			if a == "" {
+				continue
+			}
+			if _, _, err := net.ParseCIDR(a); err != nil && net.ParseIP(a) == nil {
+				return nil, fmt.Errorf("invalid address: %s", a)
+			}
+			address = append(address, a)
+		}
+	}
+
+	var reserved []int
+	if raw := strings.TrimSpace(firstAlias(params, "reserved")); raw != "" {
+		r, err := parseReserved(raw)
+		if err != nil {
+			return nil, err
+		}
+		reserved = r
+	}
+
+	mtu := 0
+	if raw := firstAlias(params, "mtu"); raw != "" {
+		v, err := strconv.Atoi(strings.TrimSpace(raw))
+		if err != nil || v < 0 || v > 9000 {
+			return nil, fmt.Errorf("invalid mtu: %s", raw)
+		}
+		mtu = v
+	}
+
+	var dns []string
+	if raw := firstAlias(params, "dns", "remoteDNS", "remotedns"); raw != "" {
+		for _, d := range strings.Split(raw, ",") {
+			d = strings.TrimSpace(d)
+			if d != "" {
+				dns = append(dns, d)
+			}
+		}
+	}
+
+	var allowed []string
+	if raw := firstAlias(params, "allowedips", "allowedIPs", "allowedIps"); raw != "" {
+		for _, a := range strings.Split(raw, ",") {
+			a = strings.TrimSpace(a)
+			if a == "" {
+				continue
+			}
+			if _, _, err := net.ParseCIDR(a); err != nil && net.ParseIP(a) == nil {
+				return nil, fmt.Errorf("invalid allowed IP: %s", a)
+			}
+			allowed = append(allowed, a)
+		}
+	}
+
+	keepAlive := 0
+	if raw := firstAlias(params, "keepalive", "keepAlive", "persistentKeepalive", "persistentkeepalive"); raw != "" {
+		v, err := strconv.Atoi(strings.TrimSpace(raw))
+		if err != nil || v < 0 {
+			return nil, fmt.Errorf("invalid keepalive: %s", raw)
+		}
+		keepAlive = v
+	}
+
+	return &WGConfig{
+		SecretKey:    secret,
+		Host:         host,
+		Port:         port,
+		Address:      address,
+		PublicKey:    pub,
+		PreSharedKey: psk,
+		Reserved:     reserved,
+		MTU:          mtu,
+		DNS:          dns,
+		AllowedIPs:   allowed,
+		KeepAlive:    keepAlive,
+		FinalMask:    firstAlias(params, "fm", "finalmask", "finalMask"),
+	}, nil
+}
+
+func parseWireGuard(link string) (M, error) {
+	cfg, err := ParseWG(link)
+	if err != nil {
+		return nil, err
+	}
+	allowed := cfg.AllowedIPs
+	if len(allowed) == 0 {
+		allowed = []string{"0.0.0.0/0", "::/0"}
+	}
+	peer := M{
+		"publicKey":  cfg.PublicKey,
+		"endpoint":   net.JoinHostPort(cfg.Host, strconv.Itoa(cfg.Port)),
+		"allowedIPs": allowed,
+	}
+	if cfg.PreSharedKey != "" {
+		peer["preSharedKey"] = cfg.PreSharedKey
+	}
+	if cfg.KeepAlive > 0 {
+		peer["keepAlive"] = cfg.KeepAlive
+	}
+	settings := M{
+		"secretKey":   cfg.SecretKey,
+		"peers":       []M{peer},
+		"noKernelTun": true,
+		"workers":     1,
+	}
+	if len(cfg.Address) > 0 {
+		settings["address"] = cfg.Address
+	}
+	if cfg.MTU > 0 {
+		settings["mtu"] = cfg.MTU
+	}
+	if len(cfg.Reserved) == 3 {
+		settings["reserved"] = cfg.Reserved
+	}
+	var remoteDNS []string
+	for _, d := range cfg.DNS {
+		if net.ParseIP(d) != nil {
+			remoteDNS = append(remoteDNS, d)
+		}
+	}
+	if len(remoteDNS) > 0 {
+		settings["remoteDNS"] = remoteDNS
+	}
+	return M{
+		"protocol": "wireguard",
+		"tag":      "proxy",
+		"settings": settings,
+	}, nil
+}
+
+// NormalizeWGLink rebuilds a WireGuard/WARP link in canonical form:
+// wireguard://<secret>@host:port?address=...&publickey=...&
+// presharedkey=...&reserved=...&mtu=...&dns=...#name
+func NormalizeWGLink(link, name string) (string, error) {
+	cfg, err := ParseWG(link)
+	if err != nil {
+		return "", err
+	}
+	q := url.Values{}
+	if len(cfg.Address) > 0 {
+		q.Set("address", strings.Join(cfg.Address, ","))
+	}
+	q.Set("publickey", cfg.PublicKey)
+	if cfg.PreSharedKey != "" {
+		q.Set("presharedkey", cfg.PreSharedKey)
+	}
+	if len(cfg.Reserved) == 3 {
+		parts := make([]string, 3)
+		for i, b := range cfg.Reserved {
+			parts[i] = strconv.Itoa(b)
+		}
+		q.Set("reserved", strings.Join(parts, ","))
+	}
+	if cfg.MTU > 0 {
+		q.Set("mtu", strconv.Itoa(cfg.MTU))
+	}
+	if len(cfg.DNS) > 0 {
+		q.Set("dns", strings.Join(cfg.DNS, ","))
+	}
+	if len(cfg.AllowedIPs) > 0 {
+		q.Set("allowedips", strings.Join(cfg.AllowedIPs, ","))
+	}
+	if cfg.KeepAlive > 0 {
+		q.Set("keepalive", strconv.Itoa(cfg.KeepAlive))
+	}
+	if cfg.FinalMask != "" {
+		q.Set("fm", cfg.FinalMask)
+	}
+	u := url.URL{
+		Scheme:   "wireguard",
+		User:     url.User(cfg.SecretKey),
+		Host:     net.JoinHostPort(cfg.Host, strconv.Itoa(cfg.Port)),
+		RawQuery: q.Encode(),
+		Fragment: name,
+	}
+	return u.String(), nil
+}
+
+// WGIdentity is the deduplication identity for a WireGuard/WARP link,
+// built from the normalized model so wireguard:// and warp:// spellings
+// of the same peer collide, while different keys do not.
+func WGIdentity(link string) (string, error) {
+	cfg, err := ParseWG(link)
+	if err != nil {
+		return "", err
+	}
+	reserved := ""
+	if len(cfg.Reserved) == 3 {
+		reserved = fmt.Sprintf("%d,%d,%d", cfg.Reserved[0], cfg.Reserved[1], cfg.Reserved[2])
+	}
+	parts := []string{
+		"wireguard", cfg.SecretKey, cfg.Host, strconv.Itoa(cfg.Port),
+		cfg.PublicKey, cfg.PreSharedKey, strings.Join(cfg.Address, ","),
+		reserved, strconv.Itoa(cfg.MTU),
+	}
+	return strings.Join(parts, "|"), nil
+}
+
+func validWGKey(s string) bool {
+	s = strings.TrimSpace(s)
+	if len(s) == 64 {
+		ok := true
+		for _, r := range s {
+			if !((r >= '0' && r <= '9') || (r >= 'a' && r <= 'f') || (r >= 'A' && r <= 'F')) {
+				ok = false
+				break
+			}
+		}
+		if ok {
+			return true
+		}
+	}
+	b, err := b64DecodeSafe(s)
+	return err == nil && len(b) == 32
+}
+
+func parseReserved(raw string) ([]int, error) {
+	if strings.Contains(raw, ",") {
+		parts := strings.Split(raw, ",")
+		if len(parts) != 3 {
+			return nil, fmt.Errorf("reserved must be exactly 3 bytes")
+		}
+		out := make([]int, 3)
+		for i, p := range parts {
+			v, err := strconv.Atoi(strings.TrimSpace(p))
+			if err != nil || v < 0 || v > 255 {
+				return nil, fmt.Errorf("invalid reserved byte: %s", p)
+			}
+			out[i] = v
+		}
+		return out, nil
+	}
+	if b, err := b64DecodeSafe(raw); err == nil && len(b) == 3 {
+		return []int{int(b[0]), int(b[1]), int(b[2])}, nil
+	}
+	return nil, fmt.Errorf("reserved must be exactly 3 bytes")
 }
 
 func buildStreamSettings(params url.Values) M {

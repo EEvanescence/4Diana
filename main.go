@@ -105,7 +105,7 @@ var fixedText = `#profile-title: base64:Um9zZSBDb25maWdz
 #support-url: https://github.com/NiREvil/vless
 #profile-web-page-url: https://t.me/NiREvil_GP
 `
-var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "hysteria", "hysteria2", "tuic", "warp://"}
+var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "hysteria", "hysteria2", "tuic", "wireguard", "warp"}
 
 var links = []string{ // Base64
 	"http://www.xrayvip.com/free.txt",
@@ -673,7 +673,7 @@ func filterForProtocols(data []string, protocols []string) []string {
 				seen[identity] = true
 				mu.Unlock()
 
-			isUDP := currentProtocol == "hy2" || currentProtocol == "hysteria2" || currentProtocol == "hysteria" || currentProtocol == "tuic" || strings.HasPrefix(currentProtocol, "warp")
+			isUDP := currentProtocol == "hy2" || currentProtocol == "hysteria2" || currentProtocol == "hysteria" || currentProtocol == "tuic" || currentProtocol == "wireguard" || currentProtocol == "warp"
   			if !isUDP {
 	  			host, port := getHostPort(line, currentProtocol)
 	  			if !checkPort(host, port) {
@@ -821,6 +821,19 @@ func standardizeName(config string, protocol string, index int, country string) 
 		body = strings.TrimRight(body, " \t")
 		return body + "#" + url.PathEscape(newName)
 
+	case "wireguard", "warp":
+		if normalized, err := converter.NormalizeWGLink(config, newName); err == nil {
+			return normalized
+		}
+		var body string
+		if hi := strings.Index(config, "#"); hi >= 0 {
+			body = config[:hi]
+		} else {
+			body = config
+		}
+		body = strings.TrimRight(body, " \t")
+		return body + "#" + url.PathEscape(newName)
+
 	default:
 		var body string
 		if hi := strings.Index(config, "#"); hi >= 0 {
@@ -859,6 +872,16 @@ func parseCoreIdentity(config string, protocol string) string {
 			auth = auth + ":" + pw
 		}
 		return fmt.Sprintf("hysteria2://%s@%s", auth, u.Host)
+
+	case "wireguard", "warp":
+		if id, err := converter.WGIdentity(config); err == nil {
+			return id
+		}
+		host, port := getHostPort(config, protocol)
+		if host == "" {
+			return config
+		}
+		return fmt.Sprintf("wireguard://%s:%s", host, port)
 
 	default:
 		host, port := getHostPort(config, protocol)
@@ -1068,7 +1091,7 @@ func calculateStats(configs []string) map[string]int {
 			stats["hy2"]++
 		case "vmess", "vless", "trojan", "ss", "ssr", "tuic":
 			stats[protocol]++
-		case "warp://":
+		case "warp", "wireguard", "warp://":
 			stats["warp"]++
 		}
 	}

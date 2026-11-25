@@ -159,3 +159,120 @@ func TestHy2IdentitySchemeIndependentAndObfsSensitive(t *testing.T) {
 		t.Fatal("different obfs passwords must not share an identity")
 	}
 }
+
+// --- WireGuard / WARP ---
+
+const wgExample = "wireguard://%2BMsibTXXhNxwHMxAf4ar6vom%2F0NE3UOW2xbT6sV9ck4%3D@8.6.112.5:7559?address=172.16.0.2/32,2606:4700:110:81cf:afd6:7564:e1f3:2827/128&reserved=76,114,121&publickey=bmXOC%2BF1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=&dns=1.1.1.1,8.8.8.8,208.67.222.222,2606:4700:4700::1111&mtu=1300#NiREvil-1"
+
+func TestWGExampleParses(t *testing.T) {
+	cfg, err := ParseWG(wgExample)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if cfg.SecretKey != "+MsibTXXhNxwHMxAf4ar6vom/0NE3UOW2xbT6sV9ck4=" {
+		t.Fatalf("secretKey = %q", cfg.SecretKey)
+	}
+	if cfg.Host != "8.6.112.5" || cfg.Port != 7559 {
+		t.Fatalf("endpoint = %s:%d", cfg.Host, cfg.Port)
+	}
+	if cfg.PublicKey != "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=" {
+		t.Fatalf("publicKey = %q", cfg.PublicKey)
+	}
+	if len(cfg.Address) != 2 || cfg.Address[0] != "172.16.0.2/32" {
+		t.Fatalf("address = %v", cfg.Address)
+	}
+	if len(cfg.Reserved) != 3 || cfg.Reserved[0] != 76 || cfg.Reserved[1] != 114 || cfg.Reserved[2] != 121 {
+		t.Fatalf("reserved = %v", cfg.Reserved)
+	}
+	if cfg.MTU != 1300 {
+		t.Fatalf("mtu = %d", cfg.MTU)
+	}
+	if len(cfg.DNS) != 4 {
+		t.Fatalf("dns = %v", cfg.DNS)
+	}
+}
+
+func TestWGConvertToXray(t *testing.T) {
+	out, err := ConvertLink(wgExample)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if out["protocol"] != "wireguard" {
+		t.Fatalf("protocol = %v", out["protocol"])
+	}
+	if _, ok := out["streamSettings"]; ok {
+		t.Fatal("wireguard outbound must not carry streamSettings")
+	}
+	settings, ok := out["settings"].(M)
+	if !ok {
+		t.Fatalf("settings = %v", out["settings"])
+	}
+	if settings["noKernelTun"] != true {
+		t.Fatalf("noKernelTun = %v, want true for concurrent tester", settings["noKernelTun"])
+	}
+	peers, ok := settings["peers"].([]M)
+	if !ok || len(peers) != 1 {
+		t.Fatalf("peers = %v", settings["peers"])
+	}
+	if peers[0]["endpoint"] != "8.6.112.5:7559" {
+		t.Fatalf("endpoint = %v", peers[0]["endpoint"])
+	}
+	reserved, ok := settings["reserved"].([]int)
+	if !ok || len(reserved) != 3 {
+		t.Fatalf("reserved = %v", settings["reserved"])
+	}
+	remoteDNS, ok := settings["remoteDNS"].([]string)
+	if !ok || len(remoteDNS) != 4 {
+		t.Fatalf("remoteDNS = %v", settings["remoteDNS"])
+	}
+}
+
+func TestWGInvalidKeyAndReserved(t *testing.T) {
+	if _, err := ParseWG("wireguard://not-a-key@example.com:51820?publickey=bmXOC%2BF1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo="); err == nil {
+		t.Fatal("expected error for invalid secret key")
+	}
+	bad := "wireguard://%2BMsibTXXhNxwHMxAf4ar6vom%2F0NE3UOW2xbT6sV9ck4%3D@8.6.112.5:7559?publickey=bmXOC%2BF1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=&reserved=1,2"
+	if _, err := ParseWG(bad); err == nil {
+		t.Fatal("expected error for reserved with 2 bytes")
+	}
+}
+
+func TestNormalizeWGLinkRoundTrip(t *testing.T) {
+	out, err := NormalizeWGLink(wgExample, "Rose | US | WIREGUARD | 1")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.HasPrefix(out, "wireguard://") {
+		t.Fatalf("scheme = %s", out)
+	}
+	for _, want := range []string{"publickey=", "reserved=", "mtu=1300", "address="} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("normalized %q missing %q", out, want)
+		}
+	}
+	cfg, err := ParseWG(out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if cfg.SecretKey != "+MsibTXXhNxwHMxAf4ar6vom/0NE3UOW2xbT6sV9ck4=" || cfg.Port != 7559 || len(cfg.Reserved) != 3 {
+		t.Fatalf("round-trip cfg = %+v", cfg)
+	}
+}
+
+func TestWGIdentitySchemeIndependent(t *testing.T) {
+	a, err := WGIdentity(wgExample)
+	if err != nil {
+		t.Fatal(err)
+	}
+	warp := "warp://" + wgExample[len("wireguard://"):]
+	b, err := WGIdentity(warp)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if a != b {
+		t.Fatalf("wireguard and warp spellings differ:\n%s\n%s", a, b)
+	}
+	if GetProtocol(warp) != "wireguard" || GetProtocol(wgExample) != "wireguard" {
+		t.Fatal("warp:// and wireguard:// must both map to wireguard protocol")
+	}
+}
