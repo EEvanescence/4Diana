@@ -49,7 +49,7 @@ func TestAll(ctx context.Context, links []string, testURL string, timeoutSec, co
 	log.Printf("Testing %d config(s) with %d concurrent workers...", total, concurrent)
 
 	for i, link := range links {
-		if false {
+		if ctx.Err() != nil {
 			log.Printf("  Cancelled: stopping after %d/%d tested, %d working",
 				done.Load(), total, working.Load())
 			break
@@ -70,7 +70,7 @@ func TestAll(ctx context.Context, links []string, testURL string, timeoutSec, co
 			results[idx].ExitIP = exitIP
 
 			d := done.Add(1)
-			if delay > 0 {
+			if delay >= 0 {
 				working.Add(1)
 				if onPass != nil {
 					onPass(results[idx])
@@ -143,7 +143,7 @@ func testOne(ctx context.Context, link, testURL string, timeout time.Duration) (
 		},
 	}
 
-	reqCtx, cancel := context.WithTimeout(context.Background(), timeout)
+	reqCtx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(reqCtx, "GET", testURL, nil)

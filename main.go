@@ -24,6 +24,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
+	"github.com/EEvanescence/4Diana/internal/converter"
 	"github.com/EEvanescence/4Diana/internal/tester"
 )
 
@@ -807,6 +808,19 @@ func standardizeName(config string, protocol string, index int, country string) 
 		updatedDecoded := mainInfo + "/?" + strings.Join(newParamList, "&")
 		return "ssr://" + strings.ReplaceAll(base64.StdEncoding.EncodeToString([]byte(updatedDecoded)), "=", "")
 
+	case "hy2", "hysteria2", "hysteria":
+		if normalized, err := converter.NormalizeHysteria2Link(config, newName); err == nil {
+			return normalized
+		}
+		var body string
+		if hi := strings.Index(config, "#"); hi >= 0 {
+			body = config[:hi]
+		} else {
+			body = config
+		}
+		body = strings.TrimRight(body, " \t")
+		return body + "#" + url.PathEscape(newName)
+
 	default:
 		var body string
 		if hi := strings.Index(config, "#"); hi >= 0 {
@@ -833,12 +847,18 @@ func parseCoreIdentity(config string, protocol string) string {
 		return fmt.Sprintf("vless://%s@%s", uuid, u.Host)
 
 	case "hy2", "hysteria2", "hysteria":
+		if id, err := converter.Hy2Identity(config); err == nil {
+			return id
+		}
 		u, err := url.Parse(config)
 		if err != nil || u.User == nil {
 			return config
 		}
 		auth := u.User.Username()
-		return fmt.Sprintf("%s://%s@%s", protocol, auth, u.Host)
+		if pw, ok := u.User.Password(); ok {
+			auth = auth + ":" + pw
+		}
+		return fmt.Sprintf("hysteria2://%s@%s", auth, u.Host)
 
 	default:
 		host, port := getHostPort(config, protocol)
@@ -982,7 +1002,7 @@ func splitIntoFiles(base64Folder string, configs []string) error {
 	for i := 0; i < numFiles; i++ {
 		profileTitle := fmt.Sprintf("GitHub:NiREvil| Sub%d 🩶", i+1)
 		encodedTitle := base64.StdEncoding.EncodeToString([]byte(profileTitle))
-		customFixedText := fmt.Sprintf(`#profile-title: base64:Um9zZSBDb25maWdz
+		customFixedText := fmt.Sprintf(`#profile-title: base64:%s
 #profile-update-interval: 6
 #support-url: https://github.com/NiREvil/vless
 #profile-web-page-url: https://t.me/s/NiREvil_GP
@@ -1176,7 +1196,11 @@ func getHostPort(config, protocol string) (string, string) {
 	default:
 		u, err := url.Parse(config)
 		if err == nil {
-			return u.Hostname(), u.Port()
+			port := u.Port()
+			if i := strings.IndexAny(port, ",-"); i >= 0 {
+				port = port[:i]
+			}
+			return u.Hostname(), port
 		}
 	}
 	return "", ""
