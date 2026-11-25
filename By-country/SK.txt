@@ -1,1 +1,1 @@
-vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@196.245.153.111:443?type=tcp&security=reality&fp=chrome&pbk=9zW5lTDbs9svY-lzlPp-pq0j2Sr6g031SY0E-3xSHDc&sid=2ca59bdc5121f921&sni=76574ct.nl8.h1clayd.click#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%B0%20SK%20%7C%20VLESS%20%7C%20994
+vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@196.245.153.156:443?encryption=none&fp=&pbk=kkCGiCQCKnkozJR1KKCRNtmdBECmThCgI9VSv7iDcWI&security=reality&sid=8956c57cb4c4f8d2&sni=f0d7aft.nl17.h1clayd.click&type=tcp#Rose%20%7C%20%F0%9F%87%B8%F0%9F%87%B0%20SK%20%7C%20VLESS%20%7C%20379

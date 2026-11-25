@@ -1,2 +1,0 @@
-vless://5de0c218-0138-45d8-94d2-c2c3f37a1a6d@94.183.234.245:443?security=reality&type=tcp&packetEncoding=xudp&sni=www.bing.com&fp=qq&flow=xtls-rprx-vision&sid=7f1e29593aa94ad1&pbk=tfFzmbVByvoZxxIEUiHMv22_k0-nQz00L0XjU0bd_Fc&encryption=none#Rose%20%7C%20%F0%9F%87%A9%F0%9F%87%B0%20DK%20%7C%20VLESS%20%7C%20744
-vless://4e73a85c-21fb-4caf-97aa-af9f835d439c@31.56.179.171:12443?type=tcp&security=reality&fp=firefox&pbk=cUwqkFCbgDAFXgtiaRbd_WlHmH_LteMJyZuRxVjmtWo&sid=bf84eeba&sni=www.paypal.com#Rose%20%7C%20%F0%9F%87%A9%F0%9F%87%B0%20DK%20%7C%20VLESS%20%7C%20917
