@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net"
 	"net/url"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -1003,6 +1004,234 @@ func parseReserved(raw string) ([]int, error) {
 		return []int{int(b[0]), int(b[1]), int(b[2])}, nil
 	}
 	return nil, fmt.Errorf("reserved must be exactly 3 bytes")
+}
+
+// CoreIdentity returns the deduplication identity for any supported share
+// link. Two links share an identity only when every field that affects
+// the connection is the same: credentials, endpoint, transport and
+// security parameters. Display names (#fragment, vmess "ps", ssr
+// "remarks") are excluded, and host case, default ports and query
+// parameter order are normalized so spelling variants of the same
+// config still collide.
+func CoreIdentity(link string) (string, error) {
+	link = strings.TrimSpace(link)
+	scheme := ""
+	if i := strings.Index(link, "://"); i > 0 {
+		scheme = strings.ToLower(link[:i])
+	}
+	switch scheme {
+	case "hysteria2", "hy2", "hysteria":
+		return Hy2Identity(link)
+	case "wireguard", "warp":
+		return WGIdentity(link)
+	case "vmess":
+		return vmessIdentity(link)
+	case "ss":
+		return ssIdentity(link)
+	case "ssr":
+		return ssrIdentity(link)
+	case "vless", "trojan", "tuic":
+		return urlIdentity(link, scheme)
+	default:
+		if scheme == "" {
+			return "", fmt.Errorf("missing scheme")
+		}
+		return urlIdentity(link, scheme)
+	}
+}
+
+func defaultPortFor(proto string) string {
+	switch proto {
+	case "vless", "trojan", "tuic", "hysteria2", "hy2":
+		return "443"
+	case "wireguard", "warp":
+		return "51820"
+	}
+	return ""
+}
+
+func normalizeHostPort(host, port, defPort string) string {
+	host = strings.ToLower(strings.TrimSpace(host))
+	host = strings.TrimSuffix(host, ".")
+	if port == "" {
+		port = defPort
+	}
+	if port != "" {
+		if n, err := strconv.Atoi(port); err == nil {
+			port = strconv.Itoa(n)
+		}
+		return net.JoinHostPort(host, port)
+	}
+	return host
+}
+
+var insecureAliasKeys = map[string]bool{
+	"insecure": true, "allowinsecure": true, "allow_insecure": true,
+	"allow-insecure": true, "skip-cert-verify": true, "skipcertverify": true,
+	"skip_cert_verify": true, "noverify": true,
+}
+
+func canonicalQuery(q url.Values) string {
+	byKey := make(map[string][]string)
+	for k, vals := range q {
+		lk := strings.ToLower(k)
+		switch lk {
+		case "name", "remarks", "ps", "fragment", "tag":
+			continue
+		case "peer", "servername", "server_name":
+			lk = "sni"
+		}
+		if insecureAliasKeys[lk] {
+			for _, v := range vals {
+				if parseBoolValue(v) {
+					byKey["insecure"] = []string{"1"}
+				}
+			}
+			continue
+		}
+		for _, v := range vals {
+			if (lk == "type" && v == "tcp") || (lk == "security" && v == "none") ||
+				(lk == "encryption" && v == "none") || (lk == "headertype" && v == "none") {
+				continue
+			}
+			byKey[lk] = append(byKey[lk], v)
+		}
+	}
+	keys := make([]string, 0, len(byKey))
+	for k := range byKey {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	var parts []string
+	for _, k := range keys {
+		vals := byKey[k]
+		sort.Strings(vals)
+		for _, v := range vals {
+			parts = append(parts, k+"="+strconv.Quote(v))
+		}
+	}
+	return strings.Join(parts, "&")
+}
+
+func urlIdentity(link, proto string) (string, error) {
+	u, err := url.Parse(link)
+	if err != nil {
+		return "", err
+	}
+	if u.Hostname() == "" {
+		return "", fmt.Errorf("missing host")
+	}
+	user := userinfoAuth(u)
+	if proto == "vless" {
+		user = strings.ToLower(user)
+	}
+	q, _ := url.ParseQuery(u.RawQuery)
+	return strings.Join([]string{
+		proto, user,
+		normalizeHostPort(u.Hostname(), u.Port(), defaultPortFor(proto)),
+		canonicalQuery(q),
+	}, "|"), nil
+}
+
+func vmessStr(d map[string]any, key string) string {
+	switch v := d[key].(type) {
+	case string:
+		return v
+	case float64:
+		return strconv.Itoa(int(v))
+	case nil:
+		return ""
+	default:
+		return fmt.Sprintf("%v", v)
+	}
+}
+
+func vmessIdentity(link string) (string, error) {
+	raw := strings.TrimPrefix(link, "vmess://")
+	if i := strings.Index(raw, "#"); i >= 0 {
+		raw = raw[:i]
+	}
+	decoded, err := b64DecodeSafe(raw)
+	if err != nil {
+		return "", err
+	}
+	var d map[string]any
+	if err := json.Unmarshal(decoded, &d); err != nil {
+		return "", err
+	}
+	host := vmessStr(d, "add")
+	if host == "" {
+		return "", fmt.Errorf("missing add")
+	}
+	port := vmessStr(d, "port")
+	parts := []string{
+		"vmess",
+		strings.ToLower(vmessStr(d, "id")),
+		normalizeHostPort(host, port, ""),
+		vmessStr(d, "aid"),
+		vmessStr(d, "scy"),
+		vmessStr(d, "net"),
+		vmessStr(d, "type"),
+		vmessStr(d, "host"),
+		vmessStr(d, "path"),
+		vmessStr(d, "tls"),
+		vmessStr(d, "sni"),
+		vmessStr(d, "alpn"),
+		vmessStr(d, "fp"),
+		vmessStr(d, "mode"),
+	}
+	return strings.Join(parts, "|"), nil
+}
+
+func ssIdentity(link string) (string, error) {
+	out, err := parseSS(link)
+	if err != nil {
+		return "", err
+	}
+	settings, _ := out["settings"].(M)
+	servers, _ := settings["servers"].([]M)
+	if len(servers) == 0 {
+		return "", fmt.Errorf("missing server")
+	}
+	srv := servers[0]
+	method, _ := srv["method"].(string)
+	password, _ := srv["password"].(string)
+	host, _ := srv["address"].(string)
+	port, _ := srv["port"].(int)
+	plugin := ""
+	if u, err := url.Parse(link); err == nil {
+		plugin = u.Query().Get("plugin")
+	}
+	return strings.Join([]string{
+		"ss", strings.ToLower(method), password,
+		normalizeHostPort(host, strconv.Itoa(port), ""), plugin,
+	}, "|"), nil
+}
+
+func ssrIdentity(link string) (string, error) {
+	raw := strings.TrimPrefix(link, "ssr://")
+	decoded, err := b64DecodeSafe(raw)
+	if err != nil {
+		return "", err
+	}
+	s := string(decoded)
+	main := s
+	params := ""
+	if i := strings.Index(s, "/?"); i >= 0 {
+		main = s[:i]
+		params = s[i+2:]
+	}
+	fields := strings.Split(main, ":")
+	if len(fields) < 6 {
+		return "", fmt.Errorf("invalid ssr")
+	}
+	q, _ := url.ParseQuery(params)
+	return strings.Join([]string{
+		"ssr",
+		normalizeHostPort(fields[0], fields[1], ""),
+		fields[2], fields[3], fields[4], fields[5],
+		q.Get("obfsparam"), q.Get("protoparam"),
+	}, "|"), nil
 }
 
 func buildStreamSettings(params url.Values) M {

@@ -374,10 +374,11 @@ func run(args []string) error {
 
 	fmt.Println("Filtering configurations and removing duplicates...")
 	originalCount := len(allConfigs)
-	candidates := filterForProtocols(allConfigs, protocols)
+	candidates, fstats := filterForProtocols(allConfigs, protocols)
 
-	fmt.Printf("Found %d unique valid configurations\n", len(candidates))
-	fmt.Printf("Removed %d duplicates\n", originalCount-len(candidates))
+	fmt.Printf("Fetched %d lines: %d protocol-matched & valid, %d invalid/non-matching\n", fstats.Input, fstats.Matched, fstats.Invalid)
+	fmt.Printf("Removed %d duplicates -> %d unique configurations\n", fstats.Duplicates, fstats.Unique)
+	fmt.Printf("TCP check removed %d unreachable -> %d candidates for live test\n", fstats.TCPFailed, len(candidates))
 	working := liveTest(ctx, candidates, opts)
 	fmt.Printf("%d/%d configurations passed the live test\n", len(working), len(candidates))
 
@@ -399,7 +400,7 @@ func run(args []string) error {
 	writeCountryFiles(configsByCountry)
 
 	processingTime := time.Since(start).Seconds()
-	writeUpdateSummary(len(filteredConfigs), stats, processingTime, originalCount, failedLinks)
+	writeUpdateSummary(len(filteredConfigs), stats, processingTime, originalCount, fstats, failedLinks)
 	sortConfigs(filteredConfigs)
 	writeCloudflareFile(filteredConfigs)
 	return nil
@@ -617,92 +618,110 @@ func isValidConfig(config string) bool {
 	return true
 }
 
-func filterForProtocols(data []string, protocols []string) []string {
-	var filtered []string
-	seen := make(map[string]bool)
-	var mu sync.Mutex
+type filterStats struct {
+	Input      int
+	Matched    int // protocol-matched and valid
+	Invalid    int // no protocol match or invalid
+	Duplicates int
+	Unique     int // after dedup, before TCP check
+	TCPFailed  int
+	Candidates int // after dedup + TCP check
+}
 
-	type configRes struct {
+func filterForProtocols(data []string, protocols []string) ([]string, filterStats) {
+	stats := filterStats{Input: len(data)}
+
+	// Phase 1: deterministic dedup in input order. The first spelling
+	// of each distinct config wins, so the result does not depend on
+	// worker scheduling.
+	seen := make(map[string]bool)
+	type uniqueConfig struct {
 		line  string
 		proto string
 	}
+	var unique []uniqueConfig
+	for _, raw := range data {
+		line := strings.TrimSpace(sanitizeConfig(raw))
+		if line == "" {
+			stats.Invalid++
+			continue
+		}
+		var currentProtocol string
+		for _, protocol := range protocols {
+			prefix := protocol
+			if !strings.HasSuffix(prefix, "://") && protocol != "warp://" {
+				prefix += "://"
+			}
+			if strings.HasPrefix(line, prefix) {
+				currentProtocol = protocol
+				break
+			}
+		}
+		if currentProtocol == "" || !isValidConfig(line) {
+			stats.Invalid++
+			continue
+		}
+		stats.Matched++
+		identity := parseCoreIdentity(line, currentProtocol)
+		if seen[identity] {
+			stats.Duplicates++
+			continue
+		}
+		seen[identity] = true
+		unique = append(unique, uniqueConfig{line: line, proto: currentProtocol})
+	}
+	stats.Unique = len(unique)
 
-	jobs := make(chan string, 100)
-	results := make(chan configRes, 100)
-
+	// Phase 2: TCP reachability check on the unique configs only, in
+	// parallel, preserving input order in the result.
+	type checkResult struct {
+		idx int
+		ok  bool
+	}
+	jobs := make(chan int, 100)
+	results := make(chan checkResult, 100)
 	const numWorkers = 300
 	var wg sync.WaitGroup
-
 	for w := 0; w < numWorkers; w++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			for line := range jobs {
-				line = strings.TrimSpace(line)
-				if line == "" {
+			for idx := range jobs {
+				uc := unique[idx]
+				isUDP := uc.proto == "hy2" || uc.proto == "hysteria2" || uc.proto == "hysteria" || uc.proto == "tuic" || uc.proto == "wireguard" || uc.proto == "warp"
+				if isUDP {
+					results <- checkResult{idx: idx, ok: true}
 					continue
 				}
-				
-				var currentProtocol string
-				for _, protocol := range protocols {
-					prefix := protocol
-					if !strings.HasSuffix(prefix, "://") && protocol != "warp://" {
-						prefix += "://"
-					}
-					if strings.HasPrefix(line, prefix) {
-						currentProtocol = protocol
-						break
-					}
-				}
-
-				if currentProtocol == "" {
-					continue
-				}
-				
-				if !isValidConfig(line) {
-					continue
-				}
-
-				identity := parseCoreIdentity(line, currentProtocol)
-
-				mu.Lock()
-				if seen[identity] {
-					mu.Unlock()
-					continue
-				}
-				seen[identity] = true
-				mu.Unlock()
-
-			isUDP := currentProtocol == "hy2" || currentProtocol == "hysteria2" || currentProtocol == "hysteria" || currentProtocol == "tuic" || currentProtocol == "wireguard" || currentProtocol == "warp"
-  			if !isUDP {
-	  			host, port := getHostPort(line, currentProtocol)
-	  			if !checkPort(host, port) {
-				  	continue
-	  			}
-	  		}
-
-				results <- configRes{line: line, proto: currentProtocol}
+				host, port := getHostPort(uc.line, uc.proto)
+				results <- checkResult{idx: idx, ok: checkPort(host, port)}
 			}
 		}()
 	}
-
 	go func() {
-		for _, line := range data {
-			jobs <- sanitizeConfig(line)
+		for i := range unique {
+			jobs <- i
 		}
 		close(jobs)
 	}()
-
 	go func() {
 		wg.Wait()
 		close(results)
 	}()
-
-	for res := range results {
-		filtered = append(filtered, res.line)
+	passed := make([]bool, len(unique))
+	for r := range results {
+		passed[r.idx] = r.ok
 	}
-
-	return filtered
+	var filtered []string
+	for i, uc := range unique {
+		if passed[i] {
+			filtered = append(filtered, uc.line)
+		} else {
+			stats.TCPFailed++
+		}
+	}
+	stats.Candidates = len(filtered)
+	return filtered, stats
 }
 
 func nameAndGroup(results []tester.Result) ([]string, map[string][]string) {
@@ -850,46 +869,21 @@ func standardizeName(config string, protocol string, index int, country string) 
 func parseCoreIdentity(config string, protocol string) string {
 	config = strings.TrimSpace(config)
 
-	switch protocol {
-	case "vless":
-		u, err := url.Parse(config)
-		if err != nil || u.User == nil {
-			return config
-		}
-		uuid := u.User.Username()
-		return fmt.Sprintf("vless://%s@%s", uuid, u.Host)
-
-	case "hy2", "hysteria2", "hysteria":
-		if id, err := converter.Hy2Identity(config); err == nil {
-			return id
-		}
-		u, err := url.Parse(config)
-		if err != nil || u.User == nil {
-			return config
-		}
-		auth := u.User.Username()
-		if pw, ok := u.User.Password(); ok {
-			auth = auth + ":" + pw
-		}
-		return fmt.Sprintf("hysteria2://%s@%s", auth, u.Host)
-
-	case "wireguard", "warp":
-		if id, err := converter.WGIdentity(config); err == nil {
-			return id
-		}
-		host, port := getHostPort(config, protocol)
-		if host == "" {
-			return config
-		}
-		return fmt.Sprintf("wireguard://%s:%s", host, port)
-
-	default:
-		host, port := getHostPort(config, protocol)
-		if host == "" {
-			return config
-		}
-		return fmt.Sprintf("%s://%s:%s", protocol, host, port)
+	// Full identity: credentials + endpoint + transport/security
+	// parameters. The old host:port-only identity collapsed distinct
+	// configs that share an endpoint (different UUID/password, SNI,
+	// path, Reality keys, ...), keeping an arbitrary one of them.
+	if id, err := converter.CoreIdentity(config); err == nil {
+		return id
 	}
+
+	// Fallback for links the identity parser cannot handle: use the
+	// whole link without its display name, so at least exact
+	// duplicates still collide.
+	if hi := strings.Index(config, "#"); hi >= 0 {
+		return config[:hi]
+	}
+	return config
 }
 
 func countryOfIP(ip net.IP) string {
@@ -1099,7 +1093,14 @@ func calculateStats(configs []string) map[string]int {
 	return stats
 }
 
-func writeUpdateSummary(total int, stats map[string]int, duration float64, originalTotal int, failedLinks []string) {
+func percentOf(part, whole int) float64 {
+	if whole <= 0 {
+		return 0
+	}
+	return float64(part) / float64(whole) * 100
+}
+
+func writeUpdateSummary(total int, stats map[string]int, duration float64, originalTotal int, fstats filterStats, failedLinks []string) {
 	summaryPath := "UPDATE_SUMMARY.md"
 
 	file, err := os.Create(summaryPath)
@@ -1126,8 +1127,15 @@ func writeUpdateSummary(total int, stats map[string]int, duration float64, origi
 	writer.WriteString("\n## Performance\n")
 	writer.WriteString(fmt.Sprintf("- Processing time: %.2f seconds\n", duration))
 	if originalTotal > 0 {
-		reduction := float64(originalTotal-total) / float64(originalTotal) * 100
-		writer.WriteString(fmt.Sprintf("- Duplicate removal: %.1f%% reduction (from %d to %d)\n", reduction, originalTotal, total))
+		writer.WriteString(fmt.Sprintf("- Fetched lines: %d\n", originalTotal))
+		writer.WriteString(fmt.Sprintf("- Protocol-matched & valid: %d (invalid/non-matching: %d)\n", fstats.Matched, fstats.Invalid))
+		if fstats.Matched > 0 {
+			writer.WriteString(fmt.Sprintf("- Duplicates removed: %d (%.1f%% of matched)\n", fstats.Duplicates, float64(fstats.Duplicates)/float64(fstats.Matched)*100))
+		}
+		writer.WriteString(fmt.Sprintf("- Unique configurations after dedup: %d\n", fstats.Unique))
+		writer.WriteString(fmt.Sprintf("- TCP unreachable removed: %d\n", fstats.TCPFailed))
+		writer.WriteString(fmt.Sprintf("- Candidates sent to live test: %d\n", fstats.Candidates))
+		writer.WriteString(fmt.Sprintf("- Passed live test: %d (%.2f%% of fetched, %.1f%% of candidates)\n", total, float64(total)/float64(originalTotal)*100, percentOf(total, fstats.Candidates)))
 	}
 
 	if len(failedLinks) > 0 {
