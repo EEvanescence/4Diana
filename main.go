@@ -24,6 +24,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
+	"github.com/EEvanescence/4Diana/internal/converter"
 	"github.com/EEvanescence/4Diana/internal/tester"
 )
 
@@ -104,7 +105,7 @@ var fixedText = `#profile-title: base64:Um9zZSBDb25maWdz
 #support-url: https://github.com/NiREvil/vless
 #profile-web-page-url: https://t.me/NiREvil_GP
 `
-var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "hysteria", "hysteria2", "tuic", "warp://"}
+var protocols = []string{"vmess", "vless", "trojan", "ss", "ssr", "hy2", "hysteria", "hysteria2", "tuic", "wireguard", "warp"}
 
 var links = []string{ // Base64
 	"http://www.xrayvip.com/free.txt",
@@ -672,7 +673,7 @@ func filterForProtocols(data []string, protocols []string) []string {
 				seen[identity] = true
 				mu.Unlock()
 
-			isUDP := currentProtocol == "hy2" || currentProtocol == "hysteria2" || currentProtocol == "hysteria" || currentProtocol == "tuic" || strings.HasPrefix(currentProtocol, "warp")
+			isUDP := currentProtocol == "hy2" || currentProtocol == "hysteria2" || currentProtocol == "hysteria" || currentProtocol == "tuic" || currentProtocol == "wireguard" || currentProtocol == "warp"
   			if !isUDP {
 	  			host, port := getHostPort(line, currentProtocol)
 	  			if !checkPort(host, port) {
@@ -807,6 +808,32 @@ func standardizeName(config string, protocol string, index int, country string) 
 		updatedDecoded := mainInfo + "/?" + strings.Join(newParamList, "&")
 		return "ssr://" + strings.ReplaceAll(base64.StdEncoding.EncodeToString([]byte(updatedDecoded)), "=", "")
 
+	case "hy2", "hysteria2", "hysteria":
+		if normalized, err := converter.NormalizeHysteria2Link(config, newName); err == nil {
+			return normalized
+		}
+		var body string
+		if hi := strings.Index(config, "#"); hi >= 0 {
+			body = config[:hi]
+		} else {
+			body = config
+		}
+		body = strings.TrimRight(body, " \t")
+		return body + "#" + url.PathEscape(newName)
+
+	case "wireguard", "warp":
+		if normalized, err := converter.NormalizeWGLink(config, newName); err == nil {
+			return normalized
+		}
+		var body string
+		if hi := strings.Index(config, "#"); hi >= 0 {
+			body = config[:hi]
+		} else {
+			body = config
+		}
+		body = strings.TrimRight(body, " \t")
+		return body + "#" + url.PathEscape(newName)
+
 	default:
 		var body string
 		if hi := strings.Index(config, "#"); hi >= 0 {
@@ -833,12 +860,28 @@ func parseCoreIdentity(config string, protocol string) string {
 		return fmt.Sprintf("vless://%s@%s", uuid, u.Host)
 
 	case "hy2", "hysteria2", "hysteria":
+		if id, err := converter.Hy2Identity(config); err == nil {
+			return id
+		}
 		u, err := url.Parse(config)
 		if err != nil || u.User == nil {
 			return config
 		}
 		auth := u.User.Username()
-		return fmt.Sprintf("%s://%s@%s", protocol, auth, u.Host)
+		if pw, ok := u.User.Password(); ok {
+			auth = auth + ":" + pw
+		}
+		return fmt.Sprintf("hysteria2://%s@%s", auth, u.Host)
+
+	case "wireguard", "warp":
+		if id, err := converter.WGIdentity(config); err == nil {
+			return id
+		}
+		host, port := getHostPort(config, protocol)
+		if host == "" {
+			return config
+		}
+		return fmt.Sprintf("wireguard://%s:%s", host, port)
 
 	default:
 		host, port := getHostPort(config, protocol)
@@ -982,7 +1025,7 @@ func splitIntoFiles(base64Folder string, configs []string) error {
 	for i := 0; i < numFiles; i++ {
 		profileTitle := fmt.Sprintf("GitHub:NiREvil| Sub%d 🩶", i+1)
 		encodedTitle := base64.StdEncoding.EncodeToString([]byte(profileTitle))
-		customFixedText := fmt.Sprintf(`#profile-title: base64:Um9zZSBDb25maWdz
+		customFixedText := fmt.Sprintf(`#profile-title: base64:%s
 #profile-update-interval: 6
 #support-url: https://github.com/NiREvil/vless
 #profile-web-page-url: https://t.me/s/NiREvil_GP
@@ -1048,7 +1091,7 @@ func calculateStats(configs []string) map[string]int {
 			stats["hy2"]++
 		case "vmess", "vless", "trojan", "ss", "ssr", "tuic":
 			stats[protocol]++
-		case "warp://":
+		case "warp", "wireguard", "warp://":
 			stats["warp"]++
 		}
 	}
@@ -1176,7 +1219,11 @@ func getHostPort(config, protocol string) (string, string) {
 	default:
 		u, err := url.Parse(config)
 		if err == nil {
-			return u.Hostname(), u.Port()
+			port := u.Port()
+			if i := strings.IndexAny(port, ",-"); i >= 0 {
+				port = port[:i]
+			}
+			return u.Hostname(), port
 		}
 	}
 	return "", ""

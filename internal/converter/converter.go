@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"net"
 	"net/url"
 	"strconv"
 	"strings"
@@ -21,6 +22,8 @@ var protocolPrefixes = []struct {
 	{"trojan://", "trojan"},
 	{"hysteria2://", "hysteria2"},
 	{"hy2://", "hysteria2"},
+	{"wireguard://", "wireguard"},
+	{"warp://", "wireguard"},
 }
 
 func validURLHost(h string) bool {
@@ -51,6 +54,8 @@ func ConvertLink(link string) (M, error) {
 		return parseTrojan(link)
 	case "hysteria2":
 		return parseHysteria2(link)
+	case "wireguard":
+		return parseWireGuard(link)
 	default:
 		return nil, fmt.Errorf("unsupported protocol")
 	}
@@ -294,7 +299,7 @@ func parseTrojan(link string) (M, error) {
 	if err != nil {
 		return nil, err
 	}
-	password, _ := url.QueryUnescape(u.User.Username())
+	password := userinfoAuth(u)
 	if password == "" {
 		return nil, fmt.Errorf("missing password")
 	}
@@ -315,75 +320,176 @@ func parseTrojan(link string) (M, error) {
 	}, nil
 }
 
-func parseHysteria2(link string) (M, error) {
-	u, err := url.Parse(link)
+// Hy2Config is the normalized form of a Hysteria2 share link. The tester
+// (Xray JSON) and the published link are both built from this model so they
+// cannot drift apart: a link that passes the live test is published in the
+// canonical spelling clients understand.
+type Hy2Config struct {
+	Auth        string
+	Host        string
+	Port        int
+	Ports       string // port-hopping range/list, e.g. "20000-30000" or "443,8443"
+	SNI         string
+	Insecure    bool
+	ObfsType    string // "" or "salamander"
+	ObfsPassword string
+	PinSHA256   string
+	ALPN        string
+	Fingerprint string
+	ECH         string
+	Up          string
+	Down        string
+	HopInterval string
+	VerifyName  string
+}
+
+// ParseHy2 parses a hysteria2:// or hy2:// link, accepting the alias
+// spellings used by common sources/clients. It returns an explicit error
+// for a required-but-unsupported obfuscation instead of silently testing
+// the server without it.
+func ParseHy2(link string) (*Hy2Config, error) {
+	link = strings.TrimSpace(link)
+	rewritten, authorityPorts := normalizeHy2Authority(link)
+	u, err := url.Parse(rewritten)
 	if err != nil {
 		return nil, err
 	}
 	params, _ := url.ParseQuery(u.RawQuery)
-	port, err := parsePort(u.Port())
-	if err != nil {
-		return nil, err
-	}
 
-	auth := ""
-	if u.User != nil {
-		auth, _ = url.QueryUnescape(u.User.Username())
+	auth := userinfoAuth(u)
+	if auth == "" {
+		auth = firstAlias(params, "auth", "password")
 	}
 	if auth == "" {
 		return nil, fmt.Errorf("missing auth")
 	}
+	host := u.Hostname()
+	if host == "" {
+		return nil, fmt.Errorf("missing host")
+	}
+	port := 443
+	if ps := u.Port(); ps != "" {
+		p, err := parsePort(ps)
+		if err != nil {
+			return nil, err
+		}
+		port = p
+	}
+	ports := firstAlias(params, "mport", "ports", "server_ports", "serverPorts")
+	if ports == "" {
+		ports = authorityPorts
+	}
+	if ports != "" && !validPorts(ports) {
+		ports = ""
+	}
+
+	obfsType := strings.ToLower(strings.TrimSpace(firstAlias(params, "obfs", "obfs-type", "obfs_type", "obfsType")))
+	obfsPass := firstAlias(params, "obfs-password", "obfs_password", "obfsPassword", "obfs-pass", "obfs_pass", "obfsPass")
+	if obfsType == "none" || obfsType == "0" || obfsType == "false" {
+		obfsType = ""
+		obfsPass = ""
+	}
+	if obfsType == "" && obfsPass != "" {
+		obfsType = "salamander"
+	}
+	if obfsType == "gecko" {
+		return nil, fmt.Errorf("unsupported obfs type: gecko")
+	}
+	if obfsType != "" && obfsType != "salamander" {
+		return nil, fmt.Errorf("unsupported obfs type: %s", obfsType)
+	}
+	if obfsType == "salamander" && obfsPass == "" {
+		return nil, fmt.Errorf("obfs salamander requires obfs-password")
+	}
+
+	return &Hy2Config{
+		Auth:         auth,
+		Host:         host,
+		Port:         port,
+		Ports:        ports,
+		SNI:          firstAlias(params, "sni", "peer", "serverName", "servername", "server_name"),
+		Insecure:     parseInsecureParam(params),
+		ObfsType:     obfsType,
+		ObfsPassword: obfsPass,
+		PinSHA256:    firstAlias(params, "pinSHA256", "pinsha256", "pin_sha256", "pcs"),
+		ALPN:         firstAlias(params, "alpn"),
+		Fingerprint:  firstAlias(params, "fp", "fingerprint"),
+		ECH:          firstAlias(params, "ech", "echConfigList"),
+		Up:           firstAlias(params, "up", "upmbps", "up_mbps", "upMbps"),
+		Down:         firstAlias(params, "down", "downmbps", "down_mbps", "downMbps"),
+		HopInterval:  firstAlias(params, "hop-interval", "hop_interval", "hopInterval", "mportHopInt", "portHopInt"),
+		VerifyName:   firstAlias(params, "vcn"),
+	}, nil
+}
+
+func parseHysteria2(link string) (M, error) {
+	cfg, err := ParseHy2(link)
+	if err != nil {
+		return nil, err
+	}
 
 	tlsSettings := M{}
-	if sni := first(params, "sni"); sni != "" && validURLHost(sni) {
-		tlsSettings["serverName"] = sni
-	} else if sni := u.Hostname(); validURLHost(sni) {
-		tlsSettings["serverName"] = sni
+	if cfg.SNI != "" && validURLHost(cfg.SNI) {
+		tlsSettings["serverName"] = cfg.SNI
+	} else if validURLHost(cfg.Host) {
+		tlsSettings["serverName"] = cfg.Host
 	}
-	if fp := first(params, "fp", "fingerprint"); fp != "" {
-		tlsSettings["fingerprint"] = fp
+	if cfg.Fingerprint != "" {
+		tlsSettings["fingerprint"] = cfg.Fingerprint
 	}
-	if alpn := first(params, "alpn"); alpn != "" {
-		tlsSettings["alpn"] = strings.Split(alpn, ",")
+	if cfg.ALPN != "" {
+		tlsSettings["alpn"] = strings.Split(cfg.ALPN, ",")
 	}
-	if pcs := first(params, "pcs", "pinSHA256"); pcs != "" {
-		tlsSettings["pinnedPeerCertSha256"] = pcs
+	if cfg.PinSHA256 != "" {
+		tlsSettings["pinnedPeerCertSha256"] = cfg.PinSHA256
 	}
-	if vcn := first(params, "vcn"); vcn != "" {
-		tlsSettings["verifyPeerCertByName"] = vcn
+	if cfg.VerifyName != "" {
+		tlsSettings["verifyPeerCertByName"] = cfg.VerifyName
 	}
-
-	if insecure := first(params, "insecure", "allowInsecure", "skip-cert-verify"); insecure == "1" || strings.EqualFold(insecure, "true") {
+	if cfg.ECH != "" {
+		tlsSettings["echConfigList"] = cfg.ECH
+	}
+	if cfg.Insecure {
 		tlsSettings["allowInsecure"] = true
 	}
 
-	hySettings := M{
-		"version": 2,
-		"auth":    auth,
-	}
-
 	stream := M{
-		"network":          "hysteria",
-		"security":         "tls",
-		"hysteriaSettings": hySettings,
+		"network":  "hysteria",
+		"security": "tls",
+		"hysteriaSettings": M{
+			"version": 2,
+			"auth":    cfg.Auth,
+		},
 	}
 	if len(tlsSettings) > 0 {
 		stream["tlsSettings"] = tlsSettings
 	}
 
-	obfs := first(params, "obfs", "obfs-type")
-	obfsPass := first(params, "obfs-password", "obfs-pass", "obfsPassword")
-	if obfs != "" && obfsPass != "" {
-		stream["finalmask"] = M{
-			"udp": []M{
-				{
-					"type": "salamander",
-					"settings": M{
-						"password": obfsPass,
-					},
+	finalmask := M{}
+	if cfg.ObfsType == "salamander" {
+		finalmask["udp"] = []M{
+			{
+				"type": "salamander",
+				"settings": M{
+					"password": cfg.ObfsPassword,
 				},
 			},
 		}
+	}
+	if cfg.Ports != "" {
+		hop := cfg.HopInterval
+		if hop == "" {
+			hop = "5-10"
+		}
+		finalmask["quicParams"] = M{
+			"udpHop": M{
+				"ports":    cfg.Ports,
+				"interval": hop,
+			},
+		}
+	}
+	if len(finalmask) > 0 {
+		stream["finalmask"] = finalmask
 	}
 
 	return M{
@@ -391,11 +497,512 @@ func parseHysteria2(link string) (M, error) {
 		"tag":      "proxy",
 		"settings": M{
 			"version": 2,
-			"address": u.Hostname(),
-			"port":    port,
+			"address": cfg.Host,
+			"port":    cfg.Port,
 		},
 		"streamSettings": stream,
 	}, nil
+}
+
+// NormalizeHysteria2Link rebuilds a Hy2 link in canonical form:
+// hysteria2://<auth>@host:port/?sni=...&insecure=1&obfs=salamander&
+// obfs-password=...&mport=...&pinSHA256=...#name
+// Alias spellings from the source (obfsPassword, allow_insecure, ...) are
+// rewritten to the official names so clients that only understand the
+// official URI scheme see the obfs parameters.
+func NormalizeHysteria2Link(link, name string) (string, error) {
+	cfg, err := ParseHy2(link)
+	if err != nil {
+		return "", err
+	}
+	q := url.Values{}
+	if cfg.SNI != "" {
+		q.Set("sni", cfg.SNI)
+	}
+	if cfg.Insecure {
+		q.Set("insecure", "1")
+	}
+	if cfg.ObfsType != "" {
+		q.Set("obfs", cfg.ObfsType)
+		q.Set("obfs-password", cfg.ObfsPassword)
+	}
+	if cfg.Ports != "" {
+		q.Set("mport", cfg.Ports)
+	}
+	if cfg.HopInterval != "" {
+		q.Set("hop-interval", cfg.HopInterval)
+	}
+	if cfg.PinSHA256 != "" {
+		q.Set("pinSHA256", cfg.PinSHA256)
+	}
+	if cfg.ALPN != "" {
+		q.Set("alpn", cfg.ALPN)
+	}
+	if cfg.Fingerprint != "" {
+		q.Set("fp", cfg.Fingerprint)
+	}
+	if cfg.ECH != "" {
+		q.Set("ech", cfg.ECH)
+	}
+	if cfg.Up != "" {
+		q.Set("up", cfg.Up)
+	}
+	if cfg.Down != "" {
+		q.Set("down", cfg.Down)
+	}
+	u := url.URL{
+		Scheme:   "hysteria2",
+		User:     url.User(cfg.Auth),
+		Host:     net.JoinHostPort(cfg.Host, strconv.Itoa(cfg.Port)),
+		RawQuery: q.Encode(),
+		Fragment: name,
+	}
+	return u.String(), nil
+}
+
+// Hy2Identity is the deduplication identity for a Hy2 link. It is built
+// from the normalized model, so hy2:// and hysteria2:// spellings of the
+// same server collide, while servers differing in obfs password, SNI,
+// port hopping or TLS settings do not.
+func Hy2Identity(link string) (string, error) {
+	cfg, err := ParseHy2(link)
+	if err != nil {
+		return "", err
+	}
+	parts := []string{
+		"hysteria2", cfg.Auth, cfg.Host, strconv.Itoa(cfg.Port), cfg.Ports,
+		cfg.SNI, strconv.FormatBool(cfg.Insecure), cfg.ObfsType,
+		cfg.ObfsPassword, cfg.PinSHA256,
+	}
+	return strings.Join(parts, "|"), nil
+}
+
+func normalizeHy2Authority(link string) (string, string) {
+	schemeEnd := strings.Index(link, "://")
+	if schemeEnd < 0 {
+		return link, ""
+	}
+	rest := link[schemeEnd+3:]
+	authEnd := len(rest)
+	for i := 0; i < len(rest); i++ {
+		if rest[i] == '/' || rest[i] == '?' || rest[i] == '#' {
+			authEnd = i
+			break
+		}
+	}
+	authority := rest[:authEnd]
+	suffix := rest[authEnd:]
+	userinfo := ""
+	hostport := authority
+	if at := strings.LastIndex(authority, "@"); at >= 0 {
+		userinfo = authority[:at+1]
+		hostport = authority[at+1:]
+	}
+	if strings.HasPrefix(hostport, "[") {
+		end := strings.Index(hostport, "]")
+		if end < 0 || end+1 >= len(hostport) || hostport[end+1] != ':' {
+			return link, ""
+		}
+		portSpec := hostport[end+2:]
+		if !strings.ContainsAny(portSpec, ",-") {
+			return link, ""
+		}
+		first := firstPortOf(portSpec)
+		if first == "" {
+			return link, ""
+		}
+		return link[:schemeEnd+3] + userinfo + hostport[:end+1] + ":" + first + suffix, portSpec
+	}
+	colon := strings.LastIndex(hostport, ":")
+	if colon < 0 {
+		return link, ""
+	}
+	portSpec := hostport[colon+1:]
+	if !strings.ContainsAny(portSpec, ",-") {
+		return link, ""
+	}
+	first := firstPortOf(portSpec)
+	if first == "" {
+		return link, ""
+	}
+	return link[:schemeEnd+3] + userinfo + hostport[:colon+1] + first + suffix, portSpec
+}
+
+func firstPortOf(spec string) string {
+	first := strings.Split(spec, ",")[0]
+	first = strings.Split(first, "-")[0]
+	first = strings.TrimSpace(first)
+	if first == "" {
+		return ""
+	}
+	for _, r := range first {
+		if r < '0' || r > '9' {
+			return ""
+		}
+	}
+	return first
+}
+
+func validPorts(s string) bool {
+	if s == "" {
+		return false
+	}
+	for _, r := range s {
+		if (r < '0' || r > '9') && r != ',' && r != '-' {
+			return false
+		}
+	}
+	return s[0] >= '0' && s[0] <= '9'
+}
+
+func userinfoAuth(u *url.URL) string {
+	if u == nil || u.User == nil {
+		return ""
+	}
+	user := u.User.Username()
+	if pw, ok := u.User.Password(); ok {
+		return user + ":" + pw
+	}
+	return user
+}
+
+func firstAlias(p url.Values, keys ...string) string {
+	for _, k := range keys {
+		if v := p.Get(k); v != "" {
+			return v
+		}
+	}
+	for _, k := range keys {
+		for pk, vals := range p {
+			if strings.EqualFold(pk, k) && len(vals) > 0 && vals[0] != "" {
+				return vals[0]
+			}
+		}
+	}
+	return ""
+}
+
+func parseBoolValue(v string) bool {
+	switch strings.ToLower(strings.TrimSpace(v)) {
+	case "1", "true", "yes", "y", "t", "on":
+		return true
+	}
+	return false
+}
+
+func parseInsecureParam(p url.Values) bool {
+	v := firstAlias(p, "insecure", "allowInsecure", "allow_insecure", "allow-insecure", "allowinsecure", "skip-cert-verify", "skipCertVerify", "skip_cert_verify", "skipcertverify", "noverify")
+	return parseBoolValue(v)
+}
+
+// WGConfig is the normalized form of a wireguard:// (or warp://) share
+// link, e.g. the Cloudflare WARP configs published as wireguard:// links.
+// The tester (Xray JSON) and the published link are both built from this
+// model so they cannot drift apart.
+type WGConfig struct {
+	SecretKey    string
+	Host         string
+	Port         int
+	Address      []string
+	PublicKey    string
+	PreSharedKey string
+	Reserved     []int // nil, or exactly 3 bytes
+	MTU          int
+	DNS          []string
+	AllowedIPs   []string
+	KeepAlive    int
+	FinalMask    string
+}
+
+// ParseWG parses a wireguard:// or warp:// link. The private key is the
+// userinfo (percent-encoded base64); the peer public key, local addresses
+// and WARP reserved bytes come from the query parameters.
+func ParseWG(link string) (*WGConfig, error) {
+	link = strings.TrimSpace(link)
+	u, err := url.Parse(link)
+	if err != nil {
+		return nil, err
+	}
+	params, _ := url.ParseQuery(u.RawQuery)
+
+	secret := ""
+	if u.User != nil {
+		secret = u.User.Username()
+		if pw, ok := u.User.Password(); ok && pw != "" {
+			secret = secret + ":" + pw
+		}
+	}
+	if secret == "" {
+		secret = firstAlias(params, "privatekey", "privateKey", "secretkey", "secretKey")
+	}
+	if secret == "" {
+		return nil, fmt.Errorf("missing secret key")
+	}
+	if !validWGKey(secret) {
+		return nil, fmt.Errorf("invalid secret key")
+	}
+	host := u.Hostname()
+	if host == "" {
+		return nil, fmt.Errorf("missing host")
+	}
+	port := 51820
+	if ps := u.Port(); ps != "" {
+		p, err := parsePort(ps)
+		if err != nil {
+			return nil, err
+		}
+		port = p
+	}
+	pub := firstAlias(params, "publickey", "publicKey", "peerPublicKey", "peerpublickey")
+	if pub == "" {
+		return nil, fmt.Errorf("missing public key")
+	}
+	if !validWGKey(pub) {
+		return nil, fmt.Errorf("invalid public key")
+	}
+	psk := firstAlias(params, "presharedkey", "preSharedKey", "presharedKey", "psk")
+	if psk != "" && !validWGKey(psk) {
+		return nil, fmt.Errorf("invalid pre-shared key")
+	}
+
+	var address []string
+	if raw := firstAlias(params, "address", "localAddress", "localaddress", "ip", "ips"); raw != "" {
+		for _, a := range strings.Split(raw, ",") {
+			a = strings.TrimSpace(a)
+			if a == "" {
+				continue
+			}
+			if _, _, err := net.ParseCIDR(a); err != nil && net.ParseIP(a) == nil {
+				return nil, fmt.Errorf("invalid address: %s", a)
+			}
+			address = append(address, a)
+		}
+	}
+
+	var reserved []int
+	if raw := strings.TrimSpace(firstAlias(params, "reserved")); raw != "" {
+		r, err := parseReserved(raw)
+		if err != nil {
+			return nil, err
+		}
+		reserved = r
+	}
+
+	mtu := 0
+	if raw := firstAlias(params, "mtu"); raw != "" {
+		v, err := strconv.Atoi(strings.TrimSpace(raw))
+		if err != nil || v < 0 || v > 9000 {
+			return nil, fmt.Errorf("invalid mtu: %s", raw)
+		}
+		mtu = v
+	}
+
+	var dns []string
+	if raw := firstAlias(params, "dns", "remoteDNS", "remotedns"); raw != "" {
+		for _, d := range strings.Split(raw, ",") {
+			d = strings.TrimSpace(d)
+			if d != "" {
+				dns = append(dns, d)
+			}
+		}
+	}
+
+	var allowed []string
+	if raw := firstAlias(params, "allowedips", "allowedIPs", "allowedIps"); raw != "" {
+		for _, a := range strings.Split(raw, ",") {
+			a = strings.TrimSpace(a)
+			if a == "" {
+				continue
+			}
+			if _, _, err := net.ParseCIDR(a); err != nil && net.ParseIP(a) == nil {
+				return nil, fmt.Errorf("invalid allowed IP: %s", a)
+			}
+			allowed = append(allowed, a)
+		}
+	}
+
+	keepAlive := 0
+	if raw := firstAlias(params, "keepalive", "keepAlive", "persistentKeepalive", "persistentkeepalive"); raw != "" {
+		v, err := strconv.Atoi(strings.TrimSpace(raw))
+		if err != nil || v < 0 {
+			return nil, fmt.Errorf("invalid keepalive: %s", raw)
+		}
+		keepAlive = v
+	}
+
+	return &WGConfig{
+		SecretKey:    secret,
+		Host:         host,
+		Port:         port,
+		Address:      address,
+		PublicKey:    pub,
+		PreSharedKey: psk,
+		Reserved:     reserved,
+		MTU:          mtu,
+		DNS:          dns,
+		AllowedIPs:   allowed,
+		KeepAlive:    keepAlive,
+		FinalMask:    firstAlias(params, "fm", "finalmask", "finalMask"),
+	}, nil
+}
+
+func parseWireGuard(link string) (M, error) {
+	cfg, err := ParseWG(link)
+	if err != nil {
+		return nil, err
+	}
+	allowed := cfg.AllowedIPs
+	if len(allowed) == 0 {
+		allowed = []string{"0.0.0.0/0", "::/0"}
+	}
+	peer := M{
+		"publicKey":  cfg.PublicKey,
+		"endpoint":   net.JoinHostPort(cfg.Host, strconv.Itoa(cfg.Port)),
+		"allowedIPs": allowed,
+	}
+	if cfg.PreSharedKey != "" {
+		peer["preSharedKey"] = cfg.PreSharedKey
+	}
+	if cfg.KeepAlive > 0 {
+		peer["keepAlive"] = cfg.KeepAlive
+	}
+	settings := M{
+		"secretKey":   cfg.SecretKey,
+		"peers":       []M{peer},
+		"noKernelTun": true,
+		"workers":     1,
+	}
+	if len(cfg.Address) > 0 {
+		settings["address"] = cfg.Address
+	}
+	if cfg.MTU > 0 {
+		settings["mtu"] = cfg.MTU
+	}
+	if len(cfg.Reserved) == 3 {
+		settings["reserved"] = cfg.Reserved
+	}
+	var remoteDNS []string
+	for _, d := range cfg.DNS {
+		if net.ParseIP(d) != nil {
+			remoteDNS = append(remoteDNS, d)
+		}
+	}
+	if len(remoteDNS) > 0 {
+		settings["remoteDNS"] = remoteDNS
+	}
+	return M{
+		"protocol": "wireguard",
+		"tag":      "proxy",
+		"settings": settings,
+	}, nil
+}
+
+// NormalizeWGLink rebuilds a WireGuard/WARP link in canonical form:
+// wireguard://<secret>@host:port?address=...&publickey=...&
+// presharedkey=...&reserved=...&mtu=...&dns=...#name
+func NormalizeWGLink(link, name string) (string, error) {
+	cfg, err := ParseWG(link)
+	if err != nil {
+		return "", err
+	}
+	q := url.Values{}
+	if len(cfg.Address) > 0 {
+		q.Set("address", strings.Join(cfg.Address, ","))
+	}
+	q.Set("publickey", cfg.PublicKey)
+	if cfg.PreSharedKey != "" {
+		q.Set("presharedkey", cfg.PreSharedKey)
+	}
+	if len(cfg.Reserved) == 3 {
+		parts := make([]string, 3)
+		for i, b := range cfg.Reserved {
+			parts[i] = strconv.Itoa(b)
+		}
+		q.Set("reserved", strings.Join(parts, ","))
+	}
+	if cfg.MTU > 0 {
+		q.Set("mtu", strconv.Itoa(cfg.MTU))
+	}
+	if len(cfg.DNS) > 0 {
+		q.Set("dns", strings.Join(cfg.DNS, ","))
+	}
+	if len(cfg.AllowedIPs) > 0 {
+		q.Set("allowedips", strings.Join(cfg.AllowedIPs, ","))
+	}
+	if cfg.KeepAlive > 0 {
+		q.Set("keepalive", strconv.Itoa(cfg.KeepAlive))
+	}
+	if cfg.FinalMask != "" {
+		q.Set("fm", cfg.FinalMask)
+	}
+	u := url.URL{
+		Scheme:   "wireguard",
+		User:     url.User(cfg.SecretKey),
+		Host:     net.JoinHostPort(cfg.Host, strconv.Itoa(cfg.Port)),
+		RawQuery: q.Encode(),
+		Fragment: name,
+	}
+	return u.String(), nil
+}
+
+// WGIdentity is the deduplication identity for a WireGuard/WARP link,
+// built from the normalized model so wireguard:// and warp:// spellings
+// of the same peer collide, while different keys do not.
+func WGIdentity(link string) (string, error) {
+	cfg, err := ParseWG(link)
+	if err != nil {
+		return "", err
+	}
+	reserved := ""
+	if len(cfg.Reserved) == 3 {
+		reserved = fmt.Sprintf("%d,%d,%d", cfg.Reserved[0], cfg.Reserved[1], cfg.Reserved[2])
+	}
+	parts := []string{
+		"wireguard", cfg.SecretKey, cfg.Host, strconv.Itoa(cfg.Port),
+		cfg.PublicKey, cfg.PreSharedKey, strings.Join(cfg.Address, ","),
+		reserved, strconv.Itoa(cfg.MTU),
+	}
+	return strings.Join(parts, "|"), nil
+}
+
+func validWGKey(s string) bool {
+	s = strings.TrimSpace(s)
+	if len(s) == 64 {
+		ok := true
+		for _, r := range s {
+			if !((r >= '0' && r <= '9') || (r >= 'a' && r <= 'f') || (r >= 'A' && r <= 'F')) {
+				ok = false
+				break
+			}
+		}
+		if ok {
+			return true
+		}
+	}
+	b, err := b64DecodeSafe(s)
+	return err == nil && len(b) == 32
+}
+
+func parseReserved(raw string) ([]int, error) {
+	if strings.Contains(raw, ",") {
+		parts := strings.Split(raw, ",")
+		if len(parts) != 3 {
+			return nil, fmt.Errorf("reserved must be exactly 3 bytes")
+		}
+		out := make([]int, 3)
+		for i, p := range parts {
+			v, err := strconv.Atoi(strings.TrimSpace(p))
+			if err != nil || v < 0 || v > 255 {
+				return nil, fmt.Errorf("invalid reserved byte: %s", p)
+			}
+			out[i] = v
+		}
+		return out, nil
+	}
+	if b, err := b64DecodeSafe(raw); err == nil && len(b) == 3 {
+		return []int{int(b[0]), int(b[1]), int(b[2])}, nil
+	}
+	return nil, fmt.Errorf("reserved must be exactly 3 bytes")
 }
 
 func buildStreamSettings(params url.Values) M {
@@ -422,11 +1029,17 @@ func buildStreamSettings(params url.Values) M {
 		if v := params.Get("alpn"); v != "" {
 			tls["alpn"] = strings.Split(v, ",")
 		}
-		if v := params.Get("pcs"); v != "" {
+		if v := firstAlias(params, "pcs", "pinSHA256", "pinsha256"); v != "" {
 			tls["pinnedPeerCertSha256"] = v
 		}
 		if v := params.Get("vcn"); v != "" {
 			tls["verifyPeerCertByName"] = v
+		}
+		if v := firstAlias(params, "ech", "echConfigList"); v != "" {
+			tls["echConfigList"] = v
+		}
+		if parseInsecureParam(params) {
+			tls["allowInsecure"] = true
 		}
 		if len(tls) > 0 {
 			stream["tlsSettings"] = tls
