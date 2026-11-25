@@ -124,10 +124,10 @@
                 <div class="text-[11px] text-zinc-500 font-medium -mt-0.5 tracking-wide">CONFIG DASHBOARD</div>
             </div>
         </div>
-        <a href="https://github.com/EEvanescence/4Diana" target="_blank" rel="noopener" class="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 text-sm font-medium transition-all">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span class="hidden sm:inline">GitHub</span>
-        </a>
+        <div id="last-updated" class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/5 border border-white/5 text-xs font-medium text-zinc-400">
+            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+            <span>Updated hourly</span>
+        </div>
     </div>
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex gap-1 overflow-x-auto scrollbar-none">
@@ -158,11 +158,11 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             <div class="glass rounded-2xl p-5">
                 <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Total Configs</div>
-                <div class="text-3xl font-bold">Live</div>
+                <div class="text-3xl font-bold" id="stat-total">Live</div>
             </div>
             <div class="glass rounded-2xl p-5">
                 <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Protocols</div>
-                <div class="text-3xl font-bold">7</div>
+                <div class="text-3xl font-bold" id="stat-protocols">8</div>
             </div>
             <div class="glass rounded-2xl p-5">
                 <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Refresh</div>
@@ -197,7 +197,7 @@
                         <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Live testing through embedded Xray — not just port scanning</span></li>
                         <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Exit-IP based GeoIP for accurate country tagging</span></li>
                         <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Smart deduplication by real server identity</span></li>
-                        <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Support for VLESS, VMess, Trojan, Shadowsocks, Hysteria2, TUIC &amp; more</span></li>
+                        <li class="flex gap-2"><span class="text-rose-400">◆</span><span>Support for VLESS, VMess, Trojan, Shadowsocks, Hysteria2 &amp; WireGuard (WARP)</span></li>
                     </ul>
                 </div>
             </div>
@@ -246,9 +246,20 @@
 
     <section id="countries" class="tab-content space-y-4">
         <div class="glass rounded-2xl p-6">
-            <h3 class="text-lg font-semibold mb-1">By Country</h3>
-            <p class="text-sm text-zinc-500 mb-5">Configs grouped by the GeoIP location of the exit node. Popular countries below — replace <code class="px-1.5 py-0.5 bg-black/40 border border-white/5 rounded text-[11px] font-mono text-rose-300">XX</code> with any country code.</p>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" id="country-list"></div>
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+                <h3 class="text-lg font-semibold">By Country</h3>
+                <span id="country-count" class="badge bg-rose-500/10 text-rose-300 border border-rose-500/20">Loading…</span>
+            </div>
+            <p class="text-sm text-zinc-500 mb-5">Every country with live configs, grouped by the GeoIP location of the exit node. Search, then copy any subscription link.</p>
+            <div class="flex flex-col sm:flex-row gap-2 mb-5">
+                <label class="sr-only" for="country-search">Search countries</label>
+                <input id="country-search" type="search" placeholder="Search by country name or code (e.g. Germany, DE)…" class="flex-1 px-4 py-2.5 rounded-xl bg-black/40 border border-white/5 text-sm text-zinc-200 placeholder-zinc-600 outline-none focus:border-rose-500/40" oninput="filterCountries(this.value)">
+                <button onclick="copyAllCountries(this)" class="copy-btn px-4 py-2.5 rounded-xl bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold whitespace-nowrap" aria-label="Copy all country subscription links">Copy all links</button>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" id="country-list">
+                <div class="text-sm text-zinc-500">Loading countries…</div>
+            </div>
+            <div id="country-empty" class="hidden text-sm text-zinc-500 mt-4">No country matches your search.</div>
 
             <div class="mt-6 p-4 bg-black/30 border border-white/5 rounded-xl">
                 <div class="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">Custom country link template</div>
@@ -277,104 +288,243 @@
 
 <script>
     const REPO = 'https://raw.githubusercontent.com/EEvanescence/4Diana/main';
+    const API = 'https://api.github.com/repos/EEvanescence/4Diana/contents';
 
-    const protocols = [
-        { id: 'vless',      name: 'VLESS',        desc: 'Modern, lightweight protocol',        color: '#f43f5e' },
-        { id: 'vmess',      name: 'VMess',        desc: 'Classic V2Ray protocol',              color: '#3b82f6' },
-        { id: 'trojan',     name: 'Trojan',       desc: 'TLS-based, mimics HTTPS',             color: '#8b5cf6' },
-        { id: 'ss',         name: 'Shadowsocks',  desc: 'Fast symmetric encryption',           color: '#10b981' },
-        { id: 'ssr',        name: 'ShadowsocksR', desc: 'SS with additional obfuscation',      color: '#f59e0b' },
-        { id: 'hy2',        name: 'Hysteria2',    desc: 'QUIC-based, optimized for speed',     color: '#06b6d4' },
-        { id: 'tuic',       name: 'TUIC',         desc: 'QUIC-based, low latency',             color: '#ec4899' },
-        { id: 'cloudflare', name: 'Cloudflare',   desc: 'Configs routed through Cloudflare',   color: '#f97316' },
+    const protocolMeta = {
+        vless:      { name: 'VLESS',       desc: 'Modern, lightweight protocol',        color: '#f43f5e' },
+        vmess:      { name: 'VMess',       desc: 'Classic V2Ray protocol',              color: '#3b82f6' },
+        trojan:     { name: 'Trojan',      desc: 'TLS-based, mimics HTTPS',             color: '#8b5cf6' },
+        ss:         { name: 'Shadowsocks', desc: 'Fast symmetric encryption',           color: '#10b981' },
+        hy2:        { name: 'Hysteria2',   desc: 'QUIC-based, optimized for speed',     color: '#06b6d4' },
+        warp:       { name: 'Warp',        desc: 'Cloudflare WARP over WireGuard',      color: '#f6821f' },
+        tuic:       { name: 'TUIC',        desc: 'QUIC-based, low latency',             color: '#ec4899' },
+        cloudflare: { name: 'Cloudflare',  desc: 'Configs routed through Cloudflare — suitable for PattNG and v2rayNG clients, thanks to the finalmask and cipher suites parameters.', color: '#f97316' },
+    };
+    const protocolOrder = ['vless', 'vmess', 'trojan', 'ss', 'hy2', 'warp', 'tuic', 'cloudflare'];
+    const fallbackProtocols = ['vless', 'vmess', 'trojan', 'ss', 'hy2', 'warp', 'cloudflare'];
+
+    const fallbackCountries = [
+        { code: 'US', name: 'United States' }, { code: 'DE', name: 'Germany' },
+        { code: 'NL', name: 'Netherlands' }, { code: 'GB', name: 'United Kingdom' },
+        { code: 'FR', name: 'France' }, { code: 'CA', name: 'Canada' },
+        { code: 'SG', name: 'Singapore' }, { code: 'JP', name: 'Japan' },
+        { code: 'SE', name: 'Sweden' }, { code: 'CH', name: 'Switzerland' },
+        { code: 'RU', name: 'Russia' }, { code: 'IN', name: 'India' },
     ];
 
-    const countries = [
-        { code: 'US', name: 'United States', flag: '🇺🇸' },
-        { code: 'DE', name: 'Germany',       flag: '🇩🇪' },
-        { code: 'NL', name: 'Netherlands',   flag: '🇳🇱' },
-        { code: 'GB', name: 'United Kingdom',flag: '🇬🇧' },
-        { code: 'FR', name: 'France',        flag: '🇫🇷' },
-        { code: 'CA', name: 'Canada',        flag: '🇨🇦' },
-        { code: 'SG', name: 'Singapore',     flag: '🇸🇬' },
-        { code: 'JP', name: 'Japan',         flag: '🇯🇵' },
-        { code: 'SE', name: 'Sweden',        flag: '🇸🇪' },
-        { code: 'CH', name: 'Switzerland',   flag: '🇨🇭' },
-        { code: 'RU', name: 'Russia',        flag: '🇷🇺' },
-        { code: 'IN', name: 'India',         flag: '🇮🇳' },
-    ];
+    let allCountries = [];
+    let roseStats = null;
 
-    function subCard(title, url, subtitle, dotColor = '#f43f5e') {
+    function flagEmoji(code) {
+        if (!code || code.length !== 2) return '🌐';
+        return String.fromCodePoint(...[...code.toUpperCase()].map(c => 127397 + c.charCodeAt(0)));
+    }
+
+    function countryName(code) {
+        if (code === 'Unknown') return 'Unknown';
+        try {
+            return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) || code;
+        } catch (e) {
+            return code;
+        }
+    }
+
+    function formatSize(bytes) {
+        if (!bytes) return '';
+        return bytes < 1024 ? bytes + ' B' : (bytes / 1024).toFixed(1) + ' KB';
+    }
+
+    function subCard(title, url, subtitle, dotColor = '#f43f5e', badge = '') {
+        const badgeHtml = badge ? `<span class="badge bg-white/5 text-zinc-400 border border-white/5">${badge}</span>` : '';
         return `
             <div class="link-row flex items-start gap-3 p-4 bg-black/30 border border-white/5 rounded-xl">
                 <div class="flex-1 min-w-0">
-                    <div class="flex items-center gap-2 mb-1">
+                    <div class="flex items-center gap-2 mb-1 flex-wrap">
                         <span class="proto-dot" style="background:${dotColor}"></span>
                         <span class="text-sm font-semibold">${title}</span>
+                        ${badgeHtml}
                     </div>
                     <div class="text-xs text-zinc-500 mb-0.5">${subtitle}</div>
                     <div class="text-[11px] text-zinc-600 font-mono truncate">${url}</div>
                 </div>
-                <button onclick="copyLink(this, '${url}')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold whitespace-nowrap shrink-0">Copy</button>
+                <button onclick="copyLink(this, '${url}')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold whitespace-nowrap shrink-0" aria-label="Copy ${title} subscription link">Copy</button>
             </div>
         `;
     }
 
+    function splitCount() {
+        const total = roseStats && roseStats.total ? roseStats.total : 0;
+        return total > 0 ? Math.max(1, Math.ceil(total / 800)) : 3;
+    }
+
     function renderSplitSubs() {
         const el = document.getElementById('split-subs');
-        el.innerHTML = [1, 2, 3].map(i =>
+        el.innerHTML = Array.from({ length: splitCount() }, (_, i) => i + 1).map(i =>
             subCard(`Sub${i}.txt`, `${REPO}/Sub${i}.txt`, `Split bundle #${i}`, '#8b5cf6')
         ).join('');
     }
 
     function renderBase64Subs() {
         const el = document.getElementById('base64-subs');
-        el.innerHTML = [1, 2, 3].map(i =>
+        el.innerHTML = Array.from({ length: splitCount() }, (_, i) => i + 1).map(i =>
             subCard(`Sub${i}_base64.txt`, `${REPO}/Base64/Sub${i}_base64.txt`, `Base64 bundle #${i}`, '#f59e0b')
         ).join('');
     }
 
-    function renderProtocols() {
+    function protocolBadge(id) {
+        if (!roseStats || !roseStats.byProtocol) return '';
+        const key = id === 'hy2' ? 'hy2' : id;
+        const n = roseStats.byProtocol[key];
+        return typeof n === 'number' ? `${n.toLocaleString()} configs` : '';
+    }
+
+    function renderProtocols(ids) {
         const el = document.getElementById('protocol-list');
-        el.innerHTML = protocols.map(p =>
-            subCard(p.name, `${REPO}/By-protocol/${p.id}.txt`, p.desc, p.color)
-        ).join('');
+        el.innerHTML = ids.map(id => {
+            const p = protocolMeta[id];
+            return subCard(p.name, `${REPO}/By-protocol/${id}.txt`, p.desc, p.color, protocolBadge(id));
+        }).join('');
+        const statEl = document.getElementById('stat-protocols');
+        if (statEl) statEl.textContent = ids.length;
+    }
+
+    async function loadProtocols() {
+        renderProtocols(fallbackProtocols);
+        try {
+            const res = await fetch(`${API}/By-protocol?ref=main`);
+            if (!res.ok) return;
+            const files = await res.json();
+            const present = new Set(files.filter(f => f.type === 'file' && f.name.endsWith('.txt')).map(f => f.name.slice(0, -4)));
+            const ids = protocolOrder.filter(id => present.has(id));
+            if (ids.length) renderProtocols(ids);
+        } catch (e) { /* keep fallback list */ }
+    }
+
+    function countryCard(c) {
+        const url = `${REPO}/By-country/${c.code}.txt`;
+        const size = c.size ? `<div class="text-[11px] text-zinc-600">${formatSize(c.size)}</div>` : '';
+        return `
+            <div class="link-row country-row flex items-center gap-3 p-3 bg-black/30 border border-white/5 rounded-xl" data-search="${(c.name + ' ' + c.code).toLowerCase()}">
+                <div class="text-2xl leading-none">${flagEmoji(c.code)}</div>
+                <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold truncate">${c.name}</div>
+                    <div class="text-[11px] text-zinc-500 font-mono truncate">${c.code}.txt</div>
+                    ${size}
+                </div>
+                <button onclick="copyLink(this, '${url}')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold shrink-0" aria-label="Copy ${c.name} subscription link">Copy</button>
+            </div>
+        `;
     }
 
     function renderCountries() {
         const el = document.getElementById('country-list');
-        el.innerHTML = countries.map(c => {
-            const url = `${REPO}/By-country/${c.code}.txt`;
-            return `
-                <div class="link-row flex items-center gap-3 p-3 bg-black/30 border border-white/5 rounded-xl">
-                    <div class="text-2xl leading-none">${c.flag}</div>
-                    <div class="flex-1 min-w-0">
-                        <div class="text-sm font-semibold">${c.name}</div>
-                        <div class="text-[11px] text-zinc-500 font-mono truncate">${c.code}.txt</div>
-                    </div>
-                    <button onclick="copyLink(this, '${url}')" class="copy-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold shrink-0">Copy</button>
-                </div>
-            `;
-        }).join('');
+        el.innerHTML = allCountries.map(countryCard).join('');
+        const countEl = document.getElementById('country-count');
+        if (countEl) countEl.textContent = `${allCountries.length} countries`;
     }
 
-    function copyLink(btn, url) {
-        navigator.clipboard.writeText(url).then(() => {
+    function filterCountries(query) {
+        const q = (query || '').trim().toLowerCase();
+        let visible = 0;
+        document.querySelectorAll('.country-row').forEach(row => {
+            const show = !q || row.dataset.search.includes(q);
+            row.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        const empty = document.getElementById('country-empty');
+        if (empty) empty.classList.toggle('hidden', visible !== 0);
+    }
+
+    function copyAllCountries(btn) {
+        const links = allCountries.map(c => `${REPO}/By-country/${c.code}.txt`).join('\n');
+        copyText(btn, links, 'Copied all!');
+    }
+
+    async function loadCountries() {
+        try {
+            const res = await fetch(`${API}/By-country?ref=main`);
+            if (!res.ok) throw new Error('api');
+            const files = await res.json();
+            allCountries = files
+                .filter(f => f.type === 'file' && f.name.endsWith('.txt'))
+                .map(f => {
+                    const code = f.name.slice(0, -4);
+                    return { code, name: countryName(code), size: f.size };
+                })
+                .sort((a, b) => {
+                    if (a.code === 'Unknown') return 1;
+                    if (b.code === 'Unknown') return -1;
+                    return a.name.localeCompare(b.name);
+                });
+        } catch (e) {
+            allCountries = fallbackCountries;
+        }
+        renderCountries();
+    }
+
+    async function loadStats() {
+        try {
+            const res = await fetch(`${REPO}/UPDATE_SUMMARY.md`);
+            if (!res.ok) return;
+            const text = await res.text();
+            const totalMatch = text.match(/Total unique configurations:\s*(\d+)/);
+            const dateMatch = text.match(/Generated on:\s*(.+)/);
+            const byProtocol = {};
+            for (const m of text.matchAll(/-\s*(vmess|vless|trojan|ss|ssr|hy2|tuic|warp):\s*(\d+)\s*configs/g)) {
+                byProtocol[m[1]] = parseInt(m[2], 10);
+            }
+            roseStats = { total: totalMatch ? parseInt(totalMatch[1], 10) : 0, byProtocol };
+            if (roseStats.total) {
+                document.getElementById('stat-total').textContent = roseStats.total.toLocaleString();
+            }
+            if (dateMatch) {
+                const el = document.getElementById('last-updated');
+                if (el) el.querySelector('span:last-child').textContent = 'Updated ' + dateMatch[1].trim();
+            }
+            renderSplitSubs();
+            renderBase64Subs();
+            loadProtocols();
+        } catch (e) { /* keep placeholders */ }
+    }
+
+    function copyText(btn, text, doneLabel) {
+        const done = () => {
             const original = btn.textContent;
-            btn.textContent = 'Copied!';
+            btn.textContent = doneLabel || 'Copied!';
             btn.classList.add('copied');
             setTimeout(() => {
                 btn.textContent = original;
                 btn.classList.remove('copied');
             }, 1500);
-        });
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+        } else {
+            fallbackCopy(text, done);
+        }
+    }
+
+    function fallbackCopy(text, done) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* noop */ }
+        document.body.removeChild(ta);
+    }
+
+    function copyLink(btn, url) {
+        copyText(btn, url);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         renderSplitSubs();
         renderBase64Subs();
-        renderProtocols();
-        renderCountries();
+        loadProtocols();
+        loadCountries();
+        loadStats();
 
         document.querySelectorAll('.tab-button').forEach(tab => {
             tab.addEventListener('click', () => {

@@ -1,6 +1,8 @@
 package converter
 
 import (
+	"encoding/base64"
+	"encoding/json"
 	"strings"
 	"testing"
 )
@@ -274,5 +276,86 @@ func TestWGIdentitySchemeIndependent(t *testing.T) {
 	}
 	if GetProtocol(warp) != "wireguard" || GetProtocol(wgExample) != "wireguard" {
 		t.Fatal("warp:// and wireguard:// must both map to wireguard protocol")
+	}
+}
+
+// --- CoreIdentity (dedup) ---
+
+func mustIdentity(t *testing.T, link string) string {
+	t.Helper()
+	id, err := CoreIdentity(link)
+	if err != nil {
+		t.Fatalf("CoreIdentity(%q): %v", link, err)
+	}
+	return id
+}
+
+func TestCoreIdentityVLESSDistinctParams(t *testing.T) {
+	base := "vless://11111111-2222-3333-4444-555555555555@example.com:443?security=reality&pbk=AAA&sid=01&sni=example.com&type=tcp#One"
+	otherPBK := "vless://11111111-2222-3333-4444-555555555555@example.com:443?security=reality&pbk=BBB&sid=01&sni=example.com&type=tcp#Two"
+	otherPath := "vless://11111111-2222-3333-4444-555555555555@example.com:443?security=tls&type=ws&path=/a&host=cdn.example.com#Three"
+	if mustIdentity(t, base) == mustIdentity(t, otherPBK) {
+		t.Fatal("different Reality pbk must not share identity")
+	}
+	if mustIdentity(t, base) == mustIdentity(t, otherPath) {
+		t.Fatal("different transport/path must not share identity")
+	}
+	// Same config, different name, param order, host case, default type.
+	same := "vless://11111111-2222-3333-4444-555555555555@EXAMPLE.com:443?sni=example.com&sid=01&pbk=AAA&security=reality#Renamed"
+	if mustIdentity(t, base) != mustIdentity(t, same) {
+		t.Fatalf("spelling variants differ:\n%s\n%s", mustIdentity(t, base), mustIdentity(t, same))
+	}
+}
+
+func vmessLink(t *testing.T, fields map[string]any) string {
+	t.Helper()
+	b, err := json.Marshal(fields)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return "vmess://" + base64.StdEncoding.EncodeToString(b)
+}
+
+func TestCoreIdentityVMessDistinctUUID(t *testing.T) {
+	a := vmessLink(t, map[string]any{"v": "2", "ps": "A", "add": "1.2.3.4", "port": "443", "id": "11111111-2222-3333-4444-555555555555", "aid": "0", "scy": "auto", "net": "ws", "type": "none", "host": "cdn.example.com", "path": "/ws", "tls": "tls", "sni": "example.com"})
+	b := vmessLink(t, map[string]any{"v": "2", "ps": "B", "add": "1.2.3.4", "port": "443", "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee", "aid": "0", "scy": "auto", "net": "ws", "type": "none", "host": "cdn.example.com", "path": "/ws", "tls": "tls", "sni": "example.com"})
+	c := vmessLink(t, map[string]any{"v": "2", "ps": "Renamed", "add": "1.2.3.4", "port": 443, "id": "11111111-2222-3333-4444-555555555555", "aid": "0", "scy": "auto", "net": "ws", "type": "none", "host": "cdn.example.com", "path": "/ws", "tls": "tls", "sni": "example.com"})
+	if mustIdentity(t, a) == mustIdentity(t, b) {
+		t.Fatal("different vmess UUID on same host:port must not share identity")
+	}
+	if mustIdentity(t, a) != mustIdentity(t, c) {
+		t.Fatal("vmess ps/port-type variants of same config must share identity")
+	}
+}
+
+func TestCoreIdentityTrojanDistinctPassword(t *testing.T) {
+	a := "trojan://pass-one@example.com:443?sni=example.com#One"
+	b := "trojan://pass-two@example.com:443?sni=example.com#Two"
+	c := "trojan://pass-one@EXAMPLE.com:443?sni=example.com&security=tls#Renamed"
+	if mustIdentity(t, a) == mustIdentity(t, b) {
+		t.Fatal("different trojan password on same host:port must not share identity")
+	}
+	if mustIdentity(t, a) != mustIdentity(t, c) {
+		t.Fatal("trojan spelling variants must share identity")
+	}
+}
+
+func TestCoreIdentitySSLegacyVsSIP002(t *testing.T) {
+	legacy := "ss://" + base64.StdEncoding.EncodeToString([]byte("aes-256-gcm:secret@example.com:8388")) + "#Legacy"
+	sip002 := "ss://" + base64.StdEncoding.EncodeToString([]byte("aes-256-gcm:secret")) + "@example.com:8388#SIP002"
+	other := "ss://" + base64.StdEncoding.EncodeToString([]byte("aes-256-gcm:other")) + "@example.com:8388#Other"
+	if mustIdentity(t, legacy) != mustIdentity(t, sip002) {
+		t.Fatalf("legacy and SIP002 spellings differ:\n%s\n%s", mustIdentity(t, legacy), mustIdentity(t, sip002))
+	}
+	if mustIdentity(t, legacy) == mustIdentity(t, other) {
+		t.Fatal("different SS password on same host:port must not share identity")
+	}
+}
+
+func TestCoreIdentityTUICDistinctUUID(t *testing.T) {
+	a := "tuic://11111111-2222-3333-4444-555555555555:pass@example.com:443?sni=example.com&alpn=h3#One"
+	b := "tuic://aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:pass@example.com:443?sni=example.com&alpn=h3#Two"
+	if mustIdentity(t, a) == mustIdentity(t, b) {
+		t.Fatal("different TUIC UUID on same host:port must not share identity")
 	}
 }
