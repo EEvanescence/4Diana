@@ -8,6 +8,8 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -31,7 +33,59 @@ type Result struct {
 const (
 	exitIPURL     = "http://www.cloudflare.com/cdn-cgi/trace"
 	exitIPTimeout = 4 * time.Second
+
+	// wgSettleDelay is how long a WireGuard test waits after cancelling the
+	// request and closing its connections before closing the Xray instance.
+	// xray-core v1.260327.0's wireguard netBind.Close() is not idempotent
+	// (it closes a channel without a guard), and the dispatch goroutine
+	// closes the bind again on its error path; closing the instance while
+	// that goroutine is still tearing down panics the whole run with
+	// "close of closed channel". The settle delay lets the goroutine
+	// finish first. It only applies to WireGuard tests.
+	wgSettleDelay = 300 * time.Millisecond
+
+	// wgDNSResolveTimeout bounds the endpoint pre-resolution below.
+	wgDNSResolveTimeout = 3 * time.Second
 )
+
+// isWGLink reports whether the link uses the WireGuard outbound.
+func isWGLink(link string) bool {
+	return strings.HasPrefix(link, "wireguard://") || strings.HasPrefix(link, "warp://")
+}
+
+// wgConcurrency caps how many WireGuard instances may be tested at once.
+// Each WG test builds a full netstack device, and hundreds of them at
+// once (the general worker pool defaults to 400) exhaust file
+// descriptors and DNS capacity, which makes xray-core's device setup
+// fail — the exact path that double-closes the bind and panics.
+// Override with ROSE_WG_CONCURRENCY.
+func wgConcurrency() int {
+	if v := os.Getenv("ROSE_WG_CONCURRENCY"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil && n >= 1 {
+			return n
+		}
+	}
+	return 4
+}
+
+// wgEndpointResolvable pre-resolves a WireGuard peer endpoint host.
+// Configs whose endpoint does not resolve would fail inside xray-core's
+// device setup, whose error path double-closes the bind and panics the
+// whole process (see wgSettleDelay). Failing them here keeps that buggy
+// path unreachable; the outcome is the same failed test.
+func wgEndpointResolvable(ctx context.Context, link string) bool {
+	cfg, err := converter.ParseWG(link)
+	if err != nil {
+		return false
+	}
+	if net.ParseIP(cfg.Host) != nil {
+		return true
+	}
+	ctx, cancel := context.WithTimeout(ctx, wgDNSResolveTimeout)
+	defer cancel()
+	addrs, err := net.DefaultResolver.LookupHost(ctx, cfg.Host)
+	return err == nil && len(addrs) > 0
+}
 
 func TestAll(ctx context.Context, links []string, testURL string, timeoutSec, concurrent int, onPass func(Result)) []Result {
 	timeout := time.Duration(timeoutSec) * time.Second
@@ -42,6 +96,7 @@ func TestAll(ctx context.Context, links []string, testURL string, timeoutSec, co
 	}
 
 	sem := make(chan struct{}, concurrent)
+	wgSem := make(chan struct{}, wgConcurrency())
 	var wg sync.WaitGroup
 	var done, working atomic.Int64
 	total := int64(len(links))
@@ -65,6 +120,11 @@ func TestAll(ctx context.Context, links []string, testURL string, timeoutSec, co
 				}
 			}()
 
+			if isWGLink(l) {
+				wgSem <- struct{}{}
+				defer func() { <-wgSem }()
+			}
+
 			delay, exitIP := testOne(ctx, l, testURL, timeout)
 			results[idx].DelayMs = delay
 			results[idx].ExitIP = exitIP
@@ -87,6 +147,11 @@ func TestAll(ctx context.Context, links []string, testURL string, timeoutSec, co
 }
 
 func testOne(ctx context.Context, link, testURL string, timeout time.Duration) (int, string) {
+	isWG := isWGLink(link)
+	if isWG && !wgEndpointResolvable(ctx, link) {
+		return -1, ""
+	}
+
 	outbound, err := converter.ConvertLink(link)
 	if err != nil {
 		return -1, ""
@@ -117,7 +182,42 @@ func testOne(ctx context.Context, link, testURL string, timeout time.Duration) (
 	if err := instance.Start(); err != nil {
 		return -1, ""
 	}
-	defer instance.Close()
+
+	var (
+		cancel  context.CancelFunc
+		client  *http.Client
+		connsMu sync.Mutex
+		conns   []net.Conn
+	)
+
+	// shutdown tears the instance down in an order that keeps xray-core's
+	// WireGuard handler from double-closing its bind (see wgSettleDelay):
+	// cancel the request, close every dialed connection, give the
+	// dispatch goroutine a moment to finish, then close the instance.
+	// The recover guards this goroutine's own close path; the settle
+	// delay is what protects the dispatch goroutine, which no recover
+	// here could catch.
+	shutdown := func() {
+		if cancel != nil {
+			cancel()
+		}
+		if client != nil {
+			client.CloseIdleConnections()
+		}
+		connsMu.Lock()
+		for _, c := range conns {
+			_ = c.Close()
+		}
+		connsMu.Unlock()
+		if isWG {
+			time.Sleep(wgSettleDelay)
+		}
+		func() {
+			defer func() { _ = recover() }()
+			_ = instance.Close()
+		}()
+	}
+	defer shutdown()
 
 	dialer := func(dialCtx context.Context, network, addr string) (net.Conn, error) {
 		host, portStr, err := net.SplitHostPort(addr)
@@ -129,10 +229,16 @@ func testOne(ctx context.Context, link, testURL string, timeout time.Duration) (
 			return nil, err
 		}
 		dest := xnet.TCPDestination(xnet.ParseAddress(host), xnet.Port(port))
-		return xcore.Dial(dialCtx, instance, dest)
+		conn, err := xcore.Dial(dialCtx, instance, dest)
+		if err == nil {
+			connsMu.Lock()
+			conns = append(conns, conn)
+			connsMu.Unlock()
+		}
+		return conn, err
 	}
 
-	client := &http.Client{
+	client = &http.Client{
 		Transport: &http.Transport{
 			DialContext:       dialer,
 			DisableKeepAlives: true,
@@ -143,8 +249,8 @@ func testOne(ctx context.Context, link, testURL string, timeout time.Duration) (
 		},
 	}
 
-	reqCtx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
+	reqCtx, cancelFn := context.WithTimeout(ctx, timeout)
+	cancel = cancelFn
 
 	req, err := http.NewRequestWithContext(reqCtx, "GET", testURL, nil)
 	if err != nil {
@@ -157,9 +263,15 @@ func testOne(ctx context.Context, link, testURL string, timeout time.Duration) (
 		return -1, ""
 	}
 	defer resp.Body.Close()
+	delay := int(time.Since(start).Milliseconds())
+
+	// Drain the body so the transport finishes with the connection
+	// deterministically instead of leaving the dispatch goroutine
+	// mid-teardown when the instance closes.
+	_, _ = io.Copy(io.Discard, io.LimitReader(resp.Body, 1<<20))
 
 	if resp.StatusCode == http.StatusOK || resp.StatusCode == http.StatusNoContent {
-		return int(time.Since(start).Milliseconds()), fetchExitIP(ctx, client)
+		return delay, fetchExitIP(ctx, client)
 	}
 	return -1, ""
 }
