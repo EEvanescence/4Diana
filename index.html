@@ -224,6 +224,24 @@
         </div>
 
         <div class="glass rounded-2xl p-6">
+            <h3 class="text-lg font-semibold mb-1">Clash Meta</h3>
+            <p class="text-sm text-zinc-500 mb-5">Ready-to-import Clash Meta config (Clash Meta for Android, FlClash, Mihomo) — live-tested VMess/VLESS/Trojan/Hysteria2 proxies with a single auto-select (url-test) group that always uses the fastest. No routing rules beyond the final MATCH.</p>
+            <div class="link-row flex items-center gap-3 p-4 bg-black/30 border border-white/5 rounded-xl">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="badge bg-violet-500/10 text-violet-300 border border-violet-500/20">
+                            <span class="proto-dot bg-violet-400"></span>
+                            Clash
+                        </span>
+                        <span class="text-sm font-semibold">Clash.yaml</span>
+                    </div>
+                    <div class="text-xs text-zinc-500 font-mono truncate">https://raw.githubusercontent.com/EEvanescence/4Diana/main/Clash.yaml</div>
+                </div>
+                <button onclick="copyLink(this, 'https://raw.githubusercontent.com/EEvanescence/4Diana/main/Clash.yaml')" class="copy-btn px-4 py-2 rounded-lg bg-white/5 hover:bg-rose-500/10 hover:text-rose-300 text-xs font-semibold">Copy</button>
+            </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
             <h3 class="text-lg font-semibold mb-1">Split Subscriptions</h3>
             <p class="text-sm text-zinc-500 mb-5">Smaller files (~500 configs each) for clients with size limits.</p>
             <div class="grid md:grid-cols-2 gap-3" id="split-subs"></div>

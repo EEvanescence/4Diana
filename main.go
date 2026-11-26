@@ -403,6 +403,7 @@ func run(args []string) error {
 	writeUpdateSummary(len(filteredConfigs), stats, processingTime, originalCount, fstats, failedLinks)
 	sortConfigs(filteredConfigs)
 	writeCloudflareFile(filteredConfigs)
+	writeClashFile(working, filteredConfigs)
 	return nil
 }
 
