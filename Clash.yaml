@@ -1,0 +1,5728 @@
+# Rose — Clash Meta configuration (auto-generated, do not edit)
+# Live-tested proxies with a single url-test group: the client
+# health-checks them and uses the fastest. No routing rules
+# beyond the final MATCH.
+
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: warning
+ipv6: true
+
+proxies:
+  - name: "Rose | 🇺🇸 US | VLESS | 5971"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision-udp443"
+    tls: true
+    servername: "www.cloudflare.com"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 864"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 4626"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 2366"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 4550"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 4743"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 5058"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 6763"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 4835"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 6210"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 5248"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 5676"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6587"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    alpn: ["networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-"]
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 834"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 5599"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6588"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 1990"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5884"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 6167"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 650"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 651"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 5586"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5667"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5765"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5779"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 657"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 807"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 1603"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 2304"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 3357"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 1660"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 656"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 6168"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 658"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 2055"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 10443
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 7239"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 10443
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 653"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VLESS | 655"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 5788"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 2054"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 10443
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5592"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 654"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 1996"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 652"
+    type: "vless"
+    server: "47.253.226.114"
+    port: 443
+    uuid: "055a1ce8-2a16-4a0d-a2c2-22826c9b2413"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc"
+  - name: "Rose | 🇺🇸 US | VMESS | 1867"
+    type: "vmess"
+    server: "38.91.100.16"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VMESS | 5818"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5749"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 2062"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VMESS | 3621"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5617"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6275"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 2475"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    alpn: ["networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-"]
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 3737"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    alpn: ["http/1.1"]
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 4542"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VMESS | 5661"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6278"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    alpn: ["http/1.1"]
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 7240"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 14430
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+    network: "ws"
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: "45.138.100.248"
+  - name: "Rose | 🇺🇸 US | VLESS | 2057"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇮🇱 IL | VLESS | 2477"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇮🇱 IL | VLESS | 4507"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 872"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    alpn: ["http/1.1"]
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇮🇱 IL | VLESS | 881"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 3135"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 4167"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | VLESS | 7273"
+    type: "vless"
+    server: "courses.mftplus.qzz.io"
+    port: 2096
+    uuid: "b9ede7a5-5b4b-4aee-ac37-2c307e587e47"
+    udp: true
+    tls: true
+    servername: "courses.mftplus.qzz.io"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0="
+      headers:
+        Host: "courses.mftplus.qzz.io"
+  - name: "Rose | 🇮🇱 IL | VLESS | 882"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 2090"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 3465"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 5555"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 14430
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+    network: "ws"
+    ws-opts:
+      path: "/vless"
+  - name: "Rose | 🇺🇸 US | VMESS | 5790"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 2056"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 14430
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+    network: "ws"
+    ws-opts:
+      path: "/vless"
+  - name: "Rose | 🇺🇸 US | VLESS | 4170"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 4172"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 1162"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 2034"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 10443
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 3383"
+    type: "vless"
+    server: "195.123.235.183"
+    port: 443
+    uuid: "c14ec728-3eca-4750-87fc-fd1e6aeb81d5"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "gateway.icloud.com"
+    reality-opts:
+      public-key: "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY"
+      short-id: "a0e2a6074c6456b0"
+  - name: "Rose | 🇺🇸 US | VLESS | 4166"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇮🇱 IL | VLESS | 4231"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 4920"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 2010"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇮🇱 IL | VLESS | 6289"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | TROJAN | 478"
+    type: "trojan"
+    server: "66.163.122.26"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇮🇱 IL | VLESS | 880"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 1455"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 14430
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+    network: "ws"
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: "45.138.100.248"
+  - name: "Rose | 🇺🇸 US | VMESS | 1868"
+    type: "vmess"
+    server: "38.91.100.69"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 2058"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VMESS | 3646"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 3723"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇮🇱 IL | VLESS | 4513"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | TROJAN | 688"
+    type: "trojan"
+    server: "66.163.122.25"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 803"
+    type: "vless"
+    server: "195.123.235.183"
+    port: 443
+    uuid: "c14ec728-3eca-4750-87fc-fd1e6aeb81d5"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "gateway.icloud.com"
+    reality-opts:
+      public-key: "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY"
+      short-id: "a0e2a6074c6456b0"
+  - name: "Rose | 🇺🇸 US | VLESS | 873"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3215"
+    type: "trojan"
+    server: "66.163.122.26"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4163"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 4168"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 4173"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇮🇱 IL | VLESS | 4230"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | TROJAN | 1204"
+    type: "trojan"
+    server: "66.163.122.30"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 2310"
+    type: "trojan"
+    server: "66.163.122.7"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VMESS | 3115"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 3219"
+    type: "trojan"
+    server: "66.163.122.7"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3242"
+    type: "trojan"
+    server: "66.163.122.30"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4160"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 4171"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 4778"
+    type: "vless"
+    server: "195.123.235.183"
+    port: 443
+    uuid: "c14ec728-3eca-4750-87fc-fd1e6aeb81d5"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "gateway.icloud.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY"
+      short-id: "a0e2a6074c6456b0"
+  - name: "Rose | 🇺🇸 US | TROJAN | 594"
+    type: "trojan"
+    server: "66.163.122.26"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 1202"
+    type: "trojan"
+    server: "66.163.122.25"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 2308"
+    type: "trojan"
+    server: "66.163.122.30"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3230"
+    type: "trojan"
+    server: "66.163.122.25"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4174"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 5116"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 10443
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 5719"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 811"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 871"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | TROJAN | 1207"
+    type: "trojan"
+    server: "66.163.122.7"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3345"
+    type: "trojan"
+    server: "66.163.122.25"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3346"
+    type: "trojan"
+    server: "66.163.122.26"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3349"
+    type: "trojan"
+    server: "66.163.122.30"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3446"
+    type: "trojan"
+    server: "66.163.122.7"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "firefox"
+  - name: "Rose | 🇺🇸 US | VLESS | 1475"
+    type: "vless"
+    server: "195.123.235.183"
+    port: 443
+    uuid: "c14ec728-3eca-4750-87fc-fd1e6aeb81d5"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "gateway.icloud.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY"
+      short-id: "a0e2a6074c6456b0"
+  - name: "Rose | 🇺🇸 US | TROJAN | 1973"
+    type: "trojan"
+    server: "66.163.122.25"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 2061"
+    type: "vless"
+    server: "45.138.100.248"
+    port: 14430
+    uuid: "ae908ff5-f749-402c-af25-e6e9aef4d6bb"
+    udp: true
+    network: "ws"
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: "45.138.100.248"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3343"
+    type: "trojan"
+    server: "66.163.122.113"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 6780"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    alpn: ["http/1.1"]
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VMESS | 809"
+    type: "vmess"
+    server: "67.220.85.46"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇮🇱 IL | VLESS | 2026"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 2059"
+    type: "vless"
+    server: "195.123.235.183"
+    port: 443
+    uuid: "c14ec728-3eca-4750-87fc-fd1e6aeb81d5"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "gateway.icloud.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY"
+      short-id: "a0e2a6074c6456b0"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3257"
+    type: "trojan"
+    server: "66.163.122.113"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | VLESS | 4096"
+    type: "vless"
+    server: "www.gco.gov.qa"
+    port: 8443
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 4162"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 7258"
+    type: "vless"
+    server: "208.103.161.2"
+    port: 2083
+    uuid: "b398ddde-edd8-4ba9-a218-eebd136913ad"
+    udp: true
+    tls: true
+    servername: "ZGqHW1lxrVKVdFe0t.17ys7jQ251.woRKeRs.DEV"
+    client-fingerprint: "firefox"
+    network: "ws"
+    ws-opts:
+      path: "/"
+  - name: "Rose | 🇺🇸 US | VMESS | 810"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 1203"
+    type: "trojan"
+    server: "66.163.122.30"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 1476"
+    type: "vless"
+    server: "195.123.235.183"
+    port: 443
+    uuid: "c14ec728-3eca-4750-87fc-fd1e6aeb81d5"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "gateway.icloud.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY"
+      short-id: "a0e2a6074c6456b0"
+  - name: "Rose | 🇺🇸 US | VLESS | 2022"
+    type: "vless"
+    server: "169.40.42.229"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇮🇱 IL | VLESS | 2478"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | TROJAN | 5307"
+    type: "trojan"
+    server: "66.163.122.46"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇸🇬 SG | VLESS | 7274"
+    type: "vless"
+    server: "courses.mftplus.qzz.io"
+    port: 2096
+    uuid: "b9ede7a5-5b4b-4aee-ac37-2c307e587e47"
+    udp: true
+    tls: true
+    servername: "courses.mftplus.qzz.io"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0"
+  - name: "Rose | 🇺🇸 US | VLESS | 804"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VMESS | 808"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "none"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 2075"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    alpn: ["networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-channel@.networld_vpn-"]
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3348"
+    type: "trojan"
+    server: "66.163.122.30"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | VLESS | 4078"
+    type: "vless"
+    server: "japan.com"
+    port: 2053
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | TROJAN | 1206"
+    type: "trojan"
+    server: "66.163.122.46"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 2305"
+    type: "trojan"
+    server: "66.163.122.81"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 3828"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6276"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 7142"
+    type: "vless"
+    server: "www.gco.gov.qa"
+    port: 8443
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | TROJAN | 1201"
+    type: "trojan"
+    server: "66.163.122.113"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇮🇱 IL | VLESS | 3492"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | VLESS | 4087"
+    type: "vless"
+    server: "russia.com"
+    port: 2087
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | VLESS | 4097"
+    type: "vless"
+    server: "www.gov.se"
+    port: 443
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 6149"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 598"
+    type: "vless"
+    server: "45.144.112.55"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1120"
+    type: "vless"
+    server: "169.40.42.74"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VMESS | 1921"
+    type: "vmess"
+    server: "67.220.95.49"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VMESS | 3460"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | VLESS | 4088"
+    type: "vless"
+    server: "singapore.com"
+    port: 8443
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 4198"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 4814"
+    type: "trojan"
+    server: "66.163.122.113"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VMESS | 5596"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 1112"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3344"
+    type: "trojan"
+    server: "66.163.122.113"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3353"
+    type: "trojan"
+    server: "66.163.122.7"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 3808"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 4075"
+    type: "vless"
+    server: "fbi.gov"
+    port: 2087
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 2060"
+    type: "vless"
+    server: "195.123.235.183"
+    port: 443
+    uuid: "c14ec728-3eca-4750-87fc-fd1e6aeb81d5"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "gateway.icloud.com"
+    client-fingerprint: "chrome"
+    alpn: ["h2", "http/1.1"]
+    reality-opts:
+      public-key: "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY"
+      short-id: "a0e2a6074c6456b0"
+  - name: "Rose | 🇮🇱 IL | VLESS | 3493"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 3687"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 3823"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4943"
+    type: "vless"
+    server: "159.89.87.21"
+    port: 28190
+    uuid: "14c80e0e-f7ce-4991-94fc-99a1db4a9b1e"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "aws.amazon.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno"
+  - name: "Rose | 🇺🇸 US | VLESS | 6284"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6285"
+    type: "vless"
+    server: "169.40.42.74"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6298"
+    type: "vless"
+    server: "169.40.42.229"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 7275"
+    type: "vless"
+    server: "courses.mftplus.qzz.io"
+    port: 2096
+    uuid: "b9ede7a5-5b4b-4aee-ac37-2c307e587e47"
+    udp: true
+    tls: true
+    servername: "courses.mftplus.qzz.io"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0="
+  - name: "Rose | 🇺🇸 US | VLESS | 7405"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "qq"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1114"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1116"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1524"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VMESS | 1824"
+    type: "vmess"
+    server: "38.107.226.5"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 2074"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇮🇱 IL | VLESS | 3365"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇮🇱 IL | VLESS | 5215"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 7404"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1124"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4217"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4218"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4533"
+    type: "vless"
+    server: "169.40.42.74"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4955"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 2096
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp9.1145678.xyz"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "vp9.1145678.xyz"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6711"
+    type: "trojan"
+    server: "66.163.122.7"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 1109"
+    type: "vless"
+    server: "169.40.42.229"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1119"
+    type: "vless"
+    server: "169.40.42.74"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 1318"
+    type: "vless"
+    server: "leviko-us6278.shopingggg.ir"
+    port: 8443
+    uuid: "53bbdad4-2f4e-45db-8df4-fa491a6a7227"
+    udp: true
+    tls: true
+    servername: "freeceshi6.frii.site"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "freeceshi6.frii.site"
+  - name: "Rose | 🇺🇸 US | VMESS | 3372"
+    type: "vmess"
+    server: "38.107.226.5"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4188"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4190"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6712"
+    type: "trojan"
+    server: "66.163.122.81"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 1125"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VMESS | 1722"
+    type: "vmess"
+    server: "142.202.48.87"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4196"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4204"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4498"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4575"
+    type: "vless"
+    server: "169.40.42.163"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    alpn: ["h2", "http/1.1"]
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6280"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6302"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6431"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6710"
+    type: "trojan"
+    server: "66.163.122.26"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3347"
+    type: "trojan"
+    server: "66.163.122.30"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 4195"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6287"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6464"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 81"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision-udp443"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1108"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VMESS | 3450"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 3645"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6291"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6708"
+    type: "trojan"
+    server: "66.163.122.113"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 7407"
+    type: "vless"
+    server: "45.144.112.55"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision-udp443"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 7455"
+    type: "vless"
+    server: "medium.com"
+    port: 443
+    uuid: "f2a73750-3087-48ff-a763-1348c15dce68"
+    udp: true
+    tls: true
+    servername: "rayan-007.maxima.dpdns.org"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/XIXVPN?ed=2560"
+      headers:
+        Host: "rayan-007.maxima.dpdns.org"
+  - name: "Rose | 🇺🇸 US | VLESS | 1113"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VMESS | 1653"
+    type: "vmess"
+    server: "38.107.226.5"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 2541"
+    type: "vless"
+    server: "169.40.42.74"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 3120"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 3810"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4189"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6294"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6709"
+    type: "trojan"
+    server: "66.163.122.25"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 1205"
+    type: "trojan"
+    server: "66.163.122.46"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | VLESS | 4077"
+    type: "vless"
+    server: "icook.hk"
+    port: 443
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 6281"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1515"
+    type: "vless"
+    server: "169.40.42.163"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 4102"
+    type: "vless"
+    server: "www.wto.org"
+    port: 8443
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 4177"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 4207"
+    type: "vless"
+    server: "169.40.42.74"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 7253"
+    type: "vless"
+    server: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+    port: 443
+    uuid: "b2f2f9f2-1864-48ea-839b-22815faff1f1"
+    udp: true
+    tls: true
+    servername: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/fp=chrome"
+      headers:
+        Host: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 4205"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VMESS | 4482"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6141"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    alpn: ["networld_vpn-channel"]
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 1107"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3352"
+    type: "trojan"
+    server: "66.163.122.46"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "searchnationwidecareerchangehelperandguidancetoday.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4176"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 6494"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    alpn: ["channel"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | VLESS | 7398"
+    type: "vless"
+    server: "www.speedtest.net"
+    port: 443
+    uuid: "d4733e5a-5850-4523-942e-f28f82ebf4a9"
+    udp: true
+    tls: true
+    servername: "party-5cn.pages.dev"
+    network: "ws"
+    ws-opts:
+      path: "/"
+  - name: "Rose | 🇺🇸 US | VLESS | 4187"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 5130"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 2053
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp11.1145678.xyz"
+    client-fingerprint: "firefox"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "vp11.1145678.xyz"
+  - name: "Rose | 🇺🇸 US | VLESS | 6301"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6398"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6804"
+    type: "vless"
+    server: "199.68.156.123"
+    port: 443
+    uuid: "1d16c6e0-1bbe-435b-b661-90043fee999c"
+    udp: true
+    tls: true
+    servername: "notls.lukongtou.eu.org"
+    network: "ws"
+    ws-opts:
+      path: "Telegram-WangCai2"
+      headers:
+        Host: "notls.lukongtou.eu.org"
+  - name: "Rose | 🇺🇸 US | VLESS | 1533"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 3819"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4554"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 5325"
+    type: "vless"
+    server: "cctvhikvision.center"
+    port: 443
+    uuid: "e818a20d-9bcd-4744-9061-ca51b9c8aeea"
+    udp: true
+    tls: true
+    servername: "wallweb-4ez.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "wallweb-4ez.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 6578"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | VLESS | 1317"
+    type: "vless"
+    server: "leviko-us4350.shopingggg.ir"
+    port: 443
+    uuid: "53bbdad4-2f4e-45db-8df4-fa491a6a7227"
+    udp: true
+    tls: true
+    servername: "freeceshi6.frii.site"
+    alpn: ["http/1.1"]
+    network: "ws"
+    ws-opts:
+      path: "/proxyip"
+      headers:
+        Host: "freeceshi6.frii.site"
+  - name: "Rose | 🇺🇸 US | VLESS | 4182"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇮🇱 IL | VLESS | 5825"
+    type: "vless"
+    server: "185.95.231.156"
+    port: 443
+    uuid: "1f8cf47a-b66a-4916-979f-26edfcf44eea"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To"
+      short-id: "a3a578ab"
+  - name: "Rose | 🇺🇸 US | VLESS | 6493"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpnð©ò\u0096"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | TROJAN | 6729"
+    type: "trojan"
+    server: "www.wto.org"
+    port: 8443
+    password: "ec1fa47d-4eac-4b3f-8cae-4a2982d43e2f"
+    udp: true
+    sni: "jiangjc.pages.dev"
+    network: "ws"
+  - name: "Rose | 🇺🇸 US | VLESS | 6745"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn┘ç"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 1516"
+    type: "vless"
+    server: "169.40.42.163"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1697"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 5165"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 443
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp5.1145678.xyz"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "vp5.1145678.xyz"
+  - name: "Rose | 🇺🇸 US | VLESS | 5166"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 2087
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp2.1145678.xyz"
+    client-fingerprint: "edge"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "vp2.1145678.xyz"
+  - name: "Rose | VLESS | 7244"
+    type: "vless"
+    server: "mybb.com"
+    port: 443
+    uuid: "aebe5a70-0ca3-46ce-8208-8b5bab1346ce"
+    udp: true
+    tls: true
+    servername: "rayan-007.nastaran.dpdns.org"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "rayan-007.nastaran.dpdns.org"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1695"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 3110"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 3576"
+    type: "vless"
+    server: "84.32.129.127"
+    port: 443
+    uuid: "379b1f28-8109-43bc-9317-8f1f24cdc85b"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "opus.plus-hit.ru"
+    client-fingerprint: "edge"
+    reality-opts:
+      public-key: "N4UtYAhibzkb0n_U2Qmqze5-lZMQqDozqg7OCqvufGA"
+      short-id: "7c8e3d4a9b1f26d3"
+  - name: "Rose | 🇺🇸 US | VLESS | 4510"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5685"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5729"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5978"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6497"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "qq"
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | VLESS | 6807"
+    type: "vless"
+    server: "help1.digikala-aparat-zula.com"
+    port: 443
+    uuid: "20e565e1-3858-40bf-94e8-4ec9624fc985"
+    udp: true
+    tls: true
+    servername: "wallweb8.pages.dev"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "wallweb8.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 1534"
+    type: "vless"
+    server: "45.144.112.55"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1696"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 3363"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 3366"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | VMESS | 3657"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 4186"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5703"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5755"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "null"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5879"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5913"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6576"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    alpn: ["channel@VPNine1-channel@VPNine1-channel@VPNine1-channel@VPNine1-channel@VPNine1-channel@VPNine1-channel@VPNine1-channel@VPNine1╨⌐╥û"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | VLESS | 7383"
+    type: "vless"
+    server: "radar.cloudflare.com"
+    port: 8080
+    uuid: "cfa71937-73d5-4eb8-9b25-eadecd944803"
+    udp: true
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "sh-harand.shcharand00.workers.dev"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1615"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1816"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 3611"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 4040"
+    type: "vless"
+    server: "216.24.57.1"
+    port: 443
+    uuid: "974c2588-c1cd-43ac-8823-ce3d879b09fd"
+    udp: true
+    tls: true
+    servername: "somersby.pt.ex33r.eu.cc"
+    network: "ws"
+    ws-opts:
+      path: "/id-amz"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5770"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6574"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn┘Ç"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 6744"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpnщҗ"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇨🇦 CA | VMESS | 7518"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "null"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1819"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1820"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1821"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VLESS | 2530"
+    type: "vless"
+    server: "31.59.156.57"
+    port: 443
+    uuid: "c0742f77-5495-43bf-b007-88d368774d7c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "canadizian.harcho.shop"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "8J-SvgA_FEZG-T-dX5sV2zqnQm4-J6aT1LK6Kk-7pho"
+      short-id: "b3da8e3ebc600de3"
+  - name: "Rose | 🇨🇦 CA | VLESS | 3571"
+    type: "vless"
+    server: "31.59.156.57"
+    port: 443
+    uuid: "c0742f77-5495-43bf-b007-88d368774d7c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "canadizian.harcho.shop"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "8J-SvgA_FEZG-T-dX5sV2zqnQm4-J6aT1LK6Kk-7pho"
+      short-id: "b3da8e3ebc600de3"
+  - name: "Rose | 🇨🇦 CA | VMESS | 3612"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5680"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5934"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6392"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 6575"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 6577"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision-udp443"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpnЩҖ"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 6805"
+    type: "vless"
+    server: "199.68.156.123"
+    port: 443
+    uuid: "1d16c6e0-1bbe-435b-b661-90043fee999c"
+    udp: true
+    tls: true
+    servername: "notls.lukongtou.eu.org"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/Telegram-WangCai2"
+      headers:
+        Host: "notls.lukongtou.eu.org"
+  - name: "Rose | 🇺🇸 US | VMESS | 1776"
+    type: "vmess"
+    server: "172.111.38.246"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 3658"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 3669"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5701"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 3350"
+    type: "trojan"
+    server: "66.163.122.46"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "searchnationwidecareerchangehelperandguidancetoday.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | VMESS | 3626"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5723"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 6288"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    skip-cert-verify: true
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | VLESS | 7425"
+    type: "vless"
+    server: "hubspot.com"
+    port: 443
+    uuid: "e818a20d-9bcd-4744-9061-ca51b9c8aeea"
+    udp: true
+    tls: true
+    servername: "wallweb-4ez.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "wallweb-4ez.pages.dev"
+  - name: "Rose | 🇺🇸 US | TROJAN | 483"
+    type: "trojan"
+    server: "ipfast.kingmna.com"
+    port: 443
+    password: "Z-jckziI1rW4yrUMorrv0Q"
+    udp: true
+    sni: "cdn.akamai.steamstatic.com"
+    network: "ws"
+    ws-opts:
+      path: "/TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER"
+      headers:
+        Host: "loosnsj5aboijji.global.ssl.fastly.net"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1698"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 3656"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 4786"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5760"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 6172"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 459"
+    type: "trojan"
+    server: "216.152.155.176"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 465"
+    type: "trojan"
+    server: "216.152.155.59"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1706"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 3235"
+    type: "trojan"
+    server: "216.152.155.176"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 3667"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 3668"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 4864"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "edge"
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5649"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5916"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 6518"
+    type: "trojan"
+    server: "216.152.155.50"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 6554"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn╨⌐╥û"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1641"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1818"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 1987"
+    type: "trojan"
+    server: "216.152.155.23"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3220"
+    type: "trojan"
+    server: "216.152.155.59"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3226"
+    type: "trojan"
+    server: "216.152.155.50"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3248"
+    type: "trojan"
+    server: "216.152.155.54"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3323"
+    type: "trojan"
+    server: "216.152.155.176"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3327"
+    type: "trojan"
+    server: "216.152.155.54"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 3824"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 4718"
+    type: "trojan"
+    server: "216.152.155.50"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5588"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5604"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5684"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 5875"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 6170"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 6564"
+    type: "trojan"
+    server: "216.152.155.158"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "safari"
+  - name: "Rose | 🇺🇸 US | VLESS | 85"
+    type: "vless"
+    server: "169.40.42.35"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 461"
+    type: "trojan"
+    server: "216.152.155.23"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 463"
+    type: "trojan"
+    server: "216.152.155.50"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 730"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1817"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1823"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 1848"
+    type: "vmess"
+    server: "38.64.138.187"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 3111"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 3326"
+    type: "trojan"
+    server: "216.152.155.54"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 4310"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 16016
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | VLESS | 7193"
+    type: "vless"
+    server: "floral-grass-aa1e.dianawpewpek1.workers.dev"
+    port: 8443
+    uuid: "9047219a-470f-4a3f-b319-1178ae1a3c87"
+    udp: true
+    tls: true
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "floral-grass-aa1e.dianawpewpek1.workers.dev"
+  - name: "Rose | 🇺🇸 US | TROJAN | 612"
+    type: "trojan"
+    server: "216.152.155.54"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1822"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 3224"
+    type: "trojan"
+    server: "216.152.155.23"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5625"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 462"
+    type: "trojan"
+    server: "216.152.155.50"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 482"
+    type: "trojan"
+    server: "ipfast.kingmna.com"
+    port: 443
+    password: "Z-jckziI1rW4yrUMorrv0Q"
+    udp: true
+    sni: "cdn.akamai.steamstatic.com"
+    network: "ws"
+    ws-opts:
+      path: "/TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER"
+      headers:
+        Host: "looaboi4jji.global.ssl.fastly.net."
+  - name: "Rose | 🇨🇦 CA | VMESS | 729"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1705"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 2309"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | VLESS | 4065"
+    type: "vless"
+    server: "cf.008500.xyz"
+    port: 443
+    uuid: "5dc15e15-f285-4a9d-959b-0e4fbdd77b63"
+    udp: true
+    tls: true
+    servername: "powered-by-surena.configfarsi695fcfe8a2e58.workers.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "powered-by-surena.configfarsi695fcfe8a2e58.workers.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 6220"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6565"
+    type: "trojan"
+    server: "216.152.155.176"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "firefox"
+  - name: "Rose | 🇺🇸 US | VLESS | 6743"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpnù\u0080"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | VLESS | 6746"
+    type: "vless"
+    server: "167.17.69.171"
+    port: 443
+    uuid: "00144519-7e0d-476b-8d28-435576af9262"
+    udp: true
+    flow: "xtls-rprx-vision-udp443"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    alpn: ["channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpn-channel@networld_vpnщҗ"]
+    reality-opts:
+      public-key: "ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk"
+      short-id: "0990d22f"
+  - name: "Rose | 🇺🇸 US | TROJAN | 460"
+    type: "trojan"
+    server: "216.152.155.176"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1703"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 4067"
+    type: "vless"
+    server: "cf.090227.xyz"
+    port: 443
+    uuid: "5b374761-e26c-4117-8af8-5c637992fcbf"
+    udp: true
+    tls: true
+    servername: "vls.baiyi.cloudns.org"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "vls.baiyi.cloudns.org"
+  - name: "Rose | 🇺🇸 US | TROJAN | 4930"
+    type: "trojan"
+    server: "216.152.155.54"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 6295"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 18662
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6559"
+    type: "trojan"
+    server: "216.152.155.131"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "firefox"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6560"
+    type: "trojan"
+    server: "216.152.155.131"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "safari"
+  - name: "Rose | TROJAN | 6730"
+    type: "trojan"
+    server: "www.wto.org"
+    port: 8443
+    password: "ec1fa47d-4eac-4b3f-8cae-4a2982d43e2f"
+    udp: true
+    sni: "jiangjc.pages.dev"
+    network: "ws"
+    ws-opts:
+      path: "/"
+  - name: "Rose | 🇺🇸 US | VLESS | 7173"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 16016
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | 🇨🇦 CA | VMESS | 7538"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "null"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1699"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇨🇦 CA | VMESS | 1701"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 4308"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 16016
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5598"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VLESS | 4313"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 18662
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | 🇺🇸 US | VLESS | 5852"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | 🇺🇸 US | VLESS | 6218"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | 🇺🇸 US | VLESS | 3393"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | VLESS | 4098"
+    type: "vless"
+    server: "www.shopify.com"
+    port: 443
+    uuid: "7b102311-43fd-4e8f-877e-8090623c101d"
+    udp: true
+    tls: true
+    servername: "vp21.cc.cd"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+  - name: "Rose | 🇺🇸 US | VLESS | 4552"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | TROJAN | 6726"
+    type: "trojan"
+    server: "russia.com"
+    port: 443
+    password: "bpb-trojan"
+    udp: true
+    sni: "kargar001.pages.dev"
+    alpn: ["h3"]
+    network: "ws"
+    ws-opts:
+      path: "/tr?ed=2560"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5601"
+    type: "vmess"
+    server: "23.162.200.198"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 6561"
+    type: "trojan"
+    server: "216.152.155.158"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6569"
+    type: "trojan"
+    server: "216.152.155.59"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | VMESS | 5947"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | TROJAN | 6523"
+    type: "trojan"
+    server: "216.152.155.131"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6696"
+    type: "trojan"
+    server: "216.152.155.158"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1704"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | VLESS | 4089"
+    type: "vless"
+    server: "time.is"
+    port: 443
+    uuid: "767b6340-96dc-4aa0-8013-a8af7513d920"
+    udp: true
+    tls: true
+    servername: "c7dabe95.proxy-978.pages.dev"
+    client-fingerprint: "random"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "c7dabe95.proxy-978.pages.dev"
+  - name: "Rose | 🇺🇸 US | VLESS | 4243"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6562"
+    type: "trojan"
+    server: "216.152.155.158"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "firefox"
+  - name: "Rose | 🇺🇸 US | VMESS | 1763"
+    type: "vmess"
+    server: "162.251.61.46"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VMESS | 1842"
+    type: "vmess"
+    server: "38.128.66.249"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4242"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | 🇺🇸 US | TROJAN | 4736"
+    type: "trojan"
+    server: "216.152.155.59"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VMESS | 1764"
+    type: "vmess"
+    server: "162.251.61.46"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | VLESS | 500"
+    type: "vless"
+    server: "kozel.cc.cd"
+    port: 443
+    uuid: "3b01a777-55e7-49f6-8637-d94ee69607c6"
+    udp: true
+    tls: true
+    servername: "kozel.cc.cd"
+    network: "ws"
+    ws-opts:
+      path: "/118.151.222.66=17317fp=chrome"
+      headers:
+        Host: "kozel.cc.cd"
+  - name: "Rose | 🇺🇸 US | VMESS | 1762"
+    type: "vmess"
+    server: "162.251.61.46"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6568"
+    type: "trojan"
+    server: "216.152.155.23"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | VLESS | 7254"
+    type: "vless"
+    server: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+    port: 443
+    uuid: "b2f2f9f2-1864-48ea-839b-22815faff1f1"
+    udp: true
+    tls: true
+    servername: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+    network: "ws"
+    ws-opts:
+      path: "/fp=chrome"
+      headers:
+        Host: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+  - name: "Rose | 🇨🇦 CA | VMESS | 1700"
+    type: "vmess"
+    server: "134.195.196.211"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 1992"
+    type: "vmess"
+    server: "38.64.138.135"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3322"
+    type: "trojan"
+    server: "216.152.155.158"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4244"
+    type: "vless"
+    server: "195.211.98.43"
+    port: 443
+    uuid: "1b4b11d5-4c2d-4533-9a55-636757cdee94"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "safari"
+    reality-opts:
+      public-key: "xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA"
+      short-id: "9c56fddf237e8eaf"
+  - name: "Rose | 🇺🇸 US | VLESS | 4312"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 18662
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | 🇺🇸 US | VMESS | 5607"
+    type: "vmess"
+    server: "67.220.95.3"
+    port: 18000
+    uuid: "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe"
+    alterId: 0
+    cipher: "aes-128-gcm"
+    udp: true
+  - name: "Rose | 🇺🇸 US | VMESS | 1765"
+    type: "vmess"
+    server: "162.251.61.46"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇨🇦 CA | VLESS | 3573"
+    type: "vless"
+    server: "canadizian.harcho.shop"
+    port: 443
+    uuid: "c0742f77-5495-43bf-b007-88d368774d7c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "canadizian.harcho.shop"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "8J-SvgA_FEZG-T-dX5sV2zqnQm4-J6aT1LK6Kk-7pho"
+      short-id: "b3da8e3ebc600de3"
+  - name: "Rose | VLESS | 4066"
+    type: "vless"
+    server: "cf.090227.xyz"
+    port: 443
+    uuid: "3de5a94c-aadc-4e40-ba1a-7d4b6545f8a3"
+    udp: true
+    tls: true
+    servername: "oooyo.bi8bo.cyou"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "oooyo.bi8bo.cyou"
+  - name: "Rose | 🇨🇦 CA | VLESS | 5361"
+    type: "vless"
+    server: "canadizian.harcho.shop"
+    port: 443
+    uuid: "c0742f77-5495-43bf-b007-88d368774d7c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "canadizian.harcho.shop"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "8J-SvgA_FEZG-T-dX5sV2zqnQm4-J6aT1LK6Kk-7pho"
+      short-id: "b3da8e3ebc600de3"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6563"
+    type: "trojan"
+    server: "216.152.155.158"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "ios"
+  - name: "Rose | 🇨🇦 CA | VLESS | 642"
+    type: "vless"
+    server: "66.163.113.9"
+    port: 443
+    uuid: "03fcc618-b93d-6796-6aed-8a38c975d581"
+    udp: true
+    tls: true
+    servername: "kuruish.org"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VMESS | 2003"
+    type: "vmess"
+    server: "38.128.66.212"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3319"
+    type: "trojan"
+    server: "216.152.147.74"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇨🇦 CA | VLESS | 6756"
+    type: "vless"
+    server: "66.163.113.9"
+    port: 443
+    uuid: "03fcc618-b93d-6796-6aed-8a38c975d581"
+    udp: true
+    tls: true
+    servername: "kuruish.org"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | VLESS | 643"
+    type: "vless"
+    server: "66.163.113.9"
+    port: 443
+    uuid: "03fcc618-b93d-6796-6aed-8a38c975d581"
+    udp: true
+    tls: true
+    servername: "kuruish.org"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 6556"
+    type: "trojan"
+    server: "216.152.147.79"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.connectingpeoplewithgreatjobs.com"
+    client-fingerprint: "firefox"
+  - name: "Rose | 🇺🇸 US | TROJAN | 457"
+    type: "trojan"
+    server: "216.152.155.131"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | VLESS | 4253"
+    type: "vless"
+    server: "209.200.246.148"
+    port: 443
+    uuid: "ca52e2b6-fb9f-4dac-b6dc-49da9923f251"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "random"
+    reality-opts:
+      public-key: "uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk"
+      short-id: "f98843107912e782"
+  - name: "Rose | 🇺🇸 US | VLESS | 4311"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 18662
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | 🇺🇸 US | VLESS | 4641"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 8443
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp17.1145678.xyz"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/class/toolfp=chrome"
+      headers:
+        Host: "vp17.1145678.xyz"
+  - name: "Rose | 🇩🇪 DE | TROJAN | 6727"
+    type: "trojan"
+    server: "russia.com"
+    port: 443
+    password: "bpb-trojan"
+    udp: true
+    sni: "kargar001.pages.dev"
+    network: "ws"
+    ws-opts:
+      path: "/tr?ed=2560"
+      headers:
+        Host: "kargar001.pages.dev"
+  - name: "Rose | VLESS | 1400"
+    type: "vless"
+    server: "www.speedtest.net"
+    port: 443
+    uuid: "85550ebf-fd43-42dd-9801-bda528fea2fc"
+    udp: true
+    tls: true
+    servername: "wallweb5.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "wallweb5.pages.dev"
+  - name: "Rose | 🇨🇦 CA | VLESS | 4252"
+    type: "vless"
+    server: "209.200.246.148"
+    port: 443
+    uuid: "ca52e2b6-fb9f-4dac-b6dc-49da9923f251"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk"
+      short-id: "f98843107912e782"
+  - name: "Rose | 🇨🇦 CA | VLESS | 4873"
+    type: "vless"
+    server: "66.163.113.9"
+    port: 443
+    uuid: "03fcc618-b93d-6796-6aed-8a38c975d581"
+    udp: true
+    tls: true
+    servername: "kuruish.org"
+    client-fingerprint: "firefox"
+  - name: "Rose | VLESS | 7192"
+    type: "vless"
+    server: "floral-grass-aa1e.dianawpewpek1.workers.dev"
+    port: 2053
+    uuid: "9047219a-470f-4a3f-b319-1178ae1a3c87"
+    udp: true
+    tls: true
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "floral-grass-aa1e.dianawpewpek1.workers.dev"
+  - name: "Rose | 🇨🇦 CA | VLESS | 89"
+    type: "vless"
+    server: "209.200.246.148"
+    port: 443
+    uuid: "ca52e2b6-fb9f-4dac-b6dc-49da9923f251"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk"
+      short-id: "f98843107912e782"
+  - name: "Rose | 🇨🇦 CA | VLESS | 623"
+    type: "vless"
+    server: "66.163.113.9"
+    port: 443
+    uuid: "03fcc618-b93d-6796-6aed-8a38c975d581"
+    udp: true
+    tls: true
+    servername: "kuruish.org"
+  - name: "Rose | 🇺🇸 US | VMESS | 1849"
+    type: "vmess"
+    server: "38.64.138.135"
+    port: 1270
+    uuid: "5c040f1d-45db-43bd-8d46-e4950e433735"
+    alterId: 0
+    cipher: "auto"
+    udp: true
+    tls: true
+    servername: "xmfhlpy.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3234"
+    type: "trojan"
+    server: "216.152.147.93"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3320"
+    type: "trojan"
+    server: "216.152.147.74"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇨🇦 CA | VLESS | 4251"
+    type: "vless"
+    server: "209.200.246.148"
+    port: 443
+    uuid: "ca52e2b6-fb9f-4dac-b6dc-49da9923f251"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.cloudflare.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk"
+      short-id: "f98843107912e782"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 443"
+    type: "trojan"
+    server: "216.152.147.201"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.connectingpeoplewithgreatjobs.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 447"
+    type: "trojan"
+    server: "216.152.147.74"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "api.connectingpeoplewithgreatjobs.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 481"
+    type: "trojan"
+    server: "ipfast.kingmna.com"
+    port: 443
+    password: "Z-jckziI1rW4yrUMorrv0Q"
+    udp: true
+    sni: "cdn.akamai.steamstatic.com"
+    network: "ws"
+    ws-opts:
+      path: "/TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER-TELEGRAM-@NUFiLTER"
+      headers:
+        Host: "looazzboijji.global.ssl.fastly.net."
+  - name: "Rose | 🇨🇦 CA | TROJAN | 450"
+    type: "trojan"
+    server: "216.152.147.79"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 455"
+    type: "trojan"
+    server: "216.152.147.93"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 4685"
+    type: "trojan"
+    server: "216.152.147.93"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "connectingpeoplewithgreatjobs.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | VLESS | 7252"
+    type: "vless"
+    server: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+    port: 443
+    uuid: "b2f2f9f2-1864-48ea-839b-22815faff1f1"
+    udp: true
+    tls: true
+    servername: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 444"
+    type: "trojan"
+    server: "216.152.147.48"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.connectingpeoplewithgreatjobs.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 451"
+    type: "trojan"
+    server: "216.152.147.85"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 3121"
+    type: "vless"
+    server: "169.40.42.229"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3318"
+    type: "trojan"
+    server: "216.152.147.48"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4694"
+    type: "vless"
+    server: "67.220.73.204"
+    port: 16016
+    uuid: "814bd064-544d-4255-a070-5705c03f6da9"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "www.apple.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0"
+      short-id: "48050fab"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 452"
+    type: "trojan"
+    server: "216.152.147.85"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.connectingpeoplewithgreatjobs.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇨🇦 CA | VLESS | 4798"
+    type: "vless"
+    server: "kuruish.org"
+    port: 443
+    uuid: "03fcc618-b93d-6796-6aed-8a38c975d581"
+    udp: true
+    tls: true
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 6454"
+    type: "vless"
+    server: "169.40.42.202"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6694"
+    type: "trojan"
+    server: "216.152.155.131"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.nextjobopportunityandclaimyouridealrole.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 6695"
+    type: "trojan"
+    server: "216.152.155.158"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.nextjobopportunityandclaimyouridealrole.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3222"
+    type: "trojan"
+    server: "216.152.147.48"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3243"
+    type: "trojan"
+    server: "170.101.101.53"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3250"
+    type: "trojan"
+    server: "216.152.147.89"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 442"
+    type: "trojan"
+    server: "216.152.147.152"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3279"
+    type: "trojan"
+    server: "170.101.101.112"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3288"
+    type: "trojan"
+    server: "170.101.101.53"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.explorecreativejobsandenhanceyourcareerportfolio.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | VLESS | 4095"
+    type: "vless"
+    server: "web-tomcat.pages.dev"
+    port: 443
+    uuid: "2cf94f4d-9d5b-49ca-81a3-ddc0529a2dac"
+    udp: true
+    tls: true
+    servername: "web-tomcat.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+  - name: "Rose | 🇺🇸 US | VLESS | 4180"
+    type: "vless"
+    server: "169.40.42.168"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 5098"
+    type: "trojan"
+    server: "170.101.101.67"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.explorecreativejobsandenhanceyourcareerportfolio.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | VLESS | 5223"
+    type: "vless"
+    server: "169.40.42.90"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "firefox"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇸🇪 SE | VLESS | 7426"
+    type: "vless"
+    server: "indiegogo.com"
+    port: 443
+    uuid: "e818a20d-9bcd-4744-9061-ca51b9c8aeea"
+    udp: true
+    tls: true
+    servername: "wallweb-4ez.pages.dev"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/"
+      headers:
+        Host: "wallweb-4ez.pages.dev"
+  - name: "Rose | 🇺🇸 US | TROJAN | 424"
+    type: "trojan"
+    server: "170.101.101.112"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇨🇦 CA | VLESS | 2089"
+    type: "vless"
+    server: "kuruish.org"
+    port: 443
+    uuid: "03fcc618-b93d-6796-6aed-8a38c975d581"
+    udp: true
+    tls: true
+    servername: "kuruish.org"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3240"
+    type: "trojan"
+    server: "216.152.147.85"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3285"
+    type: "trojan"
+    server: "170.101.101.19"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 423"
+    type: "trojan"
+    server: "170.101.101.112"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.explorecreativejobsandenhanceyourcareerportfolio.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3278"
+    type: "trojan"
+    server: "170.101.101.112"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "resources.explorecreativejobsandenhanceyourcareerportfolio.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3281"
+    type: "trojan"
+    server: "170.101.101.131"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 4646"
+    type: "trojan"
+    server: "170.101.101.237"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "cdn.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 5146"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 2087
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp3.1145678.xyz"
+    client-fingerprint: "firefox"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "vp3.1145678.xyz"
+  - name: "Rose | 🇺🇸 US | VLESS | 5204"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 2083
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp25.1145678.xyz"
+    client-fingerprint: "firefox"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "vp25.1145678.xyz"
+  - name: "Rose | 🇺🇸 US | VLESS | 6293"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | TROJAN | 425"
+    type: "trojan"
+    server: "170.101.101.19"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 1123"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 3321"
+    type: "trojan"
+    server: "216.152.147.79"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 4080"
+    type: "vless"
+    server: "medium.com"
+    port: 443
+    uuid: "f2a73750-3087-48ff-a763-1348c15dce68"
+    udp: true
+    tls: true
+    servername: "rAyAn-007.mAxImA.DpDnS.OrG"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: "rAyAn-007.mAxImA.DpDnS.OrG"
+  - name: "Rose | 🇺🇸 US | VLESS | 4081"
+    type: "vless"
+    server: "medium.com"
+    port: 443
+    uuid: "f2a73750-3087-48ff-a763-1348c15dce68"
+    udp: true
+    tls: true
+    servername: "rayan-007.maxima.dpdns.org"
+    client-fingerprint: "chrome"
+    network: "ws"
+    ws-opts:
+      path: "/XIXVPN?ed=2560"
+      headers:
+        Host: "rayan-007.maxima.dpdns.org"
+  - name: "Rose | 🇺🇸 US | VLESS | 4848"
+    type: "vless"
+    server: "saas.sin.fan"
+    port: 2053
+    uuid: "5d7b401c-78fa-4254-872e-6d42bf7e75ec"
+    udp: true
+    tls: true
+    servername: "vp21.1145678.xyz"
+    client-fingerprint: "firefox"
+    network: "ws"
+    ws-opts:
+      headers:
+        Host: "vp21.1145678.xyz"
+  - name: "Rose | 🇺🇸 US | VLESS | 6173"
+    type: "vless"
+    server: "169.40.42.229"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 6279"
+    type: "vless"
+    server: "169.40.42.231"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "chrome"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 454"
+    type: "trojan"
+    server: "216.152.147.93"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3284"
+    type: "trojan"
+    server: "170.101.101.19"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "learn.explorecreativejobsandenhanceyourcareerportfolio.com"
+    client-fingerprint: "chrome"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3289"
+    type: "trojan"
+    server: "170.101.101.53"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "www.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇺🇸 US | TROJAN | 3290"
+    type: "trojan"
+    server: "170.101.101.67"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.explorecreativejobsandenhanceyourcareerportfolio.com"
+  - name: "Rose | 🇺🇸 US | VLESS | 3806"
+    type: "vless"
+    server: "169.40.42.163"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    client-fingerprint: "ios"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇺🇸 US | VLESS | 4214"
+    type: "vless"
+    server: "169.40.42.89"
+    port: 443
+    uuid: "d65cc14c-f53f-4fe2-b262-97856601319c"
+    udp: true
+    flow: "xtls-rprx-vision"
+    tls: true
+    servername: "yahoo.com"
+    reality-opts:
+      public-key: "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg"
+      short-id: "c39cc7310a"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 6557"
+    type: "trojan"
+    server: "216.152.147.79"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.connectingpeoplewithgreatjobs.com"
+    client-fingerprint: "ios"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 446"
+    type: "trojan"
+    server: "216.152.147.48"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "courses.connectingpeoplewithgreatjobs.com"
+  - name: "Rose | 🇨🇦 CA | TROJAN | 449"
+    type: "trojan"
+    server: "216.152.147.79"
+    port: 443
+    password: "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+    udp: true
+    sni: "blog.connectingpeoplewithgreatjobs.com"
+
+proxy-groups:
+  - name: "Rose Auto"
+    type: url-test
+    proxies:
+      - "Rose | 🇺🇸 US | VLESS | 5971"
+      - "Rose | 🇺🇸 US | VLESS | 864"
+      - "Rose | 🇺🇸 US | VLESS | 4626"
+      - "Rose | 🇺🇸 US | VLESS | 2366"
+      - "Rose | 🇺🇸 US | VLESS | 4550"
+      - "Rose | 🇺🇸 US | VLESS | 4743"
+      - "Rose | 🇺🇸 US | VLESS | 5058"
+      - "Rose | 🇺🇸 US | VLESS | 6763"
+      - "Rose | 🇺🇸 US | VLESS | 4835"
+      - "Rose | 🇺🇸 US | VLESS | 6210"
+      - "Rose | 🇺🇸 US | VLESS | 5248"
+      - "Rose | 🇺🇸 US | VMESS | 5676"
+      - "Rose | 🇺🇸 US | VLESS | 6587"
+      - "Rose | 🇺🇸 US | VLESS | 834"
+      - "Rose | 🇺🇸 US | VMESS | 5599"
+      - "Rose | 🇺🇸 US | VLESS | 6588"
+      - "Rose | 🇺🇸 US | VMESS | 1990"
+      - "Rose | 🇺🇸 US | VMESS | 5884"
+      - "Rose | 🇺🇸 US | VMESS | 6167"
+      - "Rose | 🇺🇸 US | VLESS | 650"
+      - "Rose | 🇺🇸 US | VLESS | 651"
+      - "Rose | 🇺🇸 US | VMESS | 5586"
+      - "Rose | 🇺🇸 US | VMESS | 5667"
+      - "Rose | 🇺🇸 US | VMESS | 5765"
+      - "Rose | 🇺🇸 US | VMESS | 5779"
+      - "Rose | 🇺🇸 US | VLESS | 657"
+      - "Rose | 🇺🇸 US | VMESS | 807"
+      - "Rose | 🇺🇸 US | VMESS | 1603"
+      - "Rose | 🇺🇸 US | VMESS | 2304"
+      - "Rose | 🇺🇸 US | VMESS | 3357"
+      - "Rose | 🇺🇸 US | VMESS | 1660"
+      - "Rose | 🇺🇸 US | VLESS | 656"
+      - "Rose | 🇺🇸 US | VMESS | 6168"
+      - "Rose | 🇺🇸 US | VLESS | 658"
+      - "Rose | 🇺🇸 US | VLESS | 2055"
+      - "Rose | 🇺🇸 US | VLESS | 7239"
+      - "Rose | 🇺🇸 US | VLESS | 653"
+      - "Rose | 🇺🇸 US | VLESS | 655"
+      - "Rose | 🇺🇸 US | VMESS | 5788"
+      - "Rose | 🇺🇸 US | VLESS | 2054"
+      - "Rose | 🇺🇸 US | VMESS | 5592"
+      - "Rose | 🇺🇸 US | VLESS | 654"
+      - "Rose | 🇺🇸 US | VMESS | 1996"
+      - "Rose | 🇺🇸 US | VLESS | 652"
+      - "Rose | 🇺🇸 US | VMESS | 1867"
+      - "Rose | 🇺🇸 US | VMESS | 5818"
+      - "Rose | 🇺🇸 US | VMESS | 5749"
+      - "Rose | 🇺🇸 US | VLESS | 2062"
+      - "Rose | 🇺🇸 US | VMESS | 3621"
+      - "Rose | 🇺🇸 US | VMESS | 5617"
+      - "Rose | 🇺🇸 US | VLESS | 6275"
+      - "Rose | 🇺🇸 US | VLESS | 2475"
+      - "Rose | 🇺🇸 US | VLESS | 3737"
+      - "Rose | 🇺🇸 US | VLESS | 4542"
+      - "Rose | 🇺🇸 US | VMESS | 5661"
+      - "Rose | 🇺🇸 US | VLESS | 6278"
+      - "Rose | 🇺🇸 US | VLESS | 7240"
+      - "Rose | 🇺🇸 US | VLESS | 2057"
+      - "Rose | 🇮🇱 IL | VLESS | 2477"
+      - "Rose | 🇮🇱 IL | VLESS | 4507"
+      - "Rose | 🇺🇸 US | VLESS | 872"
+      - "Rose | 🇮🇱 IL | VLESS | 881"
+      - "Rose | 🇺🇸 US | VLESS | 3135"
+      - "Rose | 🇺🇸 US | VLESS | 4167"
+      - "Rose | VLESS | 7273"
+      - "Rose | 🇮🇱 IL | VLESS | 882"
+      - "Rose | 🇺🇸 US | VLESS | 2090"
+      - "Rose | 🇺🇸 US | VLESS | 3465"
+      - "Rose | 🇺🇸 US | VLESS | 5555"
+      - "Rose | 🇺🇸 US | VMESS | 5790"
+      - "Rose | 🇺🇸 US | VLESS | 2056"
+      - "Rose | 🇺🇸 US | VLESS | 4170"
+      - "Rose | 🇺🇸 US | VLESS | 4172"
+      - "Rose | 🇺🇸 US | VLESS | 1162"
+      - "Rose | 🇺🇸 US | VLESS | 2034"
+      - "Rose | 🇺🇸 US | VLESS | 3383"
+      - "Rose | 🇺🇸 US | VLESS | 4166"
+      - "Rose | 🇮🇱 IL | VLESS | 4231"
+      - "Rose | 🇺🇸 US | VLESS | 4920"
+      - "Rose | 🇺🇸 US | VLESS | 2010"
+      - "Rose | 🇮🇱 IL | VLESS | 6289"
+      - "Rose | 🇺🇸 US | TROJAN | 478"
+      - "Rose | 🇮🇱 IL | VLESS | 880"
+      - "Rose | 🇺🇸 US | VLESS | 1455"
+      - "Rose | 🇺🇸 US | VMESS | 1868"
+      - "Rose | 🇺🇸 US | VLESS | 2058"
+      - "Rose | 🇺🇸 US | VMESS | 3646"
+      - "Rose | 🇺🇸 US | VLESS | 3723"
+      - "Rose | 🇮🇱 IL | VLESS | 4513"
+      - "Rose | 🇺🇸 US | TROJAN | 688"
+      - "Rose | 🇺🇸 US | VLESS | 803"
+      - "Rose | 🇺🇸 US | VLESS | 873"
+      - "Rose | 🇺🇸 US | TROJAN | 3215"
+      - "Rose | 🇺🇸 US | VLESS | 4163"
+      - "Rose | 🇺🇸 US | VLESS | 4168"
+      - "Rose | 🇺🇸 US | VLESS | 4173"
+      - "Rose | 🇮🇱 IL | VLESS | 4230"
+      - "Rose | 🇺🇸 US | TROJAN | 1204"
+      - "Rose | 🇺🇸 US | TROJAN | 2310"
+      - "Rose | 🇺🇸 US | VMESS | 3115"
+      - "Rose | 🇺🇸 US | TROJAN | 3219"
+      - "Rose | 🇺🇸 US | TROJAN | 3242"
+      - "Rose | 🇺🇸 US | VLESS | 4160"
+      - "Rose | 🇺🇸 US | VLESS | 4171"
+      - "Rose | 🇺🇸 US | VLESS | 4778"
+      - "Rose | 🇺🇸 US | TROJAN | 594"
+      - "Rose | 🇺🇸 US | TROJAN | 1202"
+      - "Rose | 🇺🇸 US | TROJAN | 2308"
+      - "Rose | 🇺🇸 US | TROJAN | 3230"
+      - "Rose | 🇺🇸 US | VLESS | 4174"
+      - "Rose | 🇺🇸 US | VLESS | 5116"
+      - "Rose | 🇺🇸 US | VMESS | 5719"
+      - "Rose | 🇺🇸 US | VMESS | 811"
+      - "Rose | 🇺🇸 US | VLESS | 871"
+      - "Rose | 🇺🇸 US | TROJAN | 1207"
+      - "Rose | 🇺🇸 US | TROJAN | 3345"
+      - "Rose | 🇺🇸 US | TROJAN | 3346"
+      - "Rose | 🇺🇸 US | TROJAN | 3349"
+      - "Rose | 🇺🇸 US | TROJAN | 3446"
+      - "Rose | 🇺🇸 US | VLESS | 1475"
+      - "Rose | 🇺🇸 US | TROJAN | 1973"
+      - "Rose | 🇺🇸 US | VLESS | 2061"
+      - "Rose | 🇺🇸 US | TROJAN | 3343"
+      - "Rose | 🇺🇸 US | VLESS | 6780"
+      - "Rose | 🇺🇸 US | VMESS | 809"
+      - "Rose | 🇮🇱 IL | VLESS | 2026"
+      - "Rose | 🇺🇸 US | VLESS | 2059"
+      - "Rose | 🇺🇸 US | TROJAN | 3257"
+      - "Rose | VLESS | 4096"
+      - "Rose | 🇺🇸 US | VLESS | 4162"
+      - "Rose | 🇺🇸 US | VLESS | 7258"
+      - "Rose | 🇺🇸 US | VMESS | 810"
+      - "Rose | 🇺🇸 US | TROJAN | 1203"
+      - "Rose | 🇺🇸 US | VLESS | 1476"
+      - "Rose | 🇺🇸 US | VLESS | 2022"
+      - "Rose | 🇮🇱 IL | VLESS | 2478"
+      - "Rose | 🇺🇸 US | TROJAN | 5307"
+      - "Rose | 🇸🇬 SG | VLESS | 7274"
+      - "Rose | 🇺🇸 US | VLESS | 804"
+      - "Rose | 🇺🇸 US | VMESS | 808"
+      - "Rose | 🇺🇸 US | VLESS | 2075"
+      - "Rose | 🇺🇸 US | TROJAN | 3348"
+      - "Rose | VLESS | 4078"
+      - "Rose | 🇺🇸 US | TROJAN | 1206"
+      - "Rose | 🇺🇸 US | TROJAN | 2305"
+      - "Rose | 🇺🇸 US | VLESS | 3828"
+      - "Rose | 🇺🇸 US | VLESS | 6276"
+      - "Rose | VLESS | 7142"
+      - "Rose | 🇺🇸 US | TROJAN | 1201"
+      - "Rose | 🇮🇱 IL | VLESS | 3492"
+      - "Rose | VLESS | 4087"
+      - "Rose | VLESS | 4097"
+      - "Rose | 🇺🇸 US | VLESS | 6149"
+      - "Rose | 🇺🇸 US | VLESS | 598"
+      - "Rose | 🇺🇸 US | VLESS | 1120"
+      - "Rose | 🇺🇸 US | VMESS | 1921"
+      - "Rose | 🇺🇸 US | VMESS | 3460"
+      - "Rose | VLESS | 4088"
+      - "Rose | 🇺🇸 US | VLESS | 4198"
+      - "Rose | 🇺🇸 US | TROJAN | 4814"
+      - "Rose | 🇺🇸 US | VMESS | 5596"
+      - "Rose | 🇺🇸 US | VLESS | 1112"
+      - "Rose | 🇺🇸 US | TROJAN | 3344"
+      - "Rose | 🇺🇸 US | TROJAN | 3353"
+      - "Rose | 🇺🇸 US | VLESS | 3808"
+      - "Rose | VLESS | 4075"
+      - "Rose | 🇺🇸 US | VLESS | 2060"
+      - "Rose | 🇮🇱 IL | VLESS | 3493"
+      - "Rose | 🇺🇸 US | VLESS | 3687"
+      - "Rose | 🇺🇸 US | VLESS | 3823"
+      - "Rose | 🇺🇸 US | VLESS | 4943"
+      - "Rose | 🇺🇸 US | VLESS | 6284"
+      - "Rose | 🇺🇸 US | VLESS | 6285"
+      - "Rose | 🇺🇸 US | VLESS | 6298"
+      - "Rose | VLESS | 7275"
+      - "Rose | 🇺🇸 US | VLESS | 7405"
+      - "Rose | 🇺🇸 US | VLESS | 1114"
+      - "Rose | 🇺🇸 US | VLESS | 1116"
+      - "Rose | 🇺🇸 US | VLESS | 1524"
+      - "Rose | 🇺🇸 US | VMESS | 1824"
+      - "Rose | 🇺🇸 US | VLESS | 2074"
+      - "Rose | 🇮🇱 IL | VLESS | 3365"
+      - "Rose | 🇮🇱 IL | VLESS | 5215"
+      - "Rose | 🇺🇸 US | VLESS | 7404"
+      - "Rose | 🇺🇸 US | VLESS | 1124"
+      - "Rose | 🇺🇸 US | VLESS | 4217"
+      - "Rose | 🇺🇸 US | VLESS | 4218"
+      - "Rose | 🇺🇸 US | VLESS | 4533"
+      - "Rose | 🇺🇸 US | VLESS | 4955"
+      - "Rose | 🇺🇸 US | TROJAN | 6711"
+      - "Rose | 🇺🇸 US | VLESS | 1109"
+      - "Rose | 🇺🇸 US | VLESS | 1119"
+      - "Rose | VLESS | 1318"
+      - "Rose | 🇺🇸 US | VMESS | 3372"
+      - "Rose | 🇺🇸 US | VLESS | 4188"
+      - "Rose | 🇺🇸 US | VLESS | 4190"
+      - "Rose | 🇺🇸 US | TROJAN | 6712"
+      - "Rose | 🇺🇸 US | VLESS | 1125"
+      - "Rose | 🇺🇸 US | VMESS | 1722"
+      - "Rose | 🇺🇸 US | VLESS | 4196"
+      - "Rose | 🇺🇸 US | VLESS | 4204"
+      - "Rose | 🇺🇸 US | VLESS | 4498"
+      - "Rose | 🇺🇸 US | VLESS | 4575"
+      - "Rose | 🇺🇸 US | VLESS | 6280"
+      - "Rose | 🇺🇸 US | VLESS | 6302"
+      - "Rose | 🇺🇸 US | VLESS | 6431"
+      - "Rose | 🇺🇸 US | TROJAN | 6710"
+      - "Rose | 🇺🇸 US | TROJAN | 3347"
+      - "Rose | 🇺🇸 US | VLESS | 4195"
+      - "Rose | 🇺🇸 US | VLESS | 6287"
+      - "Rose | 🇺🇸 US | VLESS | 6464"
+      - "Rose | 🇺🇸 US | VLESS | 81"
+      - "Rose | 🇺🇸 US | VLESS | 1108"
+      - "Rose | 🇺🇸 US | VMESS | 3450"
+      - "Rose | 🇺🇸 US | VMESS | 3645"
+      - "Rose | 🇺🇸 US | VLESS | 6291"
+      - "Rose | 🇺🇸 US | TROJAN | 6708"
+      - "Rose | 🇺🇸 US | VLESS | 7407"
+      - "Rose | 🇺🇸 US | VLESS | 7455"
+      - "Rose | 🇺🇸 US | VLESS | 1113"
+      - "Rose | 🇺🇸 US | VMESS | 1653"
+      - "Rose | 🇺🇸 US | VLESS | 2541"
+      - "Rose | 🇺🇸 US | VLESS | 3120"
+      - "Rose | 🇺🇸 US | VLESS | 3810"
+      - "Rose | 🇺🇸 US | VLESS | 4189"
+      - "Rose | 🇺🇸 US | VLESS | 6294"
+      - "Rose | 🇺🇸 US | TROJAN | 6709"
+      - "Rose | 🇺🇸 US | TROJAN | 1205"
+      - "Rose | VLESS | 4077"
+      - "Rose | 🇺🇸 US | VLESS | 6281"
+      - "Rose | 🇺🇸 US | VLESS | 1515"
+      - "Rose | VLESS | 4102"
+      - "Rose | 🇺🇸 US | VLESS | 4177"
+      - "Rose | 🇺🇸 US | VLESS | 4207"
+      - "Rose | VLESS | 7253"
+      - "Rose | 🇺🇸 US | VLESS | 4205"
+      - "Rose | 🇺🇸 US | VMESS | 4482"
+      - "Rose | 🇺🇸 US | VLESS | 6141"
+      - "Rose | 🇺🇸 US | VLESS | 1107"
+      - "Rose | 🇺🇸 US | TROJAN | 3352"
+      - "Rose | 🇺🇸 US | VLESS | 4176"
+      - "Rose | 🇺🇸 US | VLESS | 6494"
+      - "Rose | VLESS | 7398"
+      - "Rose | 🇺🇸 US | VLESS | 4187"
+      - "Rose | 🇺🇸 US | VLESS | 5130"
+      - "Rose | 🇺🇸 US | VLESS | 6301"
+      - "Rose | 🇺🇸 US | VLESS | 6398"
+      - "Rose | 🇺🇸 US | VLESS | 6804"
+      - "Rose | 🇺🇸 US | VLESS | 1533"
+      - "Rose | 🇺🇸 US | VLESS | 3819"
+      - "Rose | 🇺🇸 US | VLESS | 4554"
+      - "Rose | VLESS | 5325"
+      - "Rose | 🇺🇸 US | VLESS | 6578"
+      - "Rose | VLESS | 1317"
+      - "Rose | 🇺🇸 US | VLESS | 4182"
+      - "Rose | 🇮🇱 IL | VLESS | 5825"
+      - "Rose | 🇺🇸 US | VLESS | 6493"
+      - "Rose | TROJAN | 6729"
+      - "Rose | 🇺🇸 US | VLESS | 6745"
+      - "Rose | 🇺🇸 US | VLESS | 1516"
+      - "Rose | 🇨🇦 CA | VMESS | 1697"
+      - "Rose | 🇺🇸 US | VLESS | 5165"
+      - "Rose | 🇺🇸 US | VLESS | 5166"
+      - "Rose | VLESS | 7244"
+      - "Rose | 🇨🇦 CA | VMESS | 1695"
+      - "Rose | 🇨🇦 CA | VMESS | 3110"
+      - "Rose | 🇺🇸 US | VLESS | 3576"
+      - "Rose | 🇺🇸 US | VLESS | 4510"
+      - "Rose | 🇨🇦 CA | VMESS | 5685"
+      - "Rose | 🇨🇦 CA | VMESS | 5729"
+      - "Rose | 🇨🇦 CA | VMESS | 5978"
+      - "Rose | 🇺🇸 US | VLESS | 6497"
+      - "Rose | VLESS | 6807"
+      - "Rose | 🇺🇸 US | VLESS | 1534"
+      - "Rose | 🇨🇦 CA | VMESS | 1696"
+      - "Rose | 🇨🇦 CA | VMESS | 3363"
+      - "Rose | 🇺🇸 US | VLESS | 3366"
+      - "Rose | 🇨🇦 CA | VMESS | 3657"
+      - "Rose | 🇺🇸 US | VLESS | 4186"
+      - "Rose | 🇨🇦 CA | VMESS | 5703"
+      - "Rose | 🇨🇦 CA | VMESS | 5755"
+      - "Rose | 🇨🇦 CA | VMESS | 5879"
+      - "Rose | 🇨🇦 CA | VMESS | 5913"
+      - "Rose | 🇺🇸 US | VLESS | 6576"
+      - "Rose | VLESS | 7383"
+      - "Rose | 🇨🇦 CA | VMESS | 1615"
+      - "Rose | 🇨🇦 CA | VMESS | 1816"
+      - "Rose | 🇨🇦 CA | VMESS | 3611"
+      - "Rose | 🇺🇸 US | VLESS | 4040"
+      - "Rose | 🇨🇦 CA | VMESS | 5770"
+      - "Rose | 🇺🇸 US | VLESS | 6574"
+      - "Rose | 🇺🇸 US | VLESS | 6744"
+      - "Rose | 🇨🇦 CA | VMESS | 7518"
+      - "Rose | 🇨🇦 CA | VMESS | 1819"
+      - "Rose | 🇨🇦 CA | VMESS | 1820"
+      - "Rose | 🇨🇦 CA | VMESS | 1821"
+      - "Rose | 🇨🇦 CA | VLESS | 2530"
+      - "Rose | 🇨🇦 CA | VLESS | 3571"
+      - "Rose | 🇨🇦 CA | VMESS | 3612"
+      - "Rose | 🇨🇦 CA | VMESS | 5680"
+      - "Rose | 🇨🇦 CA | VMESS | 5934"
+      - "Rose | 🇺🇸 US | VLESS | 6392"
+      - "Rose | 🇺🇸 US | VLESS | 6575"
+      - "Rose | 🇺🇸 US | VLESS | 6577"
+      - "Rose | 🇺🇸 US | VLESS | 6805"
+      - "Rose | 🇺🇸 US | VMESS | 1776"
+      - "Rose | 🇨🇦 CA | VMESS | 3658"
+      - "Rose | 🇨🇦 CA | VMESS | 3669"
+      - "Rose | 🇨🇦 CA | VMESS | 5701"
+      - "Rose | 🇺🇸 US | TROJAN | 3350"
+      - "Rose | 🇨🇦 CA | VMESS | 3626"
+      - "Rose | 🇨🇦 CA | VMESS | 5723"
+      - "Rose | 🇺🇸 US | VLESS | 6288"
+      - "Rose | VLESS | 7425"
+      - "Rose | 🇺🇸 US | TROJAN | 483"
+      - "Rose | 🇨🇦 CA | VMESS | 1698"
+      - "Rose | 🇨🇦 CA | VMESS | 3656"
+      - "Rose | 🇺🇸 US | VLESS | 4786"
+      - "Rose | 🇨🇦 CA | VMESS | 5760"
+      - "Rose | 🇨🇦 CA | VMESS | 6172"
+      - "Rose | 🇺🇸 US | TROJAN | 459"
+      - "Rose | 🇺🇸 US | TROJAN | 465"
+      - "Rose | 🇨🇦 CA | VMESS | 1706"
+      - "Rose | 🇺🇸 US | TROJAN | 3235"
+      - "Rose | 🇨🇦 CA | VMESS | 3667"
+      - "Rose | 🇨🇦 CA | VMESS | 3668"
+      - "Rose | 🇺🇸 US | VLESS | 4864"
+      - "Rose | 🇨🇦 CA | VMESS | 5649"
+      - "Rose | 🇨🇦 CA | VMESS | 5916"
+      - "Rose | 🇺🇸 US | TROJAN | 6518"
+      - "Rose | 🇺🇸 US | VLESS | 6554"
+      - "Rose | 🇨🇦 CA | VMESS | 1641"
+      - "Rose | 🇨🇦 CA | VMESS | 1818"
+      - "Rose | 🇺🇸 US | TROJAN | 1987"
+      - "Rose | 🇺🇸 US | TROJAN | 3220"
+      - "Rose | 🇺🇸 US | TROJAN | 3226"
+      - "Rose | 🇺🇸 US | TROJAN | 3248"
+      - "Rose | 🇺🇸 US | TROJAN | 3323"
+      - "Rose | 🇺🇸 US | TROJAN | 3327"
+      - "Rose | 🇺🇸 US | VLESS | 3824"
+      - "Rose | 🇺🇸 US | TROJAN | 4718"
+      - "Rose | 🇨🇦 CA | VMESS | 5588"
+      - "Rose | 🇨🇦 CA | VMESS | 5604"
+      - "Rose | 🇨🇦 CA | VMESS | 5684"
+      - "Rose | 🇨🇦 CA | VMESS | 5875"
+      - "Rose | 🇨🇦 CA | VMESS | 6170"
+      - "Rose | 🇺🇸 US | TROJAN | 6564"
+      - "Rose | 🇺🇸 US | VLESS | 85"
+      - "Rose | 🇺🇸 US | TROJAN | 461"
+      - "Rose | 🇺🇸 US | TROJAN | 463"
+      - "Rose | 🇨🇦 CA | VMESS | 730"
+      - "Rose | 🇨🇦 CA | VMESS | 1817"
+      - "Rose | 🇨🇦 CA | VMESS | 1823"
+      - "Rose | 🇺🇸 US | VMESS | 1848"
+      - "Rose | 🇨🇦 CA | VMESS | 3111"
+      - "Rose | 🇺🇸 US | TROJAN | 3326"
+      - "Rose | 🇺🇸 US | VLESS | 4310"
+      - "Rose | VLESS | 7193"
+      - "Rose | 🇺🇸 US | TROJAN | 612"
+      - "Rose | 🇨🇦 CA | VMESS | 1822"
+      - "Rose | 🇺🇸 US | TROJAN | 3224"
+      - "Rose | 🇨🇦 CA | VMESS | 5625"
+      - "Rose | 🇺🇸 US | TROJAN | 462"
+      - "Rose | 🇺🇸 US | TROJAN | 482"
+      - "Rose | 🇨🇦 CA | VMESS | 729"
+      - "Rose | 🇨🇦 CA | VMESS | 1705"
+      - "Rose | 🇨🇦 CA | VMESS | 2309"
+      - "Rose | VLESS | 4065"
+      - "Rose | 🇺🇸 US | VLESS | 6220"
+      - "Rose | 🇺🇸 US | TROJAN | 6565"
+      - "Rose | 🇺🇸 US | VLESS | 6743"
+      - "Rose | 🇺🇸 US | VLESS | 6746"
+      - "Rose | 🇺🇸 US | TROJAN | 460"
+      - "Rose | 🇨🇦 CA | VMESS | 1703"
+      - "Rose | 🇺🇸 US | VLESS | 4067"
+      - "Rose | 🇺🇸 US | TROJAN | 4930"
+      - "Rose | 🇺🇸 US | VLESS | 6295"
+      - "Rose | 🇺🇸 US | TROJAN | 6559"
+      - "Rose | 🇺🇸 US | TROJAN | 6560"
+      - "Rose | TROJAN | 6730"
+      - "Rose | 🇺🇸 US | VLESS | 7173"
+      - "Rose | 🇨🇦 CA | VMESS | 7538"
+      - "Rose | 🇨🇦 CA | VMESS | 1699"
+      - "Rose | 🇨🇦 CA | VMESS | 1701"
+      - "Rose | 🇺🇸 US | VLESS | 4308"
+      - "Rose | 🇨🇦 CA | VMESS | 5598"
+      - "Rose | 🇺🇸 US | VLESS | 4313"
+      - "Rose | 🇺🇸 US | VLESS | 5852"
+      - "Rose | 🇺🇸 US | VLESS | 6218"
+      - "Rose | 🇺🇸 US | VLESS | 3393"
+      - "Rose | VLESS | 4098"
+      - "Rose | 🇺🇸 US | VLESS | 4552"
+      - "Rose | TROJAN | 6726"
+      - "Rose | 🇨🇦 CA | VMESS | 5601"
+      - "Rose | 🇺🇸 US | TROJAN | 6561"
+      - "Rose | 🇺🇸 US | TROJAN | 6569"
+      - "Rose | 🇨🇦 CA | VMESS | 5947"
+      - "Rose | 🇺🇸 US | TROJAN | 6523"
+      - "Rose | 🇺🇸 US | TROJAN | 6696"
+      - "Rose | 🇨🇦 CA | VMESS | 1704"
+      - "Rose | VLESS | 4089"
+      - "Rose | 🇺🇸 US | VLESS | 4243"
+      - "Rose | 🇺🇸 US | TROJAN | 6562"
+      - "Rose | 🇺🇸 US | VMESS | 1763"
+      - "Rose | 🇺🇸 US | VMESS | 1842"
+      - "Rose | 🇺🇸 US | VLESS | 4242"
+      - "Rose | 🇺🇸 US | TROJAN | 4736"
+      - "Rose | 🇺🇸 US | VMESS | 1764"
+      - "Rose | VLESS | 500"
+      - "Rose | 🇺🇸 US | VMESS | 1762"
+      - "Rose | 🇺🇸 US | TROJAN | 6568"
+      - "Rose | VLESS | 7254"
+      - "Rose | 🇨🇦 CA | VMESS | 1700"
+      - "Rose | 🇺🇸 US | VMESS | 1992"
+      - "Rose | 🇺🇸 US | TROJAN | 3322"
+      - "Rose | 🇺🇸 US | VLESS | 4244"
+      - "Rose | 🇺🇸 US | VLESS | 4312"
+      - "Rose | 🇺🇸 US | VMESS | 5607"
+      - "Rose | 🇺🇸 US | VMESS | 1765"
+      - "Rose | 🇨🇦 CA | VLESS | 3573"
+      - "Rose | VLESS | 4066"
+      - "Rose | 🇨🇦 CA | VLESS | 5361"
+      - "Rose | 🇺🇸 US | TROJAN | 6563"
+      - "Rose | 🇨🇦 CA | VLESS | 642"
+      - "Rose | 🇺🇸 US | VMESS | 2003"
+      - "Rose | 🇨🇦 CA | TROJAN | 3319"
+      - "Rose | 🇨🇦 CA | VLESS | 6756"
+      - "Rose | 🇨🇦 CA | VLESS | 643"
+      - "Rose | 🇨🇦 CA | TROJAN | 6556"
+      - "Rose | 🇺🇸 US | TROJAN | 457"
+      - "Rose | 🇨🇦 CA | VLESS | 4253"
+      - "Rose | 🇺🇸 US | VLESS | 4311"
+      - "Rose | 🇺🇸 US | VLESS | 4641"
+      - "Rose | 🇩🇪 DE | TROJAN | 6727"
+      - "Rose | VLESS | 1400"
+      - "Rose | 🇨🇦 CA | VLESS | 4252"
+      - "Rose | 🇨🇦 CA | VLESS | 4873"
+      - "Rose | VLESS | 7192"
+      - "Rose | 🇨🇦 CA | VLESS | 89"
+      - "Rose | 🇨🇦 CA | VLESS | 623"
+      - "Rose | 🇺🇸 US | VMESS | 1849"
+      - "Rose | 🇨🇦 CA | TROJAN | 3234"
+      - "Rose | 🇨🇦 CA | TROJAN | 3320"
+      - "Rose | 🇨🇦 CA | VLESS | 4251"
+      - "Rose | 🇨🇦 CA | TROJAN | 443"
+      - "Rose | 🇨🇦 CA | TROJAN | 447"
+      - "Rose | 🇺🇸 US | TROJAN | 481"
+      - "Rose | 🇨🇦 CA | TROJAN | 450"
+      - "Rose | 🇨🇦 CA | TROJAN | 455"
+      - "Rose | 🇨🇦 CA | TROJAN | 4685"
+      - "Rose | VLESS | 7252"
+      - "Rose | 🇨🇦 CA | TROJAN | 444"
+      - "Rose | 🇨🇦 CA | TROJAN | 451"
+      - "Rose | 🇺🇸 US | VLESS | 3121"
+      - "Rose | 🇨🇦 CA | TROJAN | 3318"
+      - "Rose | 🇺🇸 US | VLESS | 4694"
+      - "Rose | 🇨🇦 CA | TROJAN | 452"
+      - "Rose | 🇨🇦 CA | VLESS | 4798"
+      - "Rose | 🇺🇸 US | VLESS | 6454"
+      - "Rose | 🇺🇸 US | TROJAN | 6694"
+      - "Rose | 🇺🇸 US | TROJAN | 6695"
+      - "Rose | 🇨🇦 CA | TROJAN | 3222"
+      - "Rose | 🇺🇸 US | TROJAN | 3243"
+      - "Rose | 🇨🇦 CA | TROJAN | 3250"
+      - "Rose | 🇨🇦 CA | TROJAN | 442"
+      - "Rose | 🇺🇸 US | TROJAN | 3279"
+      - "Rose | 🇺🇸 US | TROJAN | 3288"
+      - "Rose | VLESS | 4095"
+      - "Rose | 🇺🇸 US | VLESS | 4180"
+      - "Rose | 🇺🇸 US | TROJAN | 5098"
+      - "Rose | 🇺🇸 US | VLESS | 5223"
+      - "Rose | 🇸🇪 SE | VLESS | 7426"
+      - "Rose | 🇺🇸 US | TROJAN | 424"
+      - "Rose | 🇨🇦 CA | VLESS | 2089"
+      - "Rose | 🇨🇦 CA | TROJAN | 3240"
+      - "Rose | 🇺🇸 US | TROJAN | 3285"
+      - "Rose | 🇺🇸 US | TROJAN | 423"
+      - "Rose | 🇺🇸 US | TROJAN | 3278"
+      - "Rose | 🇺🇸 US | TROJAN | 3281"
+      - "Rose | 🇺🇸 US | TROJAN | 4646"
+      - "Rose | 🇺🇸 US | VLESS | 5146"
+      - "Rose | 🇺🇸 US | VLESS | 5204"
+      - "Rose | 🇺🇸 US | VLESS | 6293"
+      - "Rose | 🇺🇸 US | TROJAN | 425"
+      - "Rose | 🇺🇸 US | VLESS | 1123"
+      - "Rose | 🇨🇦 CA | TROJAN | 3321"
+      - "Rose | 🇺🇸 US | VLESS | 4080"
+      - "Rose | 🇺🇸 US | VLESS | 4081"
+      - "Rose | 🇺🇸 US | VLESS | 4848"
+      - "Rose | 🇺🇸 US | VLESS | 6173"
+      - "Rose | 🇺🇸 US | VLESS | 6279"
+      - "Rose | 🇨🇦 CA | TROJAN | 454"
+      - "Rose | 🇺🇸 US | TROJAN | 3284"
+      - "Rose | 🇺🇸 US | TROJAN | 3289"
+      - "Rose | 🇺🇸 US | TROJAN | 3290"
+      - "Rose | 🇺🇸 US | VLESS | 3806"
+      - "Rose | 🇺🇸 US | VLESS | 4214"
+      - "Rose | 🇨🇦 CA | TROJAN | 6557"
+      - "Rose | 🇨🇦 CA | TROJAN | 446"
+      - "Rose | 🇨🇦 CA | TROJAN | 449"
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    tolerance: 50
+    lazy: true
+
+rules:
+  - MATCH,Rose Auto
