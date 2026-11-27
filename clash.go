@@ -241,9 +241,7 @@ func clashVMess(line string) ([]clashKV, error) {
 	if cipher == "" {
 		cipher = jsonStr(d, "security")
 	}
-	if cipher == "" {
-		cipher = "auto"
-	}
+	cipher = clashVMessCipher(cipher)
 	network := strings.ToLower(jsonStr(d, "net"))
 	if network == "" {
 		network = "tcp"
@@ -592,7 +590,25 @@ func clashPort(s string) (int, error) {
 
 func jsonStr(d map[string]any, key string) string {
 	v, _ := d[key].(string)
+	// Some VMess generators serialize unset fields as the literal string
+	// "null" instead of omitting them or using JSON null. Treat it as
+	// empty everywhere, or it leaks into the Clash config (e.g. a cipher
+	// of "null", which Clash Meta rejects on import).
+	if strings.EqualFold(strings.TrimSpace(v), "null") {
+		return ""
+	}
 	return v
+}
+
+// clashVMessCipher normalizes a VMess cipher to the set Clash Meta
+// accepts; anything else (including "null" and "") becomes "auto", the
+// same fallback Xray uses for an unset cipher.
+func clashVMessCipher(c string) string {
+	switch strings.ToLower(strings.TrimSpace(c)) {
+	case "auto", "aes-128-gcm", "chacha20-poly1305", "none", "zero":
+		return strings.ToLower(strings.TrimSpace(c))
+	}
+	return "auto"
 }
 
 func jsonPort(d map[string]any, key string) (int, error) {
