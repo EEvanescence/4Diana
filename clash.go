@@ -141,7 +141,7 @@ func buildClashYAML(results []tester.Result, named []string, cfRanges []*net.IPN
 	b.WriteString("mixed-port: 7890\n")
 	b.WriteString("allow-lan: true\n")
 	b.WriteString("mode: rule\n")
-	b.WriteString("log-level: info\n")
+	b.WriteString("log-level: warning\n")
 	b.WriteString("ipv6: true\n\n")
 
 	b.WriteString("proxies:\n")
