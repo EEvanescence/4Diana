@@ -107,6 +107,47 @@ func TestBuildClashYAMLUniqueNames(t *testing.T) {
 	}
 }
 
+func TestClashVMessCipherNormalization(t *testing.T) {
+	base := map[string]any{
+		"v": "2", "ps": "x", "add": "vm.example.com", "port": "443",
+		"id": "11111111-2222-3333-4444-555555555555", "aid": "0",
+		"net": "tcp", "type": "none", "tls": "none",
+	}
+	cases := []struct {
+		scy  any
+		want string
+	}{
+		{"null", "auto"},   // literal string from some generators
+		{nil, "auto"},      // JSON null
+		{"", "auto"},       // empty
+		{"AES-128-GCM", "aes-128-gcm"},
+		{"chacha20-poly1305", "chacha20-poly1305"},
+		{"none", "none"},
+		{"bogus-cipher", "auto"},
+	}
+	for _, tc := range cases {
+		fields := map[string]any{}
+		for k, v := range base {
+			fields[k] = v
+		}
+		fields["scy"] = tc.scy
+		link := vmessLink(t, fields)
+		out, err := clashFields(link, "vmess")
+		if err != nil {
+			t.Fatalf("scy=%v: %v", tc.scy, err)
+		}
+		found := ""
+		for _, kv := range out {
+			if kv.k == "cipher" {
+				found, _ = kv.v.(string)
+			}
+		}
+		if found != tc.want {
+			t.Errorf("scy=%v: cipher = %q, want %q", tc.scy, found, tc.want)
+		}
+	}
+}
+
 func TestClashFieldsRejectsUnsupported(t *testing.T) {
 	cases := []string{
 		"vless://11111111-2222-3333-4444-555555555555@a.example.com:443?security=tls&type=kcp#x",
